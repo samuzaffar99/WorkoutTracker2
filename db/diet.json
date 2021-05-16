@@ -1,0 +1,238 @@
+[{
+  "_id": "5fe07621b271d358089313e5",
+  "name": "Keto Diet",
+  "dist": {
+    "carbs": 30,
+    "protein": 30,
+    "fat": 40
+  },
+  "calories": 3600,
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "dietdays": [
+    {
+      "day": "monday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f9",
+        "5fe8c3a92a7adc3488b6e7f6"
+      ]
+    },
+    {
+      "day": "tuesday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe063f5b271d358089313e3"
+      ]
+    }
+  ]
+},{
+  "_id": "5febf179775c8a5c445e0743",
+  "name": "Keto Diet",
+  "dist": {
+    "carbs": 30,
+    "protein": 30,
+    "fat": 40
+  },
+  "calories": 3600,
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "dietdays": [
+    {
+      "day": "monday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f9",
+        "5fe8c3a92a7adc3488b6e7f6"
+      ]
+    },
+    {
+      "day": "tuesday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe063f5b271d358089313e3"
+      ]
+    },
+    {
+      "day": "wednesday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7f6",
+        "5fe8c3a92a7adc3488b6e7f7",
+        "5fe8c3a92a7adc3488b6e7f8",
+        "5fe8c3a92a7adc3488b6e7fa"
+      ]
+    },
+    {
+      "day": "thursday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fb",
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f9",
+        "5fe063f5b271d358089313e3"
+      ]
+    },
+    {
+      "day": "friday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fa",
+        "5fe8c3a92a7adc3488b6e7f6",
+        "5fe8c3a92a7adc3488b6e7f5"
+      ]
+    },
+    {
+      "day": "saturday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f5",
+        "5fe8c3a92a7adc3488b6e7f6"
+      ]
+    },
+    {
+      "day": "sunday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fa",
+        "5fe8c3a92a7adc3488b6e7f7",
+        "5fe063f5b271d358089313e3"
+      ]
+    }
+  ]
+},{
+  "_id": "5febf179775c8a5c445e0744",
+  "name": "Paleo Diet",
+  "dist": {
+    "carbs": 60,
+    "protein": 20,
+    "fat": 20
+  },
+  "calories": 2100,
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "dietdays": [
+    {
+      "day": "monday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f9",
+        "5fe8c3a92a7adc3488b6e7f6"
+      ]
+    },
+    {
+      "day": "tuesday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe063f5b271d358089313e3"
+      ]
+    },
+    {
+      "day": "wednesday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7f6",
+        "5fe8c3a92a7adc3488b6e7f7",
+        "5fe8c3a92a7adc3488b6e7f8",
+        "5fe8c3a92a7adc3488b6e7fa"
+      ]
+    },
+    {
+      "day": "thursday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fb",
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f9",
+        "5fe063f5b271d358089313e3"
+      ]
+    },
+    {
+      "day": "friday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fa",
+        "5fe8c3a92a7adc3488b6e7f6",
+        "5fe8c3a92a7adc3488b6e7f5"
+      ]
+    },
+    {
+      "day": "saturday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f5",
+        "5fe8c3a92a7adc3488b6e7f6"
+      ]
+    },
+    {
+      "day": "sunday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fa",
+        "5fe8c3a92a7adc3488b6e7f7",
+        "5fe063f5b271d358089313e3"
+      ]
+    }
+  ]
+},{
+  "_id": "5febf179775c8a5c445e0745",
+  "name": "Macho Diet",
+  "dist": {
+    "carbs": 40,
+    "protein": 40,
+    "fat": 20
+  },
+  "calories": 3600,
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "dietdays": [
+    {
+      "day": "monday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f9",
+        "5fe8c3a92a7adc3488b6e7f6"
+      ]
+    },
+    {
+      "day": "tuesday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe063f5b271d358089313e3"
+      ]
+    },
+    {
+      "day": "wednesday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7f6",
+        "5fe8c3a92a7adc3488b6e7f7",
+        "5fe8c3a92a7adc3488b6e7f8",
+        "5fe8c3a92a7adc3488b6e7fa"
+      ]
+    },
+    {
+      "day": "thursday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fb",
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f9",
+        "5fe063f5b271d358089313e3"
+      ]
+    },
+    {
+      "day": "friday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fa",
+        "5fe8c3a92a7adc3488b6e7f6",
+        "5fe8c3a92a7adc3488b6e7f5"
+      ]
+    },
+    {
+      "day": "saturday",
+      "meals": [
+        "5fe063f5b271d358089313e3",
+        "5fe063f5b271d358089313e3",
+        "5fe8c3a92a7adc3488b6e7f5",
+        "5fe8c3a92a7adc3488b6e7f6"
+      ]
+    },
+    {
+      "day": "sunday",
+      "meals": [
+        "5fe8c3a92a7adc3488b6e7fa",
+        "5fe8c3a92a7adc3488b6e7f7",
+        "5fe063f5b271d358089313e3"
+      ]
+    }
+  ]
+}]

@@ -1,0 +1,1390 @@
+[{
+  "_id": "5fe0732cb271d358089313e4",
+  "name": "Power Lifting 3 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03b6db271d358089313d6",
+          "dur": [
+            13,
+            3
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0743",
+  "name": "Powerlifting 4 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5febe9ff775c8a5c445e0741",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            25,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d3",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d4",
+          "reps": [
+            12,
+            8,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0743",
+          "reps": [
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0744",
+          "reps": [
+            10,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0742",
+          "reps": [
+            12,
+            12,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0744",
+  "name": "Powerlifting 3 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5febe9ff775c8a5c445e0741",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            25,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d3",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d4",
+          "reps": [
+            12,
+            8,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0743",
+          "reps": [
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0744",
+          "reps": [
+            10,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0742",
+          "reps": [
+            12,
+            12,
+            15
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0742",
+  "name": "Powerlifting 5 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5febe9ff775c8a5c445e0741",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            25,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d3",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d4",
+          "reps": [
+            12,
+            8,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0743",
+          "reps": [
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0744",
+          "reps": [
+            10,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0742",
+          "reps": [
+            12,
+            12,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5febe9ff775c8a5c445e0741",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            25,
+            20
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0745",
+  "name": "Home Workout 5 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313cc",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cf",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d1",
+          "reps": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "dur": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03b6db271d358089313d6",
+          "dur": [
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313cc",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cf",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d1",
+          "reps": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "dur": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03b6db271d358089313d6",
+          "dur": [
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313cc",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0746",
+  "name": "Home Workout 4 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313cc",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cf",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d1",
+          "reps": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "dur": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03b6db271d358089313d6",
+          "dur": [
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313cc",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cf",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d1",
+          "reps": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "dur": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03b6db271d358089313d6",
+          "dur": [
+            25
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0747",
+  "name": "Home Workout 3 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313cc",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cf",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d1",
+          "reps": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "dur": [
+            25,
+            20
+          ]
+        },
+        {
+          "exid": "5fe03b6db271d358089313d6",
+          "dur": [
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313cd",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313cc",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0748",
+  "name": "BodyBuilding 5 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5febe9ff775c8a5c445e0741",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            25,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d3",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d4",
+          "reps": [
+            12,
+            8,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0743",
+          "reps": [
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0744",
+          "reps": [
+            10,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0742",
+          "reps": [
+            12,
+            12,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5febe9ff775c8a5c445e0741",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            25,
+            20
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0749",
+  "name": "BodyBuilding 4 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5febe9ff775c8a5c445e0741",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            25,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d3",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d4",
+          "reps": [
+            12,
+            8,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0743",
+          "reps": [
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0744",
+          "reps": [
+            10,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0742",
+          "reps": [
+            12,
+            12,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    }
+  ]
+},{
+  "_id": "5febed37775c8a5c445e0750",
+  "name": "BodyBuilding 3 Day",
+  "author": "5fd7bcb78fa8ae0b603930c5",
+  "days": [
+    {
+      "day": "Monday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            12,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d2",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            15,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5febe9ff775c8a5c445e0741",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d5",
+          "reps": [
+            12,
+            8
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313ce",
+          "reps": [
+            25,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "time": "3:00",
+      "routine": [
+        {
+          "exid": "5fe03a88b271d358089313d3",
+          "reps": [
+            10,
+            8,
+            6
+          ]
+        },
+        {
+          "exid": "5fe03a88b271d358089313d4",
+          "reps": [
+            12,
+            8,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0743",
+          "reps": [
+            5,
+            5,
+            3
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0744",
+          "reps": [
+            10,
+            8
+          ]
+        },
+        {
+          "exid": "5febe9ae775c8a5c445e0742",
+          "reps": [
+            12,
+            12,
+            15
+          ]
+        }
+      ]
+    }
+  ]
+}]

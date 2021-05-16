@@ -1,0 +1,406 @@
+[{
+  "_id": "5fe05cfcb271d358089313db",
+  "username": "neet",
+  "email": "neet@ksuba.jp",
+  "name": "Kazuma Sato",
+  "gender": "Male",
+  "birthdate": "09/01/1997",
+  "stats": {
+    "height": 165,
+    "weight": 64,
+    "bodyfat": 17
+  },
+  "curr_workout": "5fe0732cb271d358089313e4",
+  "curr_diet": "5fe07621b271d358089313e5"
+},{
+  "_id": "5fe05cfcb271d358089313da",
+  "username": "JohnnyJJ",
+  "email": "sinns@mail.com",
+  "name": "Haroon Khalid Janjua",
+  "gender": "Male",
+  "birthdate": "08/10/1999",
+  "stats": {
+    "height": 178,
+    "weight": 85,
+    "bodyfat": 25
+  },
+  "curr_workout": "5fe0732cb271d358089313e4",
+  "curr_diet": "5fe07621b271d358089313e5"
+},{
+  "_id": "5fe05cfcb271d358089313df",
+  "username": "thepotato",
+  "email": "abbas@mail.com",
+  "name": "Muhammad Abbas",
+  "gender": "Male",
+  "birthdate": "14/08/2000",
+  "stats": {
+    "height": 185,
+    "weight": 74.2,
+    "bodyfat": 13
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fe05cfcb271d358089313e2",
+  "username": "Darkness",
+  "email": "dustiness@ksuba.jp",
+  "name": "Dustiness Ford Lalatina",
+  "gender": "Female",
+  "birthdate": "12/06/1995",
+  "stats": {
+    "height": 177,
+    "weight": 76,
+    "bodyfat": 22
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  },
+  "log": [
+    {
+      "date": "12-11-2020",
+      "workout": {
+        "wid": "5fe0732cb271d358089313e4",
+        "ex": [
+          {
+            "id": "5fe03a88b271d358089313cd",
+            "reps": [
+              1,
+              3,
+              4
+            ],
+            "weight": [
+              4,
+              3,
+              6
+            ]
+          },
+          {
+            "id": "5fe03a88b271d358089313cd",
+            "reps": [
+              13,
+              3
+            ]
+          },
+          {
+            "id": "5fe03a88b271d358089313cd",
+            "dur": [
+              13
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "curr_workout": "5fe0732cb271d358089313e4",
+  "curr_diet": "5fe07621b271d358089313e5"
+},{
+  "_id": "5fe05cfcb271d358089313d9",
+  "username": "MegasXG",
+  "email": "megasxg@mail.com",
+  "name": "Muhammad Ahmed Khan",
+  "gender": "Male",
+  "birthdate": "05/07/1999",
+  "stats": {
+    "height": 176,
+    "weight": 62,
+    "bodyfat": 16
+  },
+  "curr_workout": "5fe0732cb271d358089313e4",
+  "curr_diet": "5fe07621b271d358089313e5"
+},{
+  "_id": "5fe05cfcb271d358089313d8",
+  "username": "Remolox",
+  "email": "remolox@mail.com",
+  "name": "Rahim Muhammad Syed",
+  "gender": "Male",
+  "birthdate": "12/11/1999",
+  "stats": {
+    "height": 183,
+    "weight": 60,
+    "bodyfat": 15
+  },
+  "curr_workout": "5fe0732cb271d358089313e4",
+  "curr_diet": "5fe07621b271d358089313e5"
+},{
+  "_id": "5fe05cfcb271d358089313e1",
+  "username": "istabraq101",
+  "email": "iamlord101@mail.com",
+  "gender": "Male",
+  "birthdate": "12/56/12",
+  "stats": {
+    "height": 153,
+    "weight": 12,
+    "bodyfat": 11.5
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fe05cfcb271d358089313de",
+  "username": "metapicker",
+  "email": "sobmeta@mail.com",
+  "name": "Sobhan Sheikh",
+  "gender": "Male",
+  "birthdate": "12/12/1998",
+  "stats": {
+    "height": 167,
+    "weight": 82,
+    "bodyfat": 26
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fe05cfcb271d358089313d7",
+  "username": "Sam",
+  "email": "sam123@mail.com",
+  "name": "Syed Abdullah Muzaffar",
+  "gender": "Male",
+  "birthdate": "06/11/1999",
+  "stats": {
+    "height": 171,
+    "weight": 80,
+    "bodyfat": 22
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  },
+  "curr_workout": "5fe0732cb271d358089313e4",
+  "curr_diet": "5fe07621b271d358089313e5"
+},{
+  "_id": "5fe05cfcb271d358089313dc",
+  "username": "exxproshun",
+  "email": "exprosshun@ksuba.jp",
+  "name": "Megumin",
+  "gender": "Female",
+  "birthdate": "09/06/2002",
+  "stats": {
+    "height": 152,
+    "weight": 52,
+    "bodyfat": 18
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fe05cfcb271d358089313dd",
+  "username": "Zainricardo",
+  "email": "ricardo96@mail.com",
+  "name": "Zain Mehdi",
+  "gender": "Male",
+  "birthdate": "15/09/1998",
+  "stats": {
+    "height": 174,
+    "weight": 67,
+    "bodyfat": 20
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fe9fc5d430b08ac5fb8f828",
+  "username": "workoutguy",
+  "name": "WorkoutGuy",
+  "email": "workout@gmail.com",
+  "birthdate": null,
+  "gender": "Male",
+  "stats": {
+    "height": 255,
+    "weight": 123,
+    "bodyfat": null
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fea080f0b7a983ee87bc81e",
+  "username": "nappa",
+  "name": null,
+  "email": "nappa@bald.head",
+  "birthdate": null,
+  "gender": "Male",
+  "stats": {
+    "height": 180,
+    "weight": 120,
+    "bodyfat": null
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fea03720b7a983ee87bc81c",
+  "username": "omniknight",
+  "name": null,
+  "email": "holy@dota.com",
+  "birthdate": null,
+  "gender": "Male",
+  "stats": {
+    "height": 160,
+    "weight": 90,
+    "bodyfat": null
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fe521bd84740413e593a72d",
+  "username": "sam123",
+  "email": "sam@mail.com",
+  "name": "samuel",
+  "gender": "Male",
+  "birthdate": null,
+  "stats": {
+    "height": 171,
+    "weight": 77,
+    "bodyfat": 12
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 82,
+    "bodyfat": 10
+  }
+},{
+  "_id": "5fe9ff250b7a983ee87bc81a",
+  "username": "vegeta",
+  "name": null,
+  "email": "prince@saiyans.com",
+  "birthdate": null,
+  "gender": "Male",
+  "stats": {
+    "height": 140,
+    "weight": 80,
+    "bodyfat": null
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fe9feb90b7a983ee87bc818",
+  "username": "miku",
+  "name": null,
+  "email": "miku.h@mmd.jp",
+  "birthdate": null,
+  "gender": "Female",
+  "stats": {
+    "height": 140,
+    "weight": 75,
+    "bodyfat": null
+  },
+  "curr_workout": null,
+  "curr_diet": null
+},{
+  "_id": "5fea9a80123b9bf4e7d946b9",
+  "username": "user1",
+  "email": "usermail@mail.com",
+  "name": null,
+  "gender": "Male",
+  "birthdate": null,
+  "stats": {
+    "height": 170,
+    "weight": 75,
+    "bodyfat": 0
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  }
+},{
+  "_id": "5feb314dd2dba4258634d1c5",
+  "username": "megas69",
+  "email": "megas69@gmail.com",
+  "name": null,
+  "gender": "Female",
+  "birthdate": null,
+  "stats": {
+    "height": 111,
+    "weight": 123,
+    "bodyfat": 0
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  }
+},{
+  "_id": "5febfa1dc1cce8f697c50733",
+  "username": "megasx",
+  "email": "ahmedkhan@6mail.com",
+  "name": null,
+  "gender": "Male",
+  "birthdate": null,
+  "stats": {
+    "height": 23,
+    "weight": 2,
+    "bodyfat": 0
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  }
+},{
+  "_id": "5febfa5e0e5c7255c18a90a3",
+  "username": "sam123",
+  "email": "sam@mail.com",
+  "name": "abdullah",
+  "gender": "Male",
+  "birthdate": null,
+  "stats": {
+    "height": 171,
+    "weight": 75,
+    "bodyfat": 12
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  }
+},{
+  "_id": "5febfaa60e5c7255c18a90a4",
+  "username": "sam123",
+  "email": "sam@mail.com",
+  "name": "abdullah",
+  "gender": "Male",
+  "birthdate": null,
+  "stats": {
+    "height": 171,
+    "weight": 75,
+    "bodyfat": 12
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  }
+},{
+  "_id": "5fec081d0af53d05eaad226f",
+  "username": "anam",
+  "email": "anam@gmail.com",
+  "name": null,
+  "gender": "Male",
+  "birthdate": null,
+  "stats": {
+    "height": 160,
+    "weight": 50,
+    "bodyfat": 0
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  }
+},{
+  "_id": "6006b1405c4a729ddf4105ba",
+  "username": "user123",
+  "email": "user123@gmail.com",
+  "name": null,
+  "gender": "Male",
+  "birthdate": null,
+  "stats": {
+    "height": 213,
+    "weight": 112,
+    "bodyfat": 0
+  },
+  "goals": {
+    "targetdate": "12/12/2001",
+    "weight": 60,
+    "bodyfat": 24
+  }
+}]

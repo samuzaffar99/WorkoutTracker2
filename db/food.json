@@ -1,0 +1,132 @@
+[{
+  "_id": "5fe8c3a92a7adc3488b6e7fa",
+  "name": "Almonds, 100g",
+  "calories": 575,
+  "carbs": 22,
+  "protein": 21,
+  "fat": 49,
+  "tags": [
+    "nuts"
+  ]
+},{
+  "_id": "5fe8c3a92a7adc3488b6e7f7",
+  "name": "Pecans, 100g",
+  "calories": 691,
+  "carbs": 14,
+  "protein": 9,
+  "fat": 72,
+  "tags": [
+    "nuts"
+  ]
+},{
+  "_id": "5fe8c3a92a7adc3488b6e7f5",
+  "name": "Oysters",
+  "calories": 100,
+  "carbs": 6,
+  "protein": 10,
+  "fat": 4,
+  "tags": [
+    "seafood"
+  ]
+},{
+  "_id": "5fe8c3a92a7adc3488b6e7f8",
+  "name": "Walnuts, 100g",
+  "calories": 654,
+  "carbs": 14,
+  "protein": 15,
+  "fat": 65,
+  "tags": [
+    "nuts"
+  ]
+},{
+  "_id": "5fe063f5b271d358089313e3",
+  "name": "Banana",
+  "carbs": 31,
+  "protein": 1.5,
+  "fat": 0.4,
+  "calories": 136.2,
+  "tags": [
+    "sugar",
+    "fruit"
+  ]
+},{
+  "_id": "5fe8c3a92a7adc3488b6e7f6",
+  "name": "Brocolli",
+  "calories": 45,
+  "carbs": 8,
+  "protein": 4,
+  "fat": 0.5,
+  "tags": [
+    "Vegetables"
+  ]
+},{
+  "_id": "5fe8c3a92a7adc3488b6e7fb",
+  "name": "Garlic, 100g",
+  "calories": 149,
+  "carbs": 33,
+  "protein": 6,
+  "fat": 0,
+  "tags": [
+    "vegetable"
+  ]
+},{
+  "_id": "5fe8c3a92a7adc3488b6e7f9",
+  "name": "Hazelnuts, 100g",
+  "calories": 628,
+  "carbs": 17,
+  "protein": 15,
+  "fat": 61,
+  "tags": [
+    "nuts"
+  ]
+},{
+  "_id": "5febf32a775c8a5c445e0746",
+  "name": "Yellow Tomatoes",
+  "calories": 15,
+  "carbs": 2.98,
+  "protein": 0.98,
+  "fat": 0.26,
+  "tags": [
+    "Vegetables"
+  ]
+},{
+  "_id": "5febf32a775c8a5c445e0744",
+  "name": "Potato Mashed",
+  "calories": 89,
+  "carbs": 14.65,
+  "protein": 1.65,
+  "fat": 2.82,
+  "tags": [
+    "Fast Foods"
+  ]
+},{
+  "_id": "5febf32a775c8a5c445e0747",
+  "name": "Oranges",
+  "calories": 47,
+  "carbs": 11.75,
+  "protein": 0.94,
+  "fat": 0.12,
+  "tags": [
+    "Fruits"
+  ]
+},{
+  "_id": "5febf32a775c8a5c445e0745",
+  "name": "Gelatin",
+  "calories": 335,
+  "carbs": 0,
+  "protein": 85.6,
+  "fat": 0.1,
+  "tags": [
+    "Sweets"
+  ]
+},{
+  "_id": "5febf32a775c8a5c445e0748",
+  "name": "Carrots",
+  "calories": 41,
+  "carbs": 9.58,
+  "protein": 0.93,
+  "fat": 0.24,
+  "tags": [
+    "Vegetables"
+  ]
+}]
