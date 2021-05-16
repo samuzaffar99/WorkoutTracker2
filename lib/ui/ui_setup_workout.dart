@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker_app/pages/ui_setup_plan_diet.dart';
-import '../others/animated_background.dart';
+// import 'package:workout_tracker_app/pages/ui_setup_plan_diet.dart';
+// import '../others/animated_background.dart';
 
 class ChoosePlan extends StatefulWidget {
   @override
@@ -20,21 +20,6 @@ class _ChoosePlanState extends State<ChoosePlan> {
           height: double.infinity,
           child: Stack(
             children: [
-              Positioned.fill(child: AnimatedBackground()),
-              onBottom(AnimatedWave(
-                height: 180,
-                speed: 1,
-              )),
-              onBottom(AnimatedWave(
-                height: 120,
-                speed: 0.9,
-                offset: 3.142,
-              )),
-              onBottom(AnimatedWave(
-                height: 220,
-                speed: 1.2,
-                offset: 3.142 / 2,
-              )),
               Positioned.fill(child: Center()),
               Column(
                 children: [
@@ -208,7 +193,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return PlanDiet();
+                                      // return PlanDiet();
                                     },
                                   ),
                                 );
@@ -249,7 +234,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return PlanDiet();
+                                  // return PlanDiet();
                                 },
                               ),
                             );

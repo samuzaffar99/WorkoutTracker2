@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/globals.dart';
 import 'ui_navbar.dart';
-import 'ui_settings.dart';
-// import '../deprecated/src/model.dart';
 import 'package:intl/intl.dart';
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 

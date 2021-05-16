@@ -1,8 +1,8 @@
-import 'dart:math';
+// import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:workout_tracker_app/pages/ui_setup_complete.dart';
-import 'package:pie_chart/pie_chart.dart';
-import '../others/animated_background.dart';
+import 'package:workout_tracker2/ui/ui_setup_complete.dart';
+// import 'package:pie_chart/pie_chart.dart';
+// import '../others/animated_background.dart';
 
 class PlanDiet extends StatefulWidget {
   @override
@@ -22,30 +22,15 @@ class _PlanDietState extends State<PlanDiet> {
           height: double.infinity,
           child: Stack(
             children: [
-              Positioned.fill(child: AnimatedBackground()),
-              onBottom(AnimatedWave(
-                height: 180,
-                speed: 1,
-              )),
-              onBottom(AnimatedWave(
-                height: 120,
-                speed: 0.9,
-                offset: 3.142,
-              )),
-              onBottom(AnimatedWave(
-                height: 220,
-                speed: 1.2,
-                offset: 3.142 / 2,
-              )),
               Positioned.fill(child: Center()),
               Column(
                 children: [
                   Stack(
                     alignment: Alignment(0,1.2),
                     children: [
-                      Image.asset(
-                        'assets/images/pic3.jpg',
-                      ),
+                      // Image.asset(
+                      //   'assets/images/pic3.jpg',
+                      // ),
                       Text(
                         'Plan Diet',
                         textAlign: TextAlign.center,
@@ -57,9 +42,7 @@ class _PlanDietState extends State<PlanDiet> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 55,
-                  ),
+                  SizedBox(height: 55),
                   //Insert Pie chart here
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -208,14 +191,6 @@ class _PlanDietState extends State<PlanDiet> {
                                   ),
                                 );
                               },
-                              // shape: RoundedRectangleBorder(
-                              //   borderRadius: BorderRadius.circular(30.0),
-                              // ),
-                              // color: Colors.transparent,
-                              // textColor: Colors.white.withAlpha(200),
-                              // borderSide: BorderSide(
-                              //     color: Colors.white.withAlpha(200), width: 1.25),
-                              // highlightedBorderColor: Colors.white.withAlpha(200),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -238,7 +213,7 @@ class _PlanDietState extends State<PlanDiet> {
                       ButtonTheme(
                         height: 45.0,
                         minWidth: 130.0,
-                        child: OutlineButton(
+                        child: OutlinedButton(
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -249,14 +224,6 @@ class _PlanDietState extends State<PlanDiet> {
                               ),
                             );
                           },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          color: Colors.transparent,
-                          textColor: Colors.white.withAlpha(200),
-                          borderSide: BorderSide(
-                              color: Colors.white.withAlpha(200), width: 1.25),
-                          highlightedBorderColor: Colors.white.withAlpha(200),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

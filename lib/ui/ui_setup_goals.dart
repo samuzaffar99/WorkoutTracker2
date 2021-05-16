@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:workout_tracker_app/pages/ui_setup_plan.dart';
+// import 'package:workout_tracker_app/pages/ui_setup_workout.dart';
 // import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/services.dart';
 // import '../others/animated_background.dart';
