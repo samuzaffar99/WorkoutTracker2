@@ -111,7 +111,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                   ],
                                 ),
                                 MaterialButton(
-                                  child: Text('Delete Userdata'),
+                                  child: Text('Delete My Account'),
                                   onPressed: () {
                                     currState.api.delUser(currState.firebaseUser.uid);
                                     currState.signOut();

@@ -37,7 +37,8 @@ class LoginPageState extends State<LoginPage> {
     isLoggedIn = await googleSignIn.isSignedIn();
     if (isLoggedIn) {
       await currState.initializeUser();
-      Navigator.pushReplacementNamed(context, "Home");
+      // Navigator.pushReplacementNamed(context, "Home");
+      Navigator.pushNamed(context, "Setup");
     }
 
     this.setState(() {
@@ -57,7 +58,8 @@ class LoginPageState extends State<LoginPage> {
       isLoading = false;
     });
     if (existsUser) {
-      Navigator.pushReplacementNamed(context, "Home");
+      Navigator.pushNamed(context, "Setup");
+      // Navigator.pushReplacementNamed(context, "Home");
     } else {
       Navigator.pushNamed(context, "Setup");
     }
