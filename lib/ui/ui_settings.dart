@@ -26,9 +26,9 @@ class _SettingsPageState extends State<SettingsPage> {
     int index = 4;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         appBar: AppBar(
-          backgroundColor: Color(0xFF1D4350),
+          backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Settings"),
         ),
@@ -118,12 +118,6 @@ class _SettingsPageState extends State<SettingsPage> {
                                     Navigator.pushReplacementNamed(context, "Login");
                                   },
                                 ),
-                                // Row(
-                                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                //   children: [
-                                //     Text("Name: ${widget.user.name}"),
-                                //   ],
-                                // ),
                                 SizedBox(
                                   height: 80,
                                 ),
@@ -199,12 +193,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ],
           ),
         ),
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: Colors.white.withAlpha(200),
-          ),
-          child: NavigationBar(index),
-        ),
+        bottomNavigationBar: NavigationBar(index),
       ),
     );
   }

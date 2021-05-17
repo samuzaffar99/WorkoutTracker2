@@ -40,9 +40,9 @@ class _ProfilePageState extends State<ProfilePage> {
     int index = 4;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Profile"),
           actions: [

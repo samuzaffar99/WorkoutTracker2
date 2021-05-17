@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:workout_tracker_app/pages/ui_setup_workout.dart';
 // import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/services.dart';
+import 'package:workout_tracker2/ui/setup/ui_setup_workout.dart';
 // import '../others/animated_background.dart';
 
 
@@ -181,7 +181,7 @@ class _WorkoutGoalsState extends State<WorkoutGoals> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      // return ChoosePlan();
+                                      return ChoosePlan();
                                     },
                                   ),
                                 );
@@ -212,7 +212,7 @@ class _WorkoutGoalsState extends State<WorkoutGoals> {
                           onPressed: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              // return ChoosePlan();
+                              return ChoosePlan();
                             }));
                           },
                           child: Row(

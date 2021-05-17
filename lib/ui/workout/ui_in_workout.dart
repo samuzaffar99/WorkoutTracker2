@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker2/globals.dart';
 import 'ui_workout_summary.dart';
-// import '../src/model.dart';
 // import '../others/stop_watch.dart';
 import 'ui_workout.dart';
 
@@ -15,7 +15,7 @@ class _InWorkoutState extends State<InWorkout>{
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         body: Container(
           child: Column(
             children: [

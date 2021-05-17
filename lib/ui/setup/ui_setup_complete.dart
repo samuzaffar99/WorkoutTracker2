@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker2/globals.dart';
 // import '../others/animated_background.dart';
 
 class SetupComplete extends StatelessWidget {
@@ -6,7 +7,7 @@ class SetupComplete extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         body: Container(
           height: double.infinity,
           child: Stack(
@@ -54,9 +55,7 @@ class SetupComplete extends StatelessWidget {
                           onPressed: () {
                             // Navigator.popUntil(
                             //     context, ModalRoute.withName('/ui_signin'));
-                            Navigator.pushNamed(
-                              context, "Home"
-                            );
+                            Navigator.pushNamed(context, "Home");
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

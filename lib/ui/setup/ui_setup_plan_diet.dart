@@ -1,6 +1,7 @@
 // import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:workout_tracker2/ui/ui_setup_complete.dart';
+import 'package:workout_tracker2/globals.dart';
+import 'package:workout_tracker2/ui/setup/ui_setup_complete.dart';
 // import 'package:pie_chart/pie_chart.dart';
 // import '../others/animated_background.dart';
 
@@ -17,7 +18,7 @@ class _PlanDietState extends State<PlanDiet> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         body: Container(
           height: double.infinity,
           child: Stack(

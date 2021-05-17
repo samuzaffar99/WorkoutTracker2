@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/ui/ui_navbar.dart';
-import 'package:workout_tracker2/ui/ui_edit_workout.dart';
-import 'package:workout_tracker2/ui/ui_in_workout.dart';
+import 'package:workout_tracker2/ui/workout/ui_edit_workout.dart';
+import 'package:workout_tracker2/ui/workout/ui_in_workout.dart';
 import 'package:workout_tracker2/globals.dart';
 
 // import 'package:intl/intl.dart';
@@ -323,9 +323,9 @@ class WorkoutPageState extends State<WorkoutPage> {
     // int index = 2;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         appBar: AppBar(
-          backgroundColor: Color(0xFF1D4350),
+          backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Workout"),
           actions: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:workout_tracker_app/pages/ui_setup_plan_diet.dart';
+import 'package:workout_tracker2/globals.dart';
+import 'package:workout_tracker2/ui/setup/ui_setup_plan_diet.dart';
 // import '../others/animated_background.dart';
 
 class ChoosePlan extends StatefulWidget {
@@ -15,7 +16,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         body: Container(
           height: double.infinity,
           child: Stack(
@@ -26,9 +27,9 @@ class _ChoosePlanState extends State<ChoosePlan> {
                   Stack(
                     alignment: Alignment(0,1.2),
                     children: [
-                      Image.asset(
-                        'assets/images/pic1.png',
-                      ),
+                      // Image.asset(
+                      //   'assets/images/pic1.png',
+                      // ),
                       Text(
                         'Select a Training Plan',
                         textAlign: TextAlign.center,
@@ -40,9 +41,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 40,
-                  ),
+                  SizedBox(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -114,9 +113,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height: 25,
-                      ),
+                      SizedBox(height: 25),
                       RotatedBox(
                         quarterTurns: 1,
                         child: ToggleButtons(
@@ -175,9 +172,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: 25,
-                  ),
+                  SizedBox(height: 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -193,7 +188,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      // return PlanDiet();
+                                      return PlanDiet();
                                     },
                                   ),
                                 );
@@ -222,9 +217,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: 22,
-                      ),
+                      SizedBox(width: 22),
                       ButtonTheme(
                         height: 45.0,
                         minWidth: 130.0,
@@ -234,7 +227,7 @@ class _ChoosePlanState extends State<ChoosePlan> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  // return PlanDiet();
+                                  return PlanDiet();
                                 },
                               ),
                             );

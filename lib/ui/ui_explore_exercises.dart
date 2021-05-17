@@ -1,5 +1,6 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:workout_tracker2/globals.dart';
 import 'package:workout_tracker2/ui/ui_exercise_results.dart';
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 
@@ -15,16 +16,16 @@ class _ExploreExercisesState extends State<ExploreExercises> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         appBar: AppBar(
-          automaticallyImplyLeading: true,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_rounded),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          backgroundColor: Colors.transparent,
+          // automaticallyImplyLeading: true,
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back_rounded),
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
+          backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Explore"),
           actions: [
@@ -37,9 +38,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
         body: Container(
           child: ListView(
             children: [
-              SizedBox(
-                height: 40,
-              ),
+              SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -63,9 +62,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 30,
-              ),
+              SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -102,9 +99,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 50,
-              ),
+              SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -128,9 +123,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -189,9 +182,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

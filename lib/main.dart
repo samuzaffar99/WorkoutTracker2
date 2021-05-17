@@ -8,8 +8,8 @@ import 'package:workout_tracker2/ui/ui_login.dart';
 import 'package:workout_tracker2/ui/ui_home.dart';
 import 'package:workout_tracker2/ui/ui_diet.dart';
 import 'package:workout_tracker2/ui/ui_settings.dart';
-import 'package:workout_tracker2/ui/ui_setup.dart';
-import 'package:workout_tracker2/ui/ui_workout.dart';
+import 'package:workout_tracker2/ui/setup/ui_setup.dart';
+import 'package:workout_tracker2/ui/workout/ui_workout.dart';
 import 'package:workout_tracker2/ui/ui_log.dart';
 import 'package:workout_tracker2/ui/ui_profile.dart';
 

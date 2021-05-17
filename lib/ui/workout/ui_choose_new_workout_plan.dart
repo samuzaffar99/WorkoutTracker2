@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker2/globals.dart';
 
 class ChooseNewWorkoutPlan extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class _ChooseNewWorkoutPlanState extends State<ChooseNewWorkoutPlan> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color(0xFF141414),
+      backgroundColor: theme.background,
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

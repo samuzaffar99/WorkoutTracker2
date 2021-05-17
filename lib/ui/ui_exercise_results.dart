@@ -1,6 +1,7 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/api.dart';
+import 'package:workout_tracker2/globals.dart';
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class ExerciseResults extends StatefulWidget {
@@ -50,16 +51,16 @@ class _ExerciseResultsState extends State<ExerciseResults> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         appBar: AppBar(
-          automaticallyImplyLeading: true,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_rounded),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          backgroundColor: Colors.transparent,
+          // automaticallyImplyLeading: true,
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back_rounded),
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
+          backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Explore"),
         ),

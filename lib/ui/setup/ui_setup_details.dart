@@ -80,7 +80,7 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         body: Container(
           height: double.infinity,
           child: Stack(
@@ -107,9 +107,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 30,
-                    ),
+                    SizedBox(height: 30),
                     Form(
                       key: _formKey,
                       child: Column(

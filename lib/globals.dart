@@ -1,10 +1,13 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workout_tracker2/api.dart';
 import 'dart:async';
+
+import 'package:workout_tracker2/theme.dart';
 
 // GoogleSignIn _googleSignIn = GoogleSignIn(
 //   // Optional clientId
@@ -115,3 +118,8 @@ class StateData {
 }
 
 final StateData currState = StateData();
+var theme = darkTheme();
+// void func(){
+//   var F=ThemeData();
+//   F.tabBarTheme;
+// }

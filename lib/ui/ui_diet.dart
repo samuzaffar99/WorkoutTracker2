@@ -187,6 +187,13 @@ class _DietPageState extends State<DietPage> {
     // int index = 1;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: theme.background,
+        appBar: AppBar(
+          backgroundColor: theme.appBar,
+          elevation: 5,
+          title: Text('Diet', style: TextStyle(color: theme.appBarText)),
+        ),
+        bottomNavigationBar: NavigationBar(1),
         endDrawer: Drawer(
           child: Opacity(
             opacity: 0.8,
@@ -246,16 +253,6 @@ class _DietPageState extends State<DietPage> {
             ),
           ),
         ),
-        backgroundColor: Colors.white12,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: Text(
-            'Diet',
-            style: TextStyle(color: Colors.white),
-          ),
-          elevation: 5,
-        ),
-        bottomNavigationBar: NavigationBar(1),
         body: Container(
             height: double.infinity,
             width: double.infinity,

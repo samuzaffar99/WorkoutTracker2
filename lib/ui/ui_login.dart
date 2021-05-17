@@ -65,65 +65,68 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Login",
-            // style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              "Login",
+              // style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+            ),
+            centerTitle: true,
+            backgroundColor: theme.appBar,
           ),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              OutlinedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40),
+          body: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                OutlinedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
                       ),
                     ),
-                  ),
-                  onPressed: () => handleSignIn().catchError((err) {
-                        print(err);
-                        Fluttertoast.showToast(msg: "Sign in fail");
-                        this.setState(() {
-                          isLoading = false;
-                        });
-                      }),
-                  child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image(
-                              image: AssetImage("assets/g-logo.png"),
-                              height: 35.0,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(
-                                'Sign in with Google',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.w600,
+                    onPressed: () => handleSignIn().catchError((err) {
+                          print(err);
+                          Fluttertoast.showToast(msg: "Sign in fail");
+                          this.setState(() {
+                            isLoading = false;
+                          });
+                        }),
+                    child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image(
+                                image: AssetImage("assets/g-logo.png"),
+                                height: 35.0,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  'Sign in with Google',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ]))),
-              SizedBox(height: 10),
-              // Loading
-              Container(
-                child:
-                    isLoading ? const CircularProgressIndicator() : Container(),
-              ),
-            ],
-          ),
-        ));
+                            ]))),
+                SizedBox(height: 10),
+                // Loading
+                Container(
+                  child:
+                      isLoading ? const CircularProgressIndicator() : Container(),
+                ),
+              ],
+            ),
+          )),
+    );
   }
 }

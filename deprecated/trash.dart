@@ -43,3 +43,19 @@
 //     Navigator.pushNamed(context, 'Profile');
 //   },
 // ),
+
+// Positioned.fill(child: AnimatedBackground()),
+// onBottom(AnimatedWave(
+// height: 180,
+// speed: 1,
+// )),
+// onBottom(AnimatedWave(
+// height: 120,
+// speed: 0.9,
+// offset: 3.142,
+// )),
+// onBottom(AnimatedWave(
+// height: 220,
+// speed: 1.2,
+// offset: 3.142 / 2,
+// )),

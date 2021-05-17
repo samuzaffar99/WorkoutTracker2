@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workout_tracker2/globals.dart';
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'ui_workout.dart';
 
@@ -8,9 +9,9 @@ class WorkoutSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color(0xFF141414),
+      backgroundColor: theme.background,
       appBar: AppBar(
-        backgroundColor: Color(0xFF1D4350),
+        backgroundColor: theme.appBar,
         elevation: 5,
         title: Text("Summary"),
       ),

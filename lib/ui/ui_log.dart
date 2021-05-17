@@ -15,9 +15,9 @@ class _LogPageState extends State<LogPage> {
     // int index = 3;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: theme.background,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Log"),
         ),
@@ -25,9 +25,7 @@ class _LogPageState extends State<LogPage> {
         body: Container(
           child: ListView(
             children: [
-              SizedBox(
-                height: 50,
-              ),
+              SizedBox(height: 50),
               Text(
                 'No Logs',
                 textAlign: TextAlign.center,

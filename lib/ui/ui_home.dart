@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/globals.dart';
+import 'package:workout_tracker2/ui/workout/ui_choose_new_workout_plan.dart';
 import 'package:workout_tracker2/ui/ui_exercise_results.dart';
 import 'package:workout_tracker2/ui/ui_navbar.dart';
 
@@ -13,14 +14,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF141414),
+        backgroundColor: theme.background,
         appBar: AppBar(
-          backgroundColor: Colors.transparent.withAlpha(16),
-          title: Text(
-            'Home',
-            style: TextStyle(color: Colors.white),
-          ),
+          backgroundColor: theme.appBar,
           elevation: 5,
+          title: Text('Home', style: TextStyle(color: theme.appBarText)),
         ),
         body: Container(
           child: Column(
@@ -95,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              // return ChooseNewWorkoutPlan();
+                              return ChooseNewWorkoutPlan();
                             },
                           ),
                         );
