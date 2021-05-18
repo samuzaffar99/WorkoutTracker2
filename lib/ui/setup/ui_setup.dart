@@ -5,6 +5,7 @@ import 'package:workout_tracker2/globals.dart';
 // import '../others/animated_background.dart';
 import 'package:weekday_selector/weekday_selector.dart';
 import 'package:page_view_indicators/step_page_indicator.dart';
+import 'package:intl/intl.dart';
 
 class SetupPage extends StatefulWidget {
   @override
@@ -12,7 +13,6 @@ class SetupPage extends StatefulWidget {
 }
 
 class _SetupPageState extends State<SetupPage> {
-  final _currentPageNotifier = ValueNotifier<int>(0);
   final Map<String, dynamic> user = {
     "nickname": "",
     "gender": "",
@@ -26,17 +26,22 @@ class _SetupPageState extends State<SetupPage> {
   double height;
   double weight;
   double bodyFat;
-  String date;
+  double targetWeight;
+  double targetBodyFat;
+  // String date = "Date of Birth";
   bool toggleLactose = false;
   bool toggleSugar = false;
   RangeValues _values = RangeValues(100, 900);
   final weekdays = List.filled(7, false);
-  bool checku = true;
+
   // var _formKey = GlobalKey<FormState>();
+  final _currentPageNotifier = ValueNotifier<int>(0);
   final PageController pageController = PageController();
   final TextEditingController nameController =
       TextEditingController(text: currState.firebaseUser.displayName);
-  final TextEditingController dateController = TextEditingController();
+  final TextEditingController dateController =
+      TextEditingController(text: "Choose");
+
   Future<bool> _registerUser() async {
     user["photoUrl"] = currState.firebaseUser.photoURL;
     user["id"] = currState.firebaseUser.uid;
@@ -51,258 +56,288 @@ class _SetupPageState extends State<SetupPage> {
     return await currState.initializeUser();
   }
 
+  void createWorkout() async {
+    Map workout;
+    Map workoutID = {
+      "3DayPL": "2325423523",
+      "4DayPL": "2325423523",
+      "5DayPL": "2325423523",
+    };
+    user["currWorkout"] = await currState.api.postWorkout(workout);
+    return;
+  }
+
+  void createDiet() async {
+    Map diet;
+    Map dietID = {
+      "3DayPL": "2325423523",
+      "4DayPL": "2325423523",
+      "5DayPL": "2325423523",
+    };
+    user["currDiet"] = await currState.api.postDiet(diet);
+    return;
+  }
+
   _selectDate() async {
-    final DateTime picked = await showDatePicker(
+    final DateTime date = await showDatePicker(
       context: context,
       initialDate: DateTime.now(), // Refer step 1
       firstDate: DateTime(1930),
       lastDate: DateTime.now(),
+      initialDatePickerMode: DatePickerMode.year,
     );
-    if (picked != null && picked != date)
-      setState(() {
-        date = picked.toString();
-      });
+    // if (picked != null && picked != date)
+    //   setState(() {
+    //     date = picked.toString();
+    //   });
     setState(() {
-      dateController.text = picked.toString();
+      dateController.text = DateFormat('dd/MM/yyyy').format(date);
       // TextEditingController(text: '${myFormat.format(selectedDate)}');
     });
   }
 
+  List<DropdownMenuItem<String>> generateDropdownItems(List<String> ddl) {
+    return ddl
+        .map((value) => DropdownMenuItem(
+              value: value,
+              child: Text(value),
+            ))
+        .toList();
+  }
+
   Widget infoPage() {
-    List<DropdownMenuItem<String>> genderDropdown() {
-      List<String> ddl = ["Male", "Female"];
-      return ddl
-          .map((value) => DropdownMenuItem(
-        value: value,
-        child: Text(value),
-      ))
-          .toList();
-    }
+    List<String> genders = ["Male", "Female"];
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
       children: [
-        Text(
-          "What should we call you?",
-          textScaleFactor: 2,
-        ),
-        Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+        SizedBox(height: 12),
+        Text("Basic Info", textScaleFactor: 3),
+        Container(
+          width: 320,
+          height: 320,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Icon(
-                Icons.person,
-                color: Colors.black,
+              TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "What should we call you?",
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                  controller: nameController,
+                  inputFormatters: [LengthLimitingTextInputFormatter(24)]),
+              DropdownButtonFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "Gender"),
+                value: genders[0],
+                items: generateDropdownItems(genders),
+                onChanged: (val) {
+                  setState(
+                    () {
+                      gender = val;
+                    },
+                  );
+                },
               ),
-              SizedBox(width: 10),
-              Container(
-                constraints: BoxConstraints.tight(const Size(240, 48)),
-                padding: const EdgeInsets.all(4.0),
-                child: TextFormField(
-                    controller: nameController,
-                    decoration:
-                        InputDecoration(filled: true, fillColor: Colors.grey)),
+              OutlinedButton(
+                child: TextField(
+                  decoration: InputDecoration(labelText: "Date of Birth"),
+                  textAlign: TextAlign.center,
+                  controller: dateController,
+                  enabled: false,
+                ),
+                onPressed: () {
+                  _selectDate();
+                  setState(() {});
+                },
               ),
-            ]),
-        Text(
-          "Select your Gender",
-          textScaleFactor: 2,
-        ),
-        DropdownButtonFormField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              borderSide: BorderSide(
-                color: Colors.transparent,
-              ),
-            ),
-            filled: true,
-            fillColor: Colors.white.withAlpha(200),
+            ],
           ),
-          value: gender,
-          items: genderDropdown(),
-          onChanged: (val) {
-            setState(
-                  () {
-                gender = val;
-              },
-            );
-          },
-        ),
-        MaterialButton(
-          child: Text('Enter your Date of Birth'),
-          onPressed: () {
-            _selectDate();
-          },
         ),
         Spacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: [MaterialButton(onPressed: nextPage, child: Text('Next'))],
+          children: [nextButton()],
         ),
       ],
     );
   }
 
   Widget statsPage() {
-    List<DropdownMenuItem<String>> goalDropdown() {
-      List<String> ddl = ["Lose Fat", "Gain Muscle", "Maintain Weight"];
-      return ddl
-          .map((value) => DropdownMenuItem(
-                value: value,
-                child: Text(value),
-              ))
-          .toList();
-    }
-
+    List<String> plans = ["Lose Fat", "Gain Muscle", "Maintain Weight"];
     String goal;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
+      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text(
-          "Weight (kg)",
-          textScaleFactor: 2,
-        ),
-        TextFormField(
-          keyboardType: TextInputType.numberWithOptions(decimal: true),
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
-          ],
-          // onChanged: (value) => doubleVar = double.parse(value),
-        ),
-        Text("Height (cm)", textScaleFactor: 2),
-        TextFormField(
-          keyboardType: TextInputType.numberWithOptions(decimal: true),
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp('([0-9]+(\.[0-9]+)?)')),
-          ],
-          // onChanged: (value) => doubleVar = double.parse(value),
-        ),
-        Text("Body Fat (%)", textScaleFactor: 2),
-        TextFormField(
-          keyboardType: TextInputType.numberWithOptions(decimal: true),
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp('([0-9]+(\.[0-9]+)?)')),
-          ],
-          onChanged: (value) => bodyFat = double.parse(value),
-        ),
-        Text(
-          "Select your Goal",
-          textScaleFactor: 2,
-        ),
-        DropdownButtonFormField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              borderSide: BorderSide(
-                color: Colors.transparent,
+        SizedBox(height: 12),
+        Text("Current Stats", textScaleFactor: 3),
+        Container(
+          width: 400,
+          padding: EdgeInsets.fromLTRB(0, 24, 0, 24),
+          child: Column(children: [
+            TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Weight (kg)",
               ),
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
+                LengthLimitingTextInputFormatter(5)
+              ],
+              onChanged: (value) => weight = double.parse(value),
             ),
-            filled: true,
-            fillColor: Colors.white.withAlpha(200),
-          ),
-          value: goal,
-          items: goalDropdown(),
-          onChanged: (val) {
-            setState(
-              () {
-                goal = val;
-              },
-            );
-          },
+            SizedBox(height: 24),
+            TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Height (cm)",
+              ),
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(
+                    RegExp('([0-9]+(\.[0-9]+)?)')),
+                LengthLimitingTextInputFormatter(5)
+              ],
+              onChanged: (value) => height = double.parse(value),
+            ),
+            SizedBox(height: 24),
+            TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Body Fat (%)",
+              ),
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(
+                    RegExp('([0-9]+(\.[0-9]+)?)')),
+                LengthLimitingTextInputFormatter(5)
+              ],
+              onChanged: (value) => bodyFat = double.parse(value),
+            ),
+          ]),
         ),
         Text(
-          "Target Weight (kg)",
-          textScaleFactor: 2,
+          "Select your Goals",
+          textScaleFactor: 3,
         ),
-        TextFormField(
-          keyboardType: TextInputType.numberWithOptions(decimal: true),
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
-          ],
-          // onChanged: (value) => doubleVar = double.parse(value),
-        ),
-        Text("Target Body Fat (%)", textScaleFactor: 2),
-        TextFormField(
-          keyboardType: TextInputType.numberWithOptions(decimal: true),
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp('([0-9]+(\.[0-9]+)?)')),
-          ],
-          onChanged: (value) => bodyFat = double.parse(value),
-        ),
+        Container(
+            width: 400,
+            padding: EdgeInsets.fromLTRB(0, 24, 0, 0),
+            child: Column(children: [
+              DropdownButtonFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "Goals"),
+                value: plans[0],
+                items: generateDropdownItems(plans),
+                onChanged: (val) {
+                  setState(
+                    () {
+                      goal = val;
+                    },
+                  );
+                },
+              ),
+              SizedBox(height: 24),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Target Weight (kg)"),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
+                  LengthLimitingTextInputFormatter(5)
+                ],
+                onChanged: (value) => targetWeight = double.parse(value),
+              ),
+              SizedBox(height: 24),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Target Body Fat (%)"),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp('([0-9]+(\.[0-9]+)?)')),
+                  LengthLimitingTextInputFormatter(5)
+                ],
+                onChanged: (value) => targetBodyFat = double.parse(value),
+              ),
+            ])),
         Spacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            MaterialButton(onPressed: prevPage, child: Text('Previous')),
-            MaterialButton(onPressed: nextPage, child: Text('Next'))
-          ],
+          children: [prevButton(), SizedBox(width: 24), nextButton()],
         ),
       ],
     );
   }
 
   Widget workoutPage() {
+    List<String> workoutPlans = [
+      "Home Exercise",
+      "Power Lifting",
+      "Body Building"
+    ];
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('Select a Training Plan'),
-          Text('Select Workout Days'),
-          WeekdaySelector(
-            // selectedFillColor: Colors.indigo,
-            onChanged: (int day) {
-              setState(() {
-                // Use module % 7 as Sunday's index in the array is 0 and
-                // DateTime.sunday constant integer value is 7.
-                final index = day % 7;
-                // We "flip" the value in this example, but you may also
-                // perform validation, a DB write, an HTTP call or anything
-                // else before you actually flip the value,
-                // it's up to your app's needs.
-                weekdays[index] = !weekdays[index];
-              });
-            },
-            values: weekdays,
-          ),
-          MaterialButton(
-            child: Text('Select Workout Start Time'),
-            onPressed: () {
-              workoutTime = showTimePicker(
-                  initialTime: TimeOfDay.now(), context: context);
-            },
-          ),
-          Text('Select Workout Type'),
-          MaterialButton(
-            child: Text("Home Exercise",
-                // style: TextStyle(color: Colors.white.withAlpha(200)),
-            ),
-            onPressed: null,
-          ),
-          MaterialButton(
-            child: Text("Power Lifting",
-                // style: TextStyle(color: Colors.white.withAlpha(200)),
-            ),
-            onPressed: null,
-          ),
-          MaterialButton(
-            child: Text(
-              "Body Building",
-              // style: TextStyle(color: Colors.white.withAlpha(200)),
-            ),
-            onPressed: null,
-          ),
+          SizedBox(height: 12),
+          Text('Select a Training Plan', textScaleFactor: 3),
+          Container(
+              width: 320,
+              height: 640,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // ListView.builder(
+                  //     itemCount: workoutPlans.length,
+                  //     itemBuilder: (BuildContext context, int index) {
+                  //       return new MaterialButton(
+                  //         //highlightColor: Colors.red,
+                  //         // splashColor: Colors.blueAccent,
+                  //         onPressed: () {
+                  //           setState(() {
+                  //             // workoutPlans
+                  //             //     .forEach((element) => element.isSelected = false);
+                  //             // workoutPlans[index].isSelected = true;
+                  //           });
+                  //         },
+                  //         child: new Text(workoutPlans[index]),
+                  //       );
+                  //     }),
+                  Text('Select Workout Days',textScaleFactor: 2),
+                  WeekdaySelector(
+                    onChanged: (int day) {
+                      setState(() {
+                        final index = day % 7;
+                        weekdays[index] = !weekdays[index];
+                      });
+                    },
+                    values: weekdays,
+                  ),
+                  OutlinedButton(
+                    child: Text('Select Workout Start Time'),
+                    onPressed: () {
+                      workoutTime = showTimePicker(
+                          initialTime: TimeOfDay.now(), context: context);
+                    },
+                  ),
+                  Text('Select Workout Type'),
+                ],
+              )),
           Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              MaterialButton(onPressed: prevPage, child: Text('Previous')),
-              MaterialButton(onPressed: nextPage, child: Text('Next'))
-            ],
+            children: [prevButton(), SizedBox(width: 24), nextButton()],
           ),
         ]);
   }
@@ -313,7 +348,7 @@ class _SetupPageState extends State<SetupPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "What should we call you?",
+            "Select Macros",
             textScaleFactor: 2,
           ),
           SizedBox(height: 55),
@@ -321,28 +356,23 @@ class _SetupPageState extends State<SetupPage> {
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Text(
               "Fat",
-              style: TextStyle(
-                  fontSize: 20),
+              style: TextStyle(fontSize: 20),
             ),
             Text(
               "|",
-              style: TextStyle(
-                  fontSize: 20),
+              style: TextStyle(fontSize: 20),
             ),
             Text(
               "Protein",
-              style: TextStyle(
-                  fontSize: 20),
+              style: TextStyle(fontSize: 20),
             ),
             Text(
               "|",
-              style: TextStyle(
-                  fontSize: 20),
+              style: TextStyle(fontSize: 20),
             ),
             Text(
               "Carbs",
-              style: TextStyle(
-                  fontSize: 20),
+              style: TextStyle(fontSize: 20),
             ),
           ]),
           SliderTheme(
@@ -378,7 +408,7 @@ class _SetupPageState extends State<SetupPage> {
                     "   Lactose Free",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 17,
+                      fontSize: 17,
                     ),
                   ),
                 ],
@@ -404,9 +434,9 @@ class _SetupPageState extends State<SetupPage> {
                     "   Sugar Free",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 17,
-                        // color: Colors.white.withAlpha(230),
-                        // fontWeight: FontWeight.w600
+                      fontSize: 17,
+                      // color: Colors.white.withAlpha(230),
+                      // fontWeight: FontWeight.w600
                     ),
                   ),
                 ],
@@ -429,10 +459,7 @@ class _SetupPageState extends State<SetupPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              MaterialButton(onPressed: prevPage, child: Text('Previous')),
-              MaterialButton(onPressed: nextPage, child: Text('Next'))
-            ],
+            children: <Widget>[prevButton(), SizedBox(width: 24), nextButton()],
           ),
         ]);
   }
@@ -441,25 +468,83 @@ class _SetupPageState extends State<SetupPage> {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisSize: MainAxisSize.max,
         children: [
-          Text("You're all done now!"),
+          Spacer(),
+          Text("You're all done now!", textScaleFactor: 3),
           Text(
-              "Press Finish to complete your registration or go back to modify your details"),
+              "Press Finish to complete your registration or go back to modify your details",
+              textScaleFactor: 2),
           Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              MaterialButton(onPressed: prevPage, child: Text('Previous')),
-              MaterialButton(
-                  onPressed: () async {
-                    await _registerUser();
-                    Navigator.pushReplacementNamed(context, "Home");
-                  },
-                  child: Text('Finish'))
+              prevButton(),
+              SizedBox(width: 24),
+              finishButton()
             ],
           ),
         ]);
+  }
+
+  Widget prevButton() {
+    return Container(
+      // height: 36,
+      width: 280,
+      child: ElevatedButton.icon(
+          onPressed: prevPage,
+          style: ElevatedButton.styleFrom(
+              primary: Colors.redAccent,
+              elevation: 5,
+              textStyle: TextStyle(
+                fontSize: 24,
+              ),
+              padding: EdgeInsets.fromLTRB(8, 16, 8, 16)
+              // shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+              ),
+          icon: Icon(Icons.arrow_back),
+          label: const Text('Previous')),
+    );
+  }
+
+  Widget nextButton() {
+    return Container(
+      // height: 36,
+      width: 280,
+      child: ElevatedButton.icon(
+          onPressed: nextPage,
+          style: ElevatedButton.styleFrom(
+              primary: Colors.lightBlueAccent,
+              elevation: 5,
+              textStyle: TextStyle(
+                fontSize: 24,
+              ),
+              padding: EdgeInsets.fromLTRB(8, 16, 8, 16)),
+          icon: Icon(Icons.arrow_forward),
+          label: const Text('Next')),
+    );
+  }
+
+  Widget finishButton() {
+    return Container(
+      // height: 36,
+      width: 280,
+      child: ElevatedButton.icon(
+          onPressed: () async {
+            await _registerUser();
+            Navigator.pushReplacementNamed(context, "Home");
+          },
+          style: ElevatedButton.styleFrom(
+              primary: Colors.greenAccent,
+              elevation: 5,
+              textStyle: TextStyle(
+                fontSize: 24,
+              ),
+              padding: EdgeInsets.fromLTRB(8, 16, 8, 16)),
+          icon: Icon(Icons.thumb_up),
+          label: const Text('Finish')),
+    );
   }
 
   void prevPage() {
