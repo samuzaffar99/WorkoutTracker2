@@ -28,19 +28,32 @@ class _SetupPageState extends State<SetupPage> {
   double bodyFat;
   double targetWeight;
   double targetBodyFat;
-  // String date = "Date of Birth";
   bool toggleLactose = false;
   bool toggleSugar = false;
   RangeValues _values = RangeValues(100, 900);
   final weekdays = List.filled(7, false);
-
+  final List<String> workoutPlans = [
+    "Home Exercise",
+    "Power Lifting",
+    "Body Building"
+  ];
+  final List<bool> workoutSelected = List.filled(3, false);
   // var _formKey = GlobalKey<FormState>();
   final _currentPageNotifier = ValueNotifier<int>(0);
   final PageController pageController = PageController();
   final TextEditingController nameController =
       TextEditingController(text: currState.firebaseUser.displayName);
-  final TextEditingController dateController =
-      TextEditingController(text: "Choose");
+  final TextEditingController dateController = TextEditingController();
+  final TextEditingController timeController = TextEditingController();
+
+  @override
+  void dispose() {
+    _currentPageNotifier.dispose();
+    pageController.dispose();
+    dateController.dispose();
+    timeController.dispose();
+    super.dispose();
+  }
 
   Future<bool> _registerUser() async {
     user["photoUrl"] = currState.firebaseUser.photoURL;
@@ -81,19 +94,28 @@ class _SetupPageState extends State<SetupPage> {
   _selectDate() async {
     final DateTime date = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(), // Refer step 1
+      initialDate: DateTime(2000),
       firstDate: DateTime(1930),
       lastDate: DateTime.now(),
       initialDatePickerMode: DatePickerMode.year,
     );
-    // if (picked != null && picked != date)
-    //   setState(() {
-    //     date = picked.toString();
-    //   });
-    setState(() {
-      dateController.text = DateFormat('dd/MM/yyyy').format(date);
-      // TextEditingController(text: '${myFormat.format(selectedDate)}');
-    });
+    if (date != null) {
+      setState(() {
+        dateController.text = DateFormat('dd/MM/yyyy').format(date);
+      });
+    }
+  }
+
+  _selectTime() async {
+    final TimeOfDay time = await showTimePicker(
+      initialTime: TimeOfDay.now(),
+      context: context,
+    );
+    if (time != null) {
+      setState(() {
+        timeController.text = time.format(context);
+      });
+    }
   }
 
   List<DropdownMenuItem<String>> generateDropdownItems(List<String> ddl) {
@@ -150,7 +172,6 @@ class _SetupPageState extends State<SetupPage> {
                 ),
                 onPressed: () {
                   _selectDate();
-                  setState(() {});
                 },
               ),
             ],
@@ -280,11 +301,6 @@ class _SetupPageState extends State<SetupPage> {
   }
 
   Widget workoutPage() {
-    List<String> workoutPlans = [
-      "Home Exercise",
-      "Power Lifting",
-      "Body Building"
-    ];
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -297,23 +313,37 @@ class _SetupPageState extends State<SetupPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // ListView.builder(
-                  //     itemCount: workoutPlans.length,
-                  //     itemBuilder: (BuildContext context, int index) {
-                  //       return new MaterialButton(
-                  //         //highlightColor: Colors.red,
-                  //         // splashColor: Colors.blueAccent,
-                  //         onPressed: () {
-                  //           setState(() {
-                  //             // workoutPlans
-                  //             //     .forEach((element) => element.isSelected = false);
-                  //             // workoutPlans[index].isSelected = true;
-                  //           });
-                  //         },
-                  //         child: new Text(workoutPlans[index]),
-                  //       );
-                  //     }),
-                  Text('Select Workout Days',textScaleFactor: 2),
+                  // SizedBox(height: 24),
+                  Container(
+                    height: 160,
+                    child: ListView.separated(
+                        separatorBuilder: (BuildContext context, int index) {
+                          return SizedBox(height: 12);
+                        },
+                        itemCount: workoutPlans.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return new MaterialButton(
+                            color: workoutSelected[index]
+                                ? Colors.orange
+                                : Colors.white,
+                            elevation: 5,
+                            height: 48,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                workoutSelected.fillRange(
+                                    0, workoutSelected.length, false);
+                                workoutSelected[index] =
+                                    !workoutSelected[index];
+                              });
+                            },
+                            child: new Text(workoutPlans[index]),
+                          );
+                        }),
+                  ),
+                  Text('Select Workout Days', textScaleFactor: 2),
                   WeekdaySelector(
                     onChanged: (int day) {
                       setState(() {
@@ -324,13 +354,18 @@ class _SetupPageState extends State<SetupPage> {
                     values: weekdays,
                   ),
                   OutlinedButton(
-                    child: Text('Select Workout Start Time'),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          icon: Icon(Icons.alarm),
+                          labelText: "Select Workout Start Time"),
+                      textAlign: TextAlign.center,
+                      controller: timeController,
+                      enabled: false,
+                    ),
                     onPressed: () {
-                      workoutTime = showTimePicker(
-                          initialTime: TimeOfDay.now(), context: context);
+                      _selectTime();
                     },
                   ),
-                  Text('Select Workout Type'),
                 ],
               )),
           Spacer(),
@@ -471,10 +506,19 @@ class _SetupPageState extends State<SetupPage> {
         // mainAxisSize: MainAxisSize.max,
         children: [
           Spacer(),
-          Text("You're all done now!", textScaleFactor: 3),
-          Text(
-              "Press Finish to complete your registration or go back to modify your details",
-              textScaleFactor: 2),
+          Container(
+              width: 480,
+              height: 640,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text("You're all done now!", textScaleFactor: 3),
+                Text(
+                    "Press Finish to complete your registration or go back to modify your details",
+                    textScaleFactor: 1.5),
+              ],
+            ),
+          ),
           Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
