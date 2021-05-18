@@ -43,20 +43,19 @@ class StateData {
 
   Future<bool> initializeUser() async {
     firebaseUser = await signIn();
-    bool existsUser;
     userRef = db.collection("users").doc(firebaseUser.uid);
     userData = await userRef.get();
     // userData = await api.getUser(firebaseUser.uid);
     if (userData.exists) {
       print("UserData present on firestore");
-      existsUser = true;
+      return true;
     } else {
-      print("UserData not present on firestore, creating new User");
-      await createUserData(firebaseUser);
-      userData = await userRef.get();
-      existsUser = false;
+      print("UserData not present on firestore");
+      return false;
+      // await createUser();
+      // userData = await userRef.get();
     }
-    print(userData.data());
+    // print(userData.data());
     // Save Default Data to local preferences
     // await prefs.setString('id', firebaseUser.uid);
     // await prefs.setString('nickname', firebaseUser.displayName);
@@ -67,7 +66,7 @@ class StateData {
     // await prefs.setString('nickname', UserData["nickname"]);
     // await prefs.setString('photoUrl', UserData[0].data()['photoUrl']);
     // await prefs.setString('aboutMe', UserData[0].data()['aboutMe']);
-    return existsUser;
+    // return existsUser;
   }
 
   Future<User> signIn() async {
@@ -91,14 +90,15 @@ class StateData {
   }
 
   //Create new user data using firebase uid
-  Future<void> createUserData(User firebaseUser) async {
-    db.collection('users').doc(firebaseUser.uid).set({
-      'nickname': firebaseUser.displayName,
-      'photoUrl': firebaseUser.photoURL,
-      'id': firebaseUser.uid,
-      'email': firebaseUser.email,
-      'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
-    });
+  Future<void> createUser(Map userData) async {
+    await api.putUser(firebaseUser.uid, userData);
+    // db.collection('users').doc(firebaseUser.uid).set({
+    //   'nickname': firebaseUser.displayName,
+    //   'photoUrl': firebaseUser.photoURL,
+    //   'id': firebaseUser.uid,
+    //   'email': firebaseUser.email,
+    //   'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+    // });
     return;
   }
 

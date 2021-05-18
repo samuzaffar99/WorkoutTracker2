@@ -59,3 +59,111 @@
 // speed: 1.2,
 // offset: 3.142 / 2,
 // )),
+
+// bottomNavigationBar: Row(
+//   mainAxisAlignment: MainAxisAlignment.center,
+//   crossAxisAlignment: CrossAxisAlignment.end,
+//   children: <Widget>[
+//     MaterialButton(
+//         onPressed: previousPage, child: Text('Previous')),
+//     MaterialButton(onPressed: nextPage, child: Text('Next'))
+//   ],
+// ),
+
+// ,
+//   Container(
+//   child: Form(
+//     key: _formKey,
+//     child: Column(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.all(10.0),
+//           child: Row(
+//             children: <Widget>[
+//               IconTheme(
+//                 child: Icon(Icons.person),
+//                 data: IconThemeData(color: Colors.white),
+//               ),
+//               Expanded(
+//                 child: Container(
+//                   margin: EdgeInsets.only(right: 20, left: 10),
+//                   child: TextFormField(
+//                     decoration: InputDecoration(
+//                       border: OutlineInputBorder(
+//                         borderRadius: BorderRadius.all(Radius.circular(20)),
+//                         borderSide: BorderSide(
+//                           color: Colors.transparent,
+//                         ),
+//                       ),
+//                       hintText: "enter your nickname",
+//                       filled: true,
+//                       fillColor: Colors.white.withAlpha(200),
+//                     ),
+//                     validator: (value) {
+//                       if (value.isEmpty) {
+//                         return "Username cannot be left blank";
+//                       } else if (checku == false) {
+//                         setState(
+//                           () {
+//                             checku = true;
+//                           },
+//                         );
+//                       }
+//                       return null;
+//                     },
+//                     onSaved: (value) {
+//                       name = value;
+//                     },
+//                   ),
+//                 ),
+//               ),
+
+// ,
+//   Container(
+//   child: Form(
+//     key: _formKey,
+//     child: Column(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.all(10.0),
+//           child: Row(
+//             children: <Widget>[
+//               IconTheme(
+//                 child: Icon(Icons.person),
+//                 data: IconThemeData(color: Colors.white),
+//               ),
+//               Expanded(
+//                 child: Container(
+//                   margin: EdgeInsets.only(right: 20, left: 10),
+//                   child: TextFormField(
+//                     decoration: InputDecoration(
+//                       border: OutlineInputBorder(
+//                         borderRadius: BorderRadius.all(Radius.circular(20)),
+//                         borderSide: BorderSide(
+//                           color: Colors.transparent,
+//                         ),
+//                       ),
+//                       hintText: "enter your nickname",
+//                       filled: true,
+//                       fillColor: Colors.white.withAlpha(200),
+//                     ),
+//                     validator: (value) {
+//                       if (value.isEmpty) {
+//                         return "Username cannot be left blank";
+//                       } else if (checku == false) {
+//                         setState(
+//                           () {
+//                             checku = true;
+//                           },
+//                         );
+//                       }
+//                       return null;
+//                     },
+//                     onSaved: (value) {
+//                       name = value;
+//                     },
+//                   ),
+//                 ),
+//               ),

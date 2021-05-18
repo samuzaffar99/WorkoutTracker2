@@ -100,10 +100,10 @@ class Api {
     return response;
   }
 
-  Future<DocumentReference> postUser(Map user) async {
-    final response = await usersCol.add(user);
-    return response;
-  }
+  // Future<DocumentReference> postUser(Map user) async {
+  //   final response = await usersCol.add(user);
+  //   return response;
+  // }
 
   Future<DocumentReference> postWorkout(Map workout) async {
     final response = await workoutsCol.add(workout);

@@ -53,9 +53,9 @@ class AdminPageState extends State<AdminPage> {
                       else if(collection=="Diet"){
                         response = await currState.api.postDiet(jsonData);
                       }
-                      else if(collection=="User") {
-                        response = await currState.api.postUser(jsonData);
-                      }
+                      // else if(collection=="User") {
+                      //   response = await currState.api.postUser(jsonData);
+                      // }
                       else if(collection=="Food") {
                         response = await currState.api.postFood(jsonData);
                       }
