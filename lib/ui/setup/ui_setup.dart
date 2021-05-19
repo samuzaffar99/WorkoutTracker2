@@ -124,15 +124,6 @@ class _SetupPageState extends State<SetupPage> {
     }
   }
 
-  List<DropdownMenuItem<String>> generateDropdownItems(List<String> ddl) {
-    return ddl
-        .map((value) => DropdownMenuItem(
-              value: value,
-              child: Text(value),
-            ))
-        .toList();
-  }
-
   Widget infoPage() {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,

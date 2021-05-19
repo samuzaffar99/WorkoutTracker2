@@ -1,6 +1,5 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:workout_tracker2/api.dart';
 import 'package:workout_tracker2/globals.dart';
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 
@@ -10,10 +9,9 @@ class ExerciseResults extends StatefulWidget {
 }
 
 class _ExerciseResultsState extends State<ExerciseResults> {
-  final Api _api = Api();
   Widget getExerciseResults() {
     return FutureBuilder(
-        future: _api.getExercises(),
+        future: currState.api.getExercises(),
         builder: (buildContext, AsyncSnapshot snapshot) {
           if (snapshot.hasError)
             throw snapshot.error;

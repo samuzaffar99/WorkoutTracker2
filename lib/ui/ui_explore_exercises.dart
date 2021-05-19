@@ -1,4 +1,5 @@
 // import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/globals.dart';
 import 'package:workout_tracker2/ui/ui_exercise_results.dart';
@@ -10,203 +11,191 @@ class ExploreExercises extends StatefulWidget {
 }
 
 class _ExploreExercisesState extends State<ExploreExercises> {
-  bool toggleCardio = false;
-  bool toggleEquipment = false;
+  bool toggleEndurance = false;
+  bool toggleStrength = false;
+  String searchString;
+  List<String> category = [
+    "Biceps",
+    "Triceps",
+    "Chest",
+    "Abdominals",
+    "Glutes",
+    "Hamstrings",
+    "Quadriceps"
+  ];
+  List<bool> categoryToggle = List.filled(7, false);
+  List<String> sortParams = ["Name", "Difficulty"];
+  bool toggleAsc = true;
+  String currParam = "Name";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: theme.background,
+        // backgroundColor: theme.background,
         appBar: AppBar(
           // automaticallyImplyLeading: true,
-          // leading: IconButton(
-          //   icon: Icon(Icons.arrow_back_rounded),
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          // ),
-          backgroundColor: theme.appBar,
+          // backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Explore"),
-          actions: [
-            Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                    onTap: () {}, child: Icon(Icons.dehaze_rounded))),
-          ],
         ),
         body: Container(
-          child: ListView(
-            children: [
-              SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 30, left: 30),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
+          child: Card(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 40),
+                Container(
+                  height: 96,
+                  padding: EdgeInsets.all(12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        height: double.maxFinite,
+                        width: 480,
+                        child: TextField(
+                          minLines: null,
+                          maxLines: null,
+                          expands: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Search",
+                            suffixIcon: Icon(Icons.search),
                           ),
-                          hintText: 'Search',
-                          filled: true,
-                          fillColor: Colors.white.withAlpha(200),
+                          // controller: searchController,
+                          onChanged: (value) => searchString = value,
                         ),
                       ),
-                    ),
+                      OutlinedButton.icon(
+                          label: Text("Search"),
+                          icon: Icon(Icons.search),
+                          // style: OutlinedButton.styleFrom(primary: Colors.deepOrange),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return ExerciseResults();
+                              },
+                            ));
+                          }),
+                    ],
                   ),
-                ],
-              ),
-              SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ButtonTheme(
-                    height: 45.0,
-                    minWidth: 150.0,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return ExerciseResults();
-                          },
-                        ));
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                ),
+                SizedBox(height: 24),
+                Text("Target Muscles"),
+                Expanded(
+                  child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 6,
+                        childAspectRatio: (3 / 2),
+                      ),
+                      itemCount: category.length,
+                      itemBuilder: (BuildContext context, index) {
+                        return Container(
+                            alignment: Alignment.center,
+                            child: new FilterChip(
+                                selected: categoryToggle[index],
+                                selectedColor: Colors.deepOrange,
+                                padding: EdgeInsets.fromLTRB(4, 12, 4, 12),
+                                label: Text(category[index]),
+                                labelStyle: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                                elevation: 5,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                onSelected: (bool selected) {
+                                  setState(() {
+                                    categoryToggle[index] =
+                                        !categoryToggle[index];
+                                  });
+                                }));
+                      }),
+                ),
+                Container(
+                  width: 240,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Search",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white.withAlpha(230),
-                              shadows: <Shadow>[
-                                Shadow(
-                                    offset: Offset(1.5, 1.5),
-                                    blurRadius: 5.0,
-                                    color: Color.fromARGB(255, 0, 0, 0))
-                              ],
-                            ),
+                          Text("Strength", style: TextStyle(fontSize: 18)),
+                          Switch(
+                            value: toggleStrength,
+                            onChanged: (value) {
+                              setState(() {
+                                toggleStrength = value;
+                              });
+                            },
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 30, left: 30),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Endurance", style: TextStyle(fontSize: 18)),
+                          Switch(
+                            value: toggleEndurance,
+                            onChanged: (value) {
+                              setState(() {
+                                toggleEndurance = value;
+                              });
+                            },
                           ),
-                          hintText: 'Muscle Group',
-                          filled: true,
-                          fillColor: Colors.white.withAlpha(200),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "        Cardio",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600),
+                        ],
                       ),
                     ],
                   ),
-                  Switch(
-                    inactiveTrackColor: Colors.white,
-                    inactiveThumbColor: Colors.white,
-                    activeTrackColor: Colors.green[10],
-                    activeColor: Colors.green,
-                    value: toggleCardio,
-                    onChanged: (value) {
-                      setState(() {
-                        toggleCardio = value;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "        No Equipment",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Switch(
-                    inactiveTrackColor: Colors.white,
-                    inactiveThumbColor: Colors.white,
-                    activeTrackColor: Colors.green[10],
-                    activeColor: Colors.green,
-                    value: toggleEquipment,
-                    onChanged: (value) {
-                      setState(() {
-                        toggleEquipment = value;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 30, left: 30),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
+                ),
+                SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.only(right: 30, left: 30),
+                        child: ButtonTheme(
+                          alignedDropdown: true,
+                          child: DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Sort By",
                             ),
+                            items: generateDropdownItems(sortParams),
+                            value: currParam,
+                            onChanged: (val) {
+                              setState(
+                                () {
+                                  currParam = val;
+                                },
+                              );
+                            },
                           ),
-                          hintText: 'Sort By',
-                          filled: true,
-                          fillColor: Colors.white.withAlpha(200),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Ascending", style: TextStyle(fontSize: 18)),
+                    Switch(
+                      value: toggleAsc,
+                      onChanged: (value) {
+                        setState(() {
+                          toggleAsc = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                Spacer(),
+              ],
+            ),
           ),
         ),
       ),

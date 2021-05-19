@@ -12,12 +12,8 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool toggleDark = false;
   bool toggleAlarm = false;
-  final nameController = TextEditingController();
-
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
-    nameController.dispose();
     super.dispose();
   }
 

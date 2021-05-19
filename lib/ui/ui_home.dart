@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/globals.dart';
+import 'package:workout_tracker2/ui/ui_explore_exercises.dart';
 import 'package:workout_tracker2/ui/workout/ui_choose_new_workout_plan.dart';
 import 'package:workout_tracker2/ui/ui_exercise_results.dart';
 import 'package:workout_tracker2/ui/ui_navbar.dart';
@@ -26,18 +27,12 @@ class _HomePageState extends State<HomePage> {
             children: [
               SizedBox(height: 20),
               Text(
-                'Hey ${currState.userData["nickname"]}! \nExplore your Daily Routines',
+                "Hey ${currState.userData["nickname"]}! \nExplore your Daily Routines",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 24,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  shadows: <Shadow>[
-                    Shadow(
-                        offset: Offset(1.5, 1.5),
-                        blurRadius: 5.0,
-                        color: Color.fromARGB(255, 0, 0, 0))
-                  ],
                 ),
               ),
               SizedBox(height: 20),
@@ -53,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return ExerciseResults();
+                              return ExploreExercises();
                             },
                           ),
                         );
@@ -65,13 +60,6 @@ class _HomePageState extends State<HomePage> {
                             "Explore Exercises",
                             style: TextStyle(
                               fontSize: 20,
-                              color: Colors.white.withAlpha(230),
-                              shadows: <Shadow>[
-                                Shadow(
-                                    offset: Offset(1.5, 1.5),
-                                    blurRadius: 5.0,
-                                    color: Color.fromARGB(255, 0, 0, 0))
-                              ],
                             ),
                           ),
                         ],
@@ -113,34 +101,37 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              Expanded(
-                child: Opacity(
-                  opacity: 0.5,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
-                    margin: EdgeInsets.fromLTRB(16, 32, 16, 32),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Container(
-                        height: 400,
-                        width: 275,
-                        child: Column(
-                          children: [
-                            Text(
-                              "Todays Exercises\n\nDeadlift   10-8-6\nSquats   12-8\nAb Curls   25-20",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            )
-                          ],
+              Card(
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(30),
+                // ),
+                elevation: 5,
+                margin: EdgeInsets.fromLTRB(16, 32, 16, 32),
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  // height: 400,
+                  // width: 275,
+                  child: Column(
+                    children: [
+                      Text("Today's Exercises\n",
+                          style: TextStyle(fontSize: 36)),
+                      DefaultTextStyle(
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 24),
+                        child: Container(
+                          height: 360,
+                          child: ListView(children: [
+                            Text("Deadlift 10-8-6"),
+                            Text("Deadlift 10-8-6"),
+                            Text("Squats   12-8"),
+                            Text("Curls   25-20"),
+                          ]),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
