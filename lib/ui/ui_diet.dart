@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/ui/ui_navbar.dart';
-// import 'package:gradient_app_bar/gradient_app_bar.dart';
-// import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 import 'package:workout_tracker2/globals.dart';
 
 // String objdiet="5febf179775c8a5c445e0745";
@@ -44,6 +43,7 @@ class _DietPageState extends State<DietPage> {
             return Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  Text(DateFormat('EEEE').format(DateTime.now()),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -187,86 +187,80 @@ class _DietPageState extends State<DietPage> {
     // int index = 1;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: theme.background,
+        // backgroundColor: theme.background,
         appBar: AppBar(
-          backgroundColor: theme.appBar,
+          // backgroundColor: theme.appBar,
           elevation: 5,
           title: Text('Diet', style: TextStyle(color: theme.appBarText)),
         ),
         bottomNavigationBar: NavigationBar(1),
         endDrawer: Drawer(
-          child: Opacity(
-            opacity: 0.8,
-            child: Container(
-              color: Color(0xFF5F3E40),
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: [
-                  SizedBox(
-                    height: 10,
+          child: Container(
+            color: Color(0xFF5F3E40),
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Center(
+                  child: Text(
+                    "Choose Your Diet",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
-                  Center(
-                    child: Text(
-                      'Choose Your Diet',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListTile(
+                  title: Text(
+                    "Keto Diet",
+                    style: TextStyle(fontSize: 17, color: Colors.white),
                   ),
-                  SizedBox(
-                    height: 10,
+                  trailing: Icon(Icons.lunch_dining, color: Colors.white),
+                  onTap: () {
+                    // objdiet="5febf179775c8a5c445e0743";
+                    setState(() {});
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Paleo Diet',
+                    style: TextStyle(fontSize: 17, color: Colors.white),
                   ),
-                  ListTile(
-                    title: Text(
-                      'Keto Diet',
-                      style: TextStyle(fontSize: 17, color: Colors.white),
-                    ),
-                    trailing: Icon(Icons.lunch_dining, color: Colors.white),
-                    onTap: () {
-                      // objdiet="5febf179775c8a5c445e0743";
-                      setState(() {});
-                    },
+                  trailing: Icon(Icons.breakfast_dining, color: Colors.white),
+                  onTap: () {
+                    // objdiet="5febf179775c8a5c445e0744";
+                    setState(() {});
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Macho Diet',
+                    style: TextStyle(fontSize: 17, color: Colors.white),
                   ),
-                  ListTile(
-                    title: Text(
-                      'Paleo Diet',
-                      style: TextStyle(fontSize: 17, color: Colors.white),
-                    ),
-                    trailing: Icon(Icons.breakfast_dining, color: Colors.white),
-                    onTap: () {
-                      // objdiet="5febf179775c8a5c445e0744";
-                      setState(() {});
-                    },
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Macho Diet',
-                      style: TextStyle(fontSize: 17, color: Colors.white),
-                    ),
-                    trailing:
-                        Icon(Icons.local_dining_outlined, color: Colors.white),
-                    onTap: () {
-                      // objdiet="5febf179775c8a5c445e0745";
-                      setState(() {});
-                    },
-                  ),
-                ],
-              ),
+                  trailing:
+                      Icon(Icons.local_dining_outlined, color: Colors.white),
+                  onTap: () {
+                    // objdiet="5febf179775c8a5c445e0745";
+                    setState(() {});
+                  },
+                ),
+              ],
             ),
           ),
         ),
         body: Container(
             height: double.infinity,
             width: double.infinity,
-            child: Opacity(
-              opacity: 0.5,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.fromLTRB(16, 10, 16, 10),
-                child: Padding(
-                    padding: const EdgeInsets.all(15.0), child: getDietView()),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
               ),
+              elevation: 5,
+              margin: EdgeInsets.fromLTRB(16, 10, 16, 10),
+              child: Padding(
+                  padding: const EdgeInsets.all(15.0), child: getDietView()),
             )),
       ),
     );

@@ -8,6 +8,7 @@ class NavigationBar extends StatefulWidget {
 }
 
 class _NavigationBarState extends State<NavigationBar> {
+  List routes = ["Home", "Diet", "Workout", "Log", "Profile"];
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -16,25 +17,11 @@ class _NavigationBarState extends State<NavigationBar> {
         setState(
           () {
             if (widget.index == i) {
-              //do nothing
+              Navigator.popUntil(context, ModalRoute.withName(routes[i]));
               return;
-            } else
+            } else {
               widget.index = i;
-            if (widget.index == 0) {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, 'Home');
-            } else if (widget.index == 1) {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, "Diet");
-            } else if (widget.index == 2) {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, "Workout");
-            } else if (widget.index == 3) {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, "Log");
-            } else if (widget.index == 4) {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, "Profile");
+              Navigator.pushReplacementNamed(context, routes[i]);
             }
           },
         );

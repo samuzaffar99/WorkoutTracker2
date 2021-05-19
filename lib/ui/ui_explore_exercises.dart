@@ -43,9 +43,9 @@ class _ExploreExercisesState extends State<ExploreExercises> {
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 40),
+                SizedBox(height: 24),
                 Container(
-                  height: 96,
+                  height: 80,
                   padding: EdgeInsets.all(12),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +54,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                     children: [
                       Container(
                         height: double.maxFinite,
-                        width: 480,
+                        width: 240,
                         child: TextField(
                           minLines: null,
                           maxLines: null,
@@ -62,7 +62,6 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "Search",
-                            suffixIcon: Icon(Icons.search),
                           ),
                           // controller: searchController,
                           onChanged: (value) => searchString = value,
@@ -84,35 +83,35 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                 ),
                 SizedBox(height: 24),
                 Text("Target Muscles"),
-                Expanded(
-                  child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 6,
-                        childAspectRatio: (3 / 2),
-                      ),
-                      itemCount: category.length,
-                      itemBuilder: (BuildContext context, index) {
-                        return Container(
-                            alignment: Alignment.center,
-                            child: new FilterChip(
-                                selected: categoryToggle[index],
-                                selectedColor: Colors.deepOrange,
-                                padding: EdgeInsets.fromLTRB(4, 12, 4, 12),
-                                label: Text(category[index]),
-                                labelStyle: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w500),
-                                elevation: 5,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                onSelected: (bool selected) {
-                                  setState(() {
-                                    categoryToggle[index] =
-                                        !categoryToggle[index];
+                SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Wrap(
+                          children: List<Widget>.generate(
+                            category.length,
+                                (int index) {
+                              return new FilterChip(
+                                  selected: categoryToggle[index],
+                                  selectedColor: Colors.deepOrange,
+                                  padding: EdgeInsets.fromLTRB(4, 12, 4, 12),
+                                  label: Text(category[index]),
+                                  labelStyle: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.w500),
+                                  elevation: 5,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  onSelected: (bool selected) {
+                                    setState(() {
+                                      categoryToggle[index] =
+                                      !categoryToggle[index];
+                                    });
                                   });
-                                }));
-                      }),
-                ),
+                            },
+                          ),
+                        )
+                      ],
+                    )),
                 Container(
                   width: 240,
                   child: Column(

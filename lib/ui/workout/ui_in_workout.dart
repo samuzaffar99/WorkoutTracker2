@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/globals.dart';
-import 'ui_workout_summary.dart';
+
 // import '../others/stop_watch.dart';
-import 'ui_workout.dart';
+import 'package:workout_tracker2/ui/workout/ui_workout.dart';
+import 'package:workout_tracker2/ui/workout/ui_workout_summary.dart';
 
 class InWorkout extends StatefulWidget {
   InWorkout();

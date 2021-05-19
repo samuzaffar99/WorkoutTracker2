@@ -1,7 +1,3 @@
-//formula
-double calcBMI(double height,double weight) {
-  return 0;
-}
 
 //User
 class User {

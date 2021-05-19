@@ -167,3 +167,37 @@
 //                   ),
 //                 ),
 //               ),
+
+
+// Container(
+//   height: MediaQuery.of(context).size.height/4,
+//   child: GridView.builder(
+//       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+//           maxCrossAxisExtent: 160,
+//         mainAxisSpacing: 12,
+//         crossAxisSpacing: 0,
+//         mainAxisExtent: 40,
+//       ),
+//       itemCount: category.length,
+//       itemBuilder: (BuildContext context, index) {
+//         return Container(
+//             alignment: Alignment.center,
+//             child: new FilterChip(
+//                 selected: categoryToggle[index],
+//                 selectedColor: Colors.deepOrange,
+//                 padding: EdgeInsets.fromLTRB(4, 12, 4, 12),
+//                 label: Text(category[index]),
+//                 labelStyle: TextStyle(
+//                     fontSize: 16, fontWeight: FontWeight.w500),
+//                 elevation: 5,
+//                 shape: RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.circular(20.0),
+//                 ),
+//                 onSelected: (bool selected) {
+//                   setState(() {
+//                     categoryToggle[index] =
+//                         !categoryToggle[index];
+//                   });
+//                 }));
+//       }),
+// ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:workout_tracker2/globals.dart';
 import 'package:workout_tracker2/ui/ui_explore_exercises.dart';
 import 'package:workout_tracker2/ui/workout/ui_choose_new_workout_plan.dart';
-import 'package:workout_tracker2/ui/ui_exercise_results.dart';
 import 'package:workout_tracker2/ui/ui_navbar.dart';
 
 class HomePage extends StatefulWidget {
@@ -86,16 +85,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                      child:
                           Text(
                             "Choose New Workout Plan",
                             style: TextStyle(
                               fontSize: 20,
                             ),
-                          ),
-                        ],
                       ),
                     ),
                   ),
@@ -114,12 +109,12 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       Text("Today's Exercises\n",
-                          style: TextStyle(fontSize: 36)),
+                          style: TextStyle(fontSize: 24)),
                       DefaultTextStyle(
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(fontSize: 20, color: Colors.black),
                         child: Container(
-                          height: 360,
+                          height: 200,
                           child: ListView(children: [
                             Text("Deadlift 10-8-6"),
                             Text("Deadlift 10-8-6"),

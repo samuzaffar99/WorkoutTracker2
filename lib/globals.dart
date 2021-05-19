@@ -41,20 +41,19 @@ class StateData {
   factory StateData() {
     return _instance;
   }
-
-  Future<bool> initializeUser() async {
-    firebaseUser = await signIn();
+  Future<void> fetchUser() async{
     userRef = db.collection("users").doc(firebaseUser.uid);
     userData = await userRef.get();
-    // userData = await api.getUser(firebaseUser.uid);
+  }
+  Future<bool> initializeUser() async {
+    firebaseUser = await signIn();
+    await fetchUser();
     if (userData.exists) {
       print("UserData present on firestore");
       return true;
     } else {
       print("UserData not present on firestore");
       return false;
-      // await createUser();
-      // userData = await userRef.get();
     }
     // print(userData.data());
     // Save Default Data to local preferences
@@ -93,13 +92,6 @@ class StateData {
   //Create new user data using firebase uid
   Future<void> createUser(Map userData) async {
     await api.putUser(firebaseUser.uid, userData);
-    // db.collection('users').doc(firebaseUser.uid).set({
-    //   'nickname': firebaseUser.displayName,
-    //   'photoUrl': firebaseUser.photoURL,
-    //   'id': firebaseUser.uid,
-    //   'email': firebaseUser.email,
-    //   'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
-    // });
     return;
   }
 
@@ -132,4 +124,8 @@ List<DropdownMenuItem<String>> generateDropdownItems(List<String> ddl) {
     child: Text(value),
   ))
       .toList();
+}
+
+double calcBMI(double weight,double height) {
+  return (weight*10000)/(height*height);
 }
