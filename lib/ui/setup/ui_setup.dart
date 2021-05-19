@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:workout_tracker2/globals.dart';
-// import '../others/animated_background.dart';
+import 'package:intl/intl.dart';
+
 import 'package:weekday_selector/weekday_selector.dart';
 import 'package:page_view_indicators/step_page_indicator.dart';
-import 'package:intl/intl.dart';
+import 'package:pie_chart/pie_chart.dart';
 
 class SetupPage extends StatefulWidget {
   @override
@@ -22,22 +23,26 @@ class _SetupPageState extends State<SetupPage> {
     "birthDate": ""
   };
   Future<TimeOfDay> workoutTime;
-  String gender;
+  String gender = "Male";
   double height;
   double weight;
   double bodyFat;
   double targetWeight;
   double targetBodyFat;
+  String goal;
   bool toggleLactose = false;
   bool toggleSugar = false;
-  RangeValues _values = RangeValues(100, 900);
+  Map<String, double> macroPct = {"Fat": 30, "Protein": 30, "Carbs": 40};
+  RangeValues _values = RangeValues(30, 60);
   final weekdays = List.filled(7, false);
   final List<String> workoutPlans = [
     "Home Exercise",
     "Power Lifting",
     "Body Building"
   ];
-  final List<bool> workoutSelected = List.filled(3, false);
+  final List<String> genders = ["Male", "Female"];
+  final List<String> plans = ["Lose Fat", "Gain Muscle", "Maintain Weight"];
+  final List<bool> workoutSelected = [true,false,false];
   // var _formKey = GlobalKey<FormState>();
   final _currentPageNotifier = ValueNotifier<int>(0);
   final PageController pageController = PageController();
@@ -65,6 +70,7 @@ class _SetupPageState extends State<SetupPage> {
     user["height"] = height;
     user["weight"] = weight;
     user["bodyFat"] = bodyFat;
+    user["birthDate"] = dateController.text;
     await currState.createUser(user);
     return await currState.initializeUser();
   }
@@ -128,7 +134,6 @@ class _SetupPageState extends State<SetupPage> {
   }
 
   Widget infoPage() {
-    List<String> genders = ["Male", "Female"];
     return Column(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -188,12 +193,9 @@ class _SetupPageState extends State<SetupPage> {
   }
 
   Widget statsPage() {
-    List<String> plans = ["Lose Fat", "Gain Muscle", "Maintain Weight"];
-    String goal;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         SizedBox(height: 12),
         Text("Current Stats", textScaleFactor: 3),
@@ -203,9 +205,9 @@ class _SetupPageState extends State<SetupPage> {
           child: Column(children: [
             TextFormField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Weight (kg)",
-              ),
+                  border: OutlineInputBorder(),
+                  labelText: "Weight (kg)",
+                  suffixText: "kg"),
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
@@ -216,9 +218,9 @@ class _SetupPageState extends State<SetupPage> {
             SizedBox(height: 24),
             TextFormField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Height (cm)",
-              ),
+                  border: OutlineInputBorder(),
+                  labelText: "Height (cm)",
+                  suffixText: "cm"),
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               inputFormatters: [
                 FilteringTextInputFormatter.allow(
@@ -230,9 +232,9 @@ class _SetupPageState extends State<SetupPage> {
             SizedBox(height: 24),
             TextFormField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Body Fat (%)",
-              ),
+                  border: OutlineInputBorder(),
+                  labelText: "Body Fat (%)",
+                  suffixText: "%"),
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               inputFormatters: [
                 FilteringTextInputFormatter.allow(
@@ -268,7 +270,8 @@ class _SetupPageState extends State<SetupPage> {
               TextFormField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Target Weight (kg)"),
+                    labelText: "Target Weight (kg)",
+                    suffixText: "kg"),
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
@@ -280,7 +283,8 @@ class _SetupPageState extends State<SetupPage> {
               TextFormField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Target Body Fat (%)"),
+                    labelText: "Target Body Fat (%)",
+                    suffixText: "%"),
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(
@@ -335,8 +339,8 @@ class _SetupPageState extends State<SetupPage> {
                               setState(() {
                                 workoutSelected.fillRange(
                                     0, workoutSelected.length, false);
-                                workoutSelected[index] =
-                                    !workoutSelected[index];
+                                workoutSelected[index] = true;
+                                    // !workoutSelected[index];
                               });
                             },
                             child: new Text(workoutPlans[index]),
@@ -382,113 +386,77 @@ class _SetupPageState extends State<SetupPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            "Select Macros",
-            textScaleFactor: 2,
-          ),
-          SizedBox(height: 55),
-          //Insert Pie chart here
+          Text("Select Macros", textScaleFactor: 2),
+          SizedBox(height: 24),
+          Container(
+              width: 360, height: 320, child: PieChart(dataMap: macroPct)),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            Text(
-              "Fat",
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-              "|",
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-              "Protein",
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-              "|",
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-              "Carbs",
-              style: TextStyle(fontSize: 20),
-            ),
+            Text("Fat", style: TextStyle(fontSize: 16)),
+            VerticalDivider(),
+            Text("Protein", style: TextStyle(fontSize: 16)),
+            VerticalDivider(),
+            Text("Carbs", style: TextStyle(fontSize: 16)),
           ]),
           SliderTheme(
             data: SliderThemeData(
-              trackHeight: 25,
+              trackHeight: 24,
               rangeThumbShape: RoundRangeSliderThumbShape(
                   enabledThumbRadius: 18, pressedElevation: 20, elevation: 30),
               showValueIndicator: ShowValueIndicator.never,
             ),
             child: RangeSlider(
-              divisions: 6,
+              activeColor: Colors.blueAccent,
+              inactiveColor: Colors.blue,
+              divisions: 20,
               values: _values,
               min: 0,
-              max: 1000,
-              labels: RangeLabels(
-                  '${_values.start.round()}', '${_values.end.round()}'),
+              max: 100,
               onChanged: (RangeValues values) {
                 setState(() {
-                  _values = values;
+                  _values =
+                      RangeValues(max(20, values.start), min(80, values.end));
+                  macroPct["Fat"] = _values.start;
+                  macroPct["Protein"] = _values.end - _values.start;
+                  macroPct["Carbs"] = 100 - _values.end;
                 });
               },
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    "   Lactose Free",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 17,
+          SizedBox(height: 10),
+          Container(
+            width: 360,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Lactose Free", style: TextStyle(fontSize: 18)),
+                    Switch(
+                      value: toggleLactose,
+                      onChanged: (value) {
+                        setState(() {
+                          toggleLactose = value;
+                        });
+                      },
                     ),
-                  ),
-                ],
-              ),
-              Switch(
-                // activeTrackColor: Colors.green[10],
-                // activeColor: Colors.green,
-                value: toggleLactose,
-                onChanged: (value) {
-                  setState(() {
-                    toggleLactose = value;
-                  });
-                },
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    "   Sugar Free",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 17,
-                      // color: Colors.white.withAlpha(230),
-                      // fontWeight: FontWeight.w600
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Sugar Free", style: TextStyle(fontSize: 18)),
+                    Switch(
+                      value: toggleSugar,
+                      onChanged: (value) {
+                        setState(() {
+                          toggleSugar = value;
+                        });
+                      },
                     ),
-                  ),
-                ],
-              ),
-              Switch(
-                // inactiveTrackColor: Colors.white.withAlpha(230),
-                // inactiveThumbColor: Colors.white.withAlpha(230),
-                // activeTrackColor: Colors.green[10],
-                // activeColor: Colors.green,
-                value: toggleSugar,
-                onChanged: (value) {
-                  setState(() {
-                    toggleSugar = value;
-                  });
-                },
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
           Spacer(),
           Row(
@@ -503,19 +471,20 @@ class _SetupPageState extends State<SetupPage> {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        // mainAxisSize: MainAxisSize.max,
         children: [
           Spacer(),
           Container(
-              width: 480,
-              height: 640,
+            width: 480,
+            height: 640,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text("You're all done now!", textScaleFactor: 3),
                 Text(
-                    "Press Finish to complete your registration or go back to modify your details",
-                    textScaleFactor: 1.5),
+                  "Press Finish to complete your registration or go back to modify your details",
+                  textScaleFactor: 1.5,
+                  style: TextStyle(fontWeight: FontWeight.w300),
+                ),
               ],
             ),
           ),
@@ -539,13 +508,10 @@ class _SetupPageState extends State<SetupPage> {
       child: ElevatedButton.icon(
           onPressed: prevPage,
           style: ElevatedButton.styleFrom(
-              primary: Colors.redAccent,
+              primary: Colors.deepOrange,
               elevation: 5,
-              textStyle: TextStyle(
-                fontSize: 24,
-              ),
+              textStyle: TextStyle(fontSize: 24, color: Colors.black),
               padding: EdgeInsets.fromLTRB(8, 16, 8, 16)
-              // shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
               ),
           icon: Icon(Icons.arrow_back),
           label: const Text('Previous')),
@@ -559,7 +525,7 @@ class _SetupPageState extends State<SetupPage> {
       child: ElevatedButton.icon(
           onPressed: nextPage,
           style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlueAccent,
+              primary: Colors.lightBlue,
               elevation: 5,
               textStyle: TextStyle(
                 fontSize: 24,
@@ -580,7 +546,7 @@ class _SetupPageState extends State<SetupPage> {
             Navigator.pushReplacementNamed(context, "Home");
           },
           style: ElevatedButton.styleFrom(
-              primary: Colors.greenAccent,
+              primary: Colors.green,
               elevation: 5,
               textStyle: TextStyle(
                 fontSize: 24,
@@ -612,7 +578,6 @@ class _SetupPageState extends State<SetupPage> {
               title: Text("User Setup"),
             ),
             body: Column(
-              // mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 _buildStepIndicator(),
@@ -638,12 +603,11 @@ class _SetupPageState extends State<SetupPage> {
 
   _buildStepIndicator() {
     return Container(
-      // color: Colors.black,
       padding: const EdgeInsets.all(16.0),
       child: StepPageIndicator(
         itemCount: 4,
         currentPageNotifier: _currentPageNotifier,
-        size: 16,
+        size: 20,
         onPageSelected: (int index) {
           if (_currentPageNotifier.value > index)
             pageController.jumpToPage(index);

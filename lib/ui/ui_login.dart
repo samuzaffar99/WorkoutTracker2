@@ -1,5 +1,4 @@
 import 'dart:async';
-// import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -37,8 +36,8 @@ class LoginPageState extends State<LoginPage> {
     isLoggedIn = await googleSignIn.isSignedIn();
     if (isLoggedIn) {
       await currState.initializeUser();
-      // Navigator.pushReplacementNamed(context, "Home");
-      Navigator.pushNamed(context, "Setup");
+      Navigator.pushReplacementNamed(context, "Home");
+      // Navigator.pushNamed(context, "Setup");
     }
 
     this.setState(() {
@@ -58,8 +57,8 @@ class LoginPageState extends State<LoginPage> {
       isLoading = false;
     });
     if (existsUser) {
-      Navigator.pushNamed(context, "Setup");
-      // Navigator.pushReplacementNamed(context, "Home");
+      // Navigator.pushNamed(context, "Setup");
+      Navigator.pushReplacementNamed(context, "Home");
     } else {
       Navigator.pushNamed(context, "Setup");
     }
