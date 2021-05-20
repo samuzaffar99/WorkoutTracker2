@@ -13,11 +13,7 @@ import 'package:workout_tracker2/ui/workout/ui_workout.dart';
 import 'package:workout_tracker2/ui/ui_log.dart';
 import 'package:workout_tracker2/ui/ui_profile.dart';
 
-
-// import 'package:shared_preferences/shared_preferences.dart';
-
 Future<void> main() async {
-  // SharedPreferences.Editor.clear();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());

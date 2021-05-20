@@ -14,7 +14,7 @@ class DietPage extends StatefulWidget {
 class _DietPageState extends State<DietPage> {
   Widget getDietView() {
     return FutureBuilder(
-        future: currState.api.getDiet("gKLu2bspriy4NFEv6lPy"),
+        future: currState.api.getDiet("14OUlOXyAv9JBpGGPuRl"),
         builder: (buildContext, AsyncSnapshot snapshot) {
           if (snapshot.hasError)
             throw snapshot.error;
@@ -25,21 +25,21 @@ class _DietPageState extends State<DietPage> {
               ),
             );
           } else {
-            String dday = "monday";
-            // var dday = DateFormat('EEEE').format(DateTime.now()).toLowerCase();
-            print(dday);
-            int dindex = 0;
+            // String currWeekDay = "monday";
+            String currWeekDay = DateFormat('EEEE').format(DateTime.now()).toLowerCase();
+            print(currWeekDay);
+            int dayIndex = 0;
             for (var i = 0; i < snapshot.data["dietdays"].length; i++) {
-              if (snapshot.data["dietdays"][i]["day"] == dday) {
+              if (snapshot.data["dietdays"][i]["day"] == currWeekDay) {
                 print(snapshot.data["dietdays"][i]["day"]);
-                dindex = i;
+                dayIndex = i;
                 break;
               }
             }
-            var currentDietDay = snapshot.data["dietdays"][dindex];
+            var currentDietDay = snapshot.data["dietdays"][dayIndex];
             print(snapshot.data);
             // print(
-            //     'Num exercises: ${snapshot.data["days"][dindex]["routine"].length}');
+            //     'Num exercises: ${snapshot.data["days"][dayIndex]["routine"].length}');
             return Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
