@@ -50,7 +50,7 @@ Widget getWorkoutView() {
             Expanded(
               child: ListView.builder(
                   itemCount: snapshot.data["days"][dindex]["routine"].length,
-                  shrinkWrap: true,
+                  // shrinkWrap: true,
                   itemBuilder: (context, index) {
                     var currentItem =
                         snapshot.data["days"][dindex]["routine"][index];
@@ -66,13 +66,14 @@ Widget getWorkoutView() {
 
 Widget exerciseCard(Map<String, dynamic> exerciseData) {
   return Container(
-    padding: EdgeInsets.all(12),
+    padding: EdgeInsets.all(8),
     // width: 320,
     height: 120,
     child: Card(
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         elevation: 4,
+        margin: EdgeInsets.all(8),
         child: FutureBuilder(
           future: currState.api.getExercise(exerciseData["exid"]),
           builder: (buildContext, AsyncSnapshot snapshot) {
