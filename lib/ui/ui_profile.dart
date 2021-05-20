@@ -28,14 +28,6 @@ class _ProfilePageState extends State<ProfilePage> {
     super.dispose();
   }
 
-  void updateGoals() {
-    return;
-  }
-
-  void updateCurrentStats() {
-    return;
-  }
-
   Widget updateStats() {
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
