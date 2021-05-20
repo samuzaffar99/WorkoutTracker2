@@ -33,7 +33,7 @@ dependencies:
   # For example, to use Firebase Authentication and Cloud Firestore
   firebase_auth: ^1.1.1
   cloud_firestore: ^2.1.0
-  firebase_dynamic_links: ^2.0.1
+#  firebase_dynamic_links: ^2.0.1
   google_sign_in: ^5.0.2
   fluttertoast: ^8.0.6
   shared_preferences: ^2.0.5

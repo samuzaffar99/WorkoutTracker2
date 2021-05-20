@@ -22,6 +22,84 @@ class AdminPageState extends State<AdminPage> {
   final descController = TextEditingController();
   final targetController = TextEditingController();
   final jsonController = TextEditingController();
+  final jsonListController = TextEditingController();
+  void exerciseMenu() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Add Exercise',
+              style: TextStyle(fontSize: 23),
+            ),
+            content: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Exercise Name'),
+                  SizedBox(height: 5),
+                  TextFormField(controller: nameController),
+                  SizedBox(height: 10),
+                  Text('Difficulty'),
+                  SizedBox(height: 5),
+                  TextFormField(controller: diffController),
+                  SizedBox(height: 10),
+                  Text('Description'),
+                  SizedBox(height: 5),
+                  TextFormField(controller: descController),
+                  SizedBox(height: 10),
+                  Text('Target'),
+                  SizedBox(height: 5),
+                  TextFormField(controller: targetController),
+                  SizedBox(height: 10),
+                  MaterialButton(
+                    child: Text('Add to Firestore'),
+                    onPressed: () async {
+                      // Map exercise = new Map();
+                      // exercise["Description"]=descController.text;
+                      // exercise["Name"]=nameController.text;
+                      // exercise["Difficulty"]=double.parse(diffController.text);
+                      // exercise["Target"]=targetController.text.split(",");
+                      Map<String, dynamic> exercise = {
+                        "Description": descController.text,
+                        "Name": nameController.text,
+                        "Difficulty": double.parse(diffController.text),
+                        "Target": targetController.text.split(",")
+                      };
+
+                      print(exercise);
+                      var response = await currState.api.postExercise(exercise);
+                      print(response);
+                      var data = await currState.api.getDocument(response);
+                      print(data.data());
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  Text('JSON'),
+                  SizedBox(height: 5),
+                  TextFormField(controller: jsonController),
+                  SizedBox(height: 10),
+                  MaterialButton(
+                    child: Text('Parse Json and Add to Firestore'),
+                    onPressed: () async {
+                      Map<String, dynamic> exercise =
+                          json.decode(jsonController.text);
+                      print(exercise);
+                      var response = await currState.api.postExercise(exercise);
+                      print(response);
+                      var data = await currState.api.getDocument(response);
+                      print(data.data());
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   void addToFirestore(String collection) {
     showDialog(
         context: context,
@@ -47,27 +125,62 @@ class AdminPageState extends State<AdminPage> {
                           json.decode(jsonController.text);
                       print(jsonData);
                       var response;
-                      if(collection=="Workout"){
+                      if (collection == "Workout") {
                         response = await currState.api.postWorkout(jsonData);
-                      }
-                      else if(collection=="Diet"){
+                      } else if (collection == "Diet") {
                         response = await currState.api.postDiet(jsonData);
                       }
                       // else if(collection=="User") {
                       //   response = await currState.api.postUser(jsonData);
                       // }
-                      else if(collection=="Food") {
+                      else if (collection == "Food") {
                         response = await currState.api.postFood(jsonData);
-                      }
-                      else if(collection=="Exercise") {
+                      } else if (collection == "Exercise") {
                         response = await currState.api.postExercise(jsonData);
-                      }
-                      else{
+                      } else {
                         print("Invalid Collection!");
                       }
                       print(response);
                       var data = await currState.api.getDocument(response);
                       print(data.data());
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  Text('Add JSON Data to $collection'),
+                  SizedBox(height: 5),
+                  TextFormField(controller: jsonListController),
+                  SizedBox(height: 10),
+                  MaterialButton(
+                    child: Text('Add Json Array to Firestore'),
+                    onPressed: () async {
+                      List jsonArray = json.decode(jsonListController.text);
+                      print(jsonArray);
+                      var response;
+                      var data;
+                      jsonArray.forEach((map) async {
+                        map.remove("_id");
+                        print(map);
+                        if (collection == "Workout") {
+                          response = await currState.api.postWorkout(map);
+                        } else if (collection == "Diet") {
+                          response = await currState.api.postDiet(map);
+                        }
+                        // else if(collection=="User") {
+                        //   response = await currState.api.postUser(map);
+                        // }
+                        else if (collection == "Food") {
+                          response = await currState.api.postFood(map);
+                        } else if (collection == "Exercise") {
+                          response = await currState.api.postExercise(map);
+                          print(response);
+                        } else {
+                          print("Invalid Collection!");
+                          return;
+                        }
+                        print(response);
+                        data = await currState.api.getDocument(response);
+                        print(data.data());
+                      });
                       Navigator.of(context).pop();
                     },
                   ),
@@ -96,87 +209,7 @@ class AdminPageState extends State<AdminPage> {
               OutlinedButton(
                   child: Text("Add Exercise"),
                   onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text(
-                              'Add Exercise',
-                              style: TextStyle(fontSize: 23),
-                            ),
-                            content: Form(
-                              key: _formKey,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text('Exercise Name'),
-                                  SizedBox(height: 5),
-                                  TextFormField(controller: nameController),
-                                  SizedBox(height: 10),
-                                  Text('Difficulty'),
-                                  SizedBox(height: 5),
-                                  TextFormField(controller: diffController),
-                                  SizedBox(height: 10),
-                                  Text('Description'),
-                                  SizedBox(height: 5),
-                                  TextFormField(controller: descController),
-                                  SizedBox(height: 10),
-                                  Text('Target'),
-                                  SizedBox(height: 5),
-                                  TextFormField(controller: targetController),
-                                  SizedBox(height: 10),
-                                  MaterialButton(
-                                    child: Text('Add to Firestore'),
-                                    onPressed: () async {
-                                      // Map exercise = new Map();
-                                      // exercise["Description"]=descController.text;
-                                      // exercise["Name"]=nameController.text;
-                                      // exercise["Difficulty"]=double.parse(diffController.text);
-                                      // exercise["Target"]=targetController.text.split(",");
-                                      Map<String, dynamic> exercise = {
-                                        "Description": descController.text,
-                                        "Name": nameController.text,
-                                        "Difficulty":
-                                            double.parse(diffController.text),
-                                        "Target":
-                                            targetController.text.split(",")
-                                      };
-
-                                      print(exercise);
-                                      var response = await currState.api
-                                          .postExercise(exercise);
-                                      print(response);
-                                      var data = await currState.api
-                                          .getDocument(response);
-                                      print(data.data());
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                  Text('JSON'),
-                                  SizedBox(height: 5),
-                                  TextFormField(controller: jsonController),
-                                  SizedBox(height: 10),
-                                  MaterialButton(
-                                    child:
-                                        Text('Parse Json and Add to Firestore'),
-                                    onPressed: () async {
-                                      Map<String, dynamic> exercise =
-                                          json.decode(jsonController.text);
-                                      print(exercise);
-                                      var response = await currState.api
-                                          .postExercise(exercise);
-                                      print(response);
-                                      var data = await currState.api
-                                          .getDocument(response);
-                                      print(data.data());
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        });
+                    addToFirestore("Exercise");
                   }),
               OutlinedButton(
                   child: Text("Add Food"),
