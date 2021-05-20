@@ -1,10 +1,9 @@
-// import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workout_tracker2/api.dart';
 import 'dart:async';
 
@@ -21,12 +20,12 @@ import 'package:workout_tracker2/theme.dart';
 // );
 
 class StateData {
-  User firebaseUser;
-  SharedPreferences prefs;
-  var db = FirebaseFirestore.instance;
-  bool isLoggedIn = false;
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+  User firebaseUser = FirebaseAuth.instance.currentUser;
+  // SharedPreferences prefs = SharedPreferences.getInstance();
+  bool isLoggedIn = false;
+  var db = FirebaseFirestore.instance;
   DocumentReference userRef;
   DocumentSnapshot userData;
   DocumentReference currWorkoutRef;
@@ -41,12 +40,15 @@ class StateData {
   factory StateData() {
     return _instance;
   }
+
   Future<void> fetchUser() async{
+    print("fetchUser");
     userRef = db.collection("users").doc(firebaseUser.uid);
-    userData = await userRef.get();
+    userData = await api.getUser(firebaseUser.uid);
   }
   Future<bool> initializeUser() async {
-    firebaseUser = await signIn();
+    print("initializeUser");
+    await signIn();
     await fetchUser();
     if (userData.exists) {
       print("UserData present on firestore");
@@ -69,18 +71,17 @@ class StateData {
     // return existsUser;
   }
 
-  Future<User> signIn() async {
+  Future<void> signIn() async {
+    print("signIn");
     GoogleSignInAccount googleUser = await googleSignIn.signIn();
     GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
+    final AuthCredential _credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-
-    User firebaseUser =
-        (await firebaseAuth.signInWithCredential(credential)).user;
-    return firebaseUser;
+    print("GoogleAuth Credentials done");
+    firebaseUser = (await FirebaseAuth.instance.signInWithCredential(_credential)).user;
   }
 
   Future<void> signOut() async {
@@ -111,11 +112,8 @@ class StateData {
 }
 
 final StateData currState = StateData();
+
 var theme = darkTheme();
-// void func(){
-//   var F=ThemeData();
-//   F.tabBarTheme;
-// }
 
 List<DropdownMenuItem<String>> generateDropdownItems(List<String> ddl) {
   return ddl

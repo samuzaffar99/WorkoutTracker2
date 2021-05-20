@@ -1,9 +1,7 @@
 // import 'dart:convert';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Api {
-  User firebaseUser;
   var db = FirebaseFirestore.instance;
   CollectionReference usersCol;
   CollectionReference workoutsCol;
@@ -192,40 +190,3 @@ class Api {
     return response;
   }
 }
-
-// Future<Map> getUserNM(String username) async {
-//   final response = await _dio.get('/user/username/$username');
-//   print(response.data.runtimeType);
-//   return response.data;
-// }
-//
-// Future<User> getUser(String username) async {
-//   final response = await _dio.get('/user/username/$username');
-//   print('out response');
-//   //print('....${response.data['username']}');
-//   // if (response == null) {
-//   //   return null;
-//   // }
-//   if (response.data != null) {
-//     print(
-//         '....${response.data['_id']} , ${response.data['_id'].runtimeType}');
-//     return User.fromJson(response.data);
-//   }
-//   return null;
-// }
-//
-// Future<Map> postUserM(User user) async {
-//   String userJson = jsonEncode(user);
-//   print(userJson);
-//   final response = await _dio.post('/user', data: userJson);
-//   return response.data;
-// }
-//
-// Future<void> putUserM(Map<String, dynamic> user) async {
-//   print(user["_id"].runtimeType);
-//   String userJson = jsonEncode(user);
-//   print(userJson);
-//   final response = await _dio.put('/user/${user["_id"]}', data: userJson);
-//   print(response.data);
-//   //return User.fromJson(response.data);
-// }

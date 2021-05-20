@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workout_tracker2/globals.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,10 +12,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
-  final GoogleSignIn googleSignIn = GoogleSignIn();
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  SharedPreferences prefs;
-
   bool isLoading = false;
   bool isLoggedIn = false;
   User currentUser;
@@ -31,13 +27,10 @@ class LoginPageState extends State<LoginPage> {
       isLoading = true;
     });
 
-    prefs = await SharedPreferences.getInstance();
-
-    isLoggedIn = await googleSignIn.isSignedIn();
+    isLoggedIn = await currState.googleSignIn.isSignedIn();
     if (isLoggedIn) {
       await currState.initializeUser();
       Navigator.pushReplacementNamed(context, "Home");
-      // Navigator.pushNamed(context, "Setup");
     }
 
     this.setState(() {
@@ -46,8 +39,6 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Future<Null> handleSignIn() async {
-    prefs = await SharedPreferences.getInstance();
-
     this.setState(() {
       isLoading = true;
     });
