@@ -34,108 +34,113 @@ class _ProfilePageState extends State<ProfilePage> {
       title: Text('Update Profile Stats'),
       content: Form(
         // key: _formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Current Stats'),
-            SizedBox(height: 8),
-            TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Weight (kg)",
-                  suffixText: "kg"),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
-                LengthLimitingTextInputFormatter(5)
-              ],
-              controller: weightController,
-            ),
-            SizedBox(height: 12),
-            TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Height (cm)",
-                  suffixText: "cm"),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(
-                    RegExp('([0-9]+(\.[0-9]+)?)')),
-                LengthLimitingTextInputFormatter(5)
-              ],
-              controller: heightController,
-            ),
-            SizedBox(height: 12),
-            TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Body Fat (%)",
-                  suffixText: "%"),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(
-                    RegExp('([0-9]+(\.[0-9]+)?)')),
-                LengthLimitingTextInputFormatter(5)
-              ],
-              controller: bodyFatController,
-            ),
-            SizedBox(height: 24),
-            Text('Target Stats'),
-            SizedBox(height: 8),
-            TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Target Weight (kg)",
-                  suffixText: "kg"),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
-                LengthLimitingTextInputFormatter(5)
-              ],
-              controller: targetWeightController,
-            ),
-            SizedBox(height: 12),
-            TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Target Body Fat (%)",
-                  suffixText: "%"),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(
-                    RegExp('([0-9]+(\.[0-9]+)?)')),
-                LengthLimitingTextInputFormatter(5)
-              ],
-              controller: targetBodyFatController,
-            ),
-            SizedBox(height: 10),
-            Container(
-              width: double.maxFinite,
-              child: ElevatedButton(
-                child: Text('Save'),
-                onPressed: () async {
-                  Map<String, dynamic> user = {};
-                  user["height"] = heightController.text;
-                  user["weight"] = weightController.text;
-                  user["bodyFat"] = bodyFatController.text;
-                  user["targetWeight"] = targetWeightController.text;
-                  user["targetBodyFat"] = targetBodyFatController.text;
-                  await currState.api.putUser(currState.firebaseUser.uid, user);
-                  await currState.fetchUser();
-                  setState(() {});
-                  Navigator.of(context).pop();
-                },
+        child: Container(
+          // height: double.maxFinite,
+          width: 240,
+          child: ListView(
+            shrinkWrap : true,
+            children: [
+              Text('Current Stats'),
+              SizedBox(height: 8),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Weight (kg)",
+                    suffixText: "kg"),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
+                  LengthLimitingTextInputFormatter(5)
+                ],
+                controller: weightController,
               ),
-            ),
-          ],
+              SizedBox(height: 12),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Height (cm)",
+                    suffixText: "cm"),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp('([0-9]+(\.[0-9]+)?)')),
+                  LengthLimitingTextInputFormatter(5)
+                ],
+                controller: heightController,
+              ),
+              SizedBox(height: 12),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Body Fat (%)",
+                    suffixText: "%"),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp('([0-9]+(\.[0-9]+)?)')),
+                  LengthLimitingTextInputFormatter(5)
+                ],
+                controller: bodyFatController,
+              ),
+              SizedBox(height: 24),
+              Text('Target Stats'),
+              SizedBox(height: 8),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Target Weight (kg)",
+                    suffixText: "kg"),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
+                  LengthLimitingTextInputFormatter(5)
+                ],
+                controller: targetWeightController,
+              ),
+              SizedBox(height: 12),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Target Body Fat (%)",
+                    suffixText: "%"),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp('([0-9]+(\.[0-9]+)?)')),
+                  LengthLimitingTextInputFormatter(5)
+                ],
+                controller: targetBodyFatController,
+              ),
+              SizedBox(height: 10),
+              Container(
+                width: double.maxFinite,
+                child: ElevatedButton(
+                  child: Text('Save'),
+                  onPressed: () async {
+                    Map<String, dynamic> user = {};
+                    user["height"] = heightController.text;
+                    user["weight"] = weightController.text;
+                    user["bodyFat"] = bodyFatController.text;
+                    user["targetWeight"] = targetWeightController.text;
+                    user["targetBodyFat"] = targetBodyFatController.text;
+                    await currState.api
+                        .putUser(currState.firebaseUser.uid, user);
+                    await currState.fetchUser();
+                    setState(() {});
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  void changeName() {
-    return;
-  }
+  // void changeName() {
+  //   return;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -209,7 +214,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 75,
                               width: 95,
                               child: Card(
-                                color: Colors.grey[300],
+                                color: Colors.grey[200],
                                 elevation: 4,
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -218,7 +223,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
-                                      Text(currState.userData.get("weight").toString() +
+                                      Text(currState.userData
+                                              .get("weight")
+                                              .toString() +
                                           " kg"),
                                     ]),
                               ),
@@ -227,7 +234,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 75,
                               width: 95,
                               child: Card(
-                                color: Colors.grey[300],
+                                color: Colors.grey[200],
                                 elevation: 5,
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -236,7 +243,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
-                                      Text(currState.userData.get("bodyFat").toString() +
+                                      Text(currState.userData
+                                              .get("bodyFat")
+                                              .toString() +
                                           " %"),
                                     ]),
                               ),
@@ -245,7 +254,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 75,
                               width: 95,
                               child: Card(
-                                color: Colors.grey[300],
+                                color: Colors.grey[200],
                                 elevation: 5,
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -255,21 +264,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
                                       Text(""
-                                        // calcBMI(
-                                        //         double.parse(currState.userData
-                                        //             .get("weight")),
-                                        //         double.parse(currState.userData
-                                        //             .get("height")))
-                                        //     .toStringAsFixed(1),
-                                      )
+                                          // calcBMI(
+                                          //         double.parse(currState.userData
+                                          //             .get("weight")),
+                                          //         double.parse(currState.userData
+                                          //             .get("height")))
+                                          //     .toStringAsFixed(1),
+                                          )
                                     ]),
                               ),
                             ),
                           ],
                         ),
-                        Expanded(
-                          child: SizedBox(),
-                        ),
+                        Expanded(child: SizedBox()),
                         Text(
                           'Your Goals',
                           textAlign: TextAlign.center,
@@ -287,7 +294,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 75,
                               width: 95,
                               child: Card(
-                                color: Colors.grey[300],
+                                color: Colors.grey[200],
                                 elevation: 5,
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -304,7 +311,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 75,
                               width: 95,
                               child: Card(
-                                color: Colors.grey[300],
+                                color: Colors.grey[200],
                                 elevation: 5,
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -321,7 +328,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 75,
                               width: 95,
                               child: Card(
-                                color: Colors.grey[300],
+                                color: Colors.grey[200],
                                 elevation: 5,
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -340,9 +347,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ],
                         ),
                         Expanded(
-                          child: SizedBox(
-                            height: 30
-                          ),
+                          child: SizedBox(height: 30),
                         ),
                         Text(
                           '7 Day Streak',
@@ -367,35 +372,14 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: MaterialButton(
-                                  onPressed: () {
-                                    // Navigator.pop(context);
-                                    Navigator.pushNamed(context, "Settings");
-                                  },
-                                  child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          0, 10, 0, 10),
-                                      child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Icon(Icons.settings),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: Text('Settings'),
-                                            ),
-                                          ]))),
-                            ),
-                          ],
+                        SizedBox(height: 15),
+                        TextButton.icon(
+                          label: Text("Settings"),
+                          icon: Icon(Icons.settings),
+                          onPressed: () {
+                            // Navigator.pop(context);
+                            Navigator.pushNamed(context, "Settings");
+                          },
                         )
                       ],
                     ),

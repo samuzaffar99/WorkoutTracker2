@@ -215,9 +215,7 @@ class WorkoutPageState extends State<WorkoutPage> {
                   },
                   child: Text(
                     "Start Workout",
-                    style: TextStyle(
-                        // color: Colors.white.withAlpha(230),
-                        fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
               ),

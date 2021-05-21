@@ -48,12 +48,11 @@ class _SettingsPageState extends State<SettingsPage> {
                         children: [
                           Row(
                             children: [
-                              Text(
-                                "Dark Mode",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.w600),
-                              ),
+                              Text("Dark Mode",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w600)),
                             ],
                           ),
                           Switch(
@@ -71,20 +70,15 @@ class _SettingsPageState extends State<SettingsPage> {
                         children: [
                           Row(
                             children: [
-                              Text(
-                                "Workout Alarm",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600),
-                              ),
+                              Text("Workout Alarm",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600)),
                             ],
                           ),
                           Switch(
-                            // inactiveThumbColor: Colors.white,
-                            // activeTrackColor: Colors.green[10],
-                            // activeColor: Colors.green,
                             value: toggleAlarm,
                             onChanged: (value) {
                               setState(() {
@@ -95,40 +89,43 @@ class _SettingsPageState extends State<SettingsPage> {
                         ],
                       ),
                       SizedBox(height: 80),
-                      SizedBox(
-                        width: double.maxFinite,
-                        child: MaterialButton(
-                          color: Colors.blue,
-                          child: Text('Admin'),
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pushNamed(context, 'Admin');
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        width: double.maxFinite,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              primary: Colors.redAccent),
-                          child: Text('Delete My Account'),
-                          onPressed: () {
-                            currState.api.delUser(currState.firebaseUser.uid);
-                            currState.signOut();
-                            Navigator.pushReplacementNamed(context, "Login");
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        width: double.maxFinite,
-                        child: MaterialButton(
-                          color: Colors.redAccent,
-                          onPressed: () {
-                            currState.signOut();
-                            Navigator.pushReplacementNamed(context, "Login");
-                          },
-                          child: Text("Log Out"),
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ElevatedButton(
+                            // color: Colors.blue,
+                            child: Text('Admin'),
+                            onPressed: () {
+                              // Navigator.pop(context);
+                              Navigator.pushNamed(context, 'Admin');
+                            },
+                          ),
+                          OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                                primary: Colors.redAccent),
+                            child: Text('Delete My Account'),
+                            onPressed: () {
+                              currState.api.delUser(currState.firebaseUser.uid);
+                              currState.signOut();
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  "Login", (Route<dynamic> route) => false);
+                              // Navigator.pushReplacementNamed(context, "Login");
+                            },
+                          ),
+                          ElevatedButton(
+                            style:
+                                ElevatedButton.styleFrom(primary: Colors.red),
+                            child: Text(
+                              'Log out',
+                            ),
+                            onPressed: () {
+                              currState.signOut();
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  "Login", (Route<dynamic> route) => false);
+                              // Navigator.pushReplacementNamed(context, "Login");
+                            },
+                          ),
+                        ],
                       ),
                       SizedBox(height: 20),
                       Text(
@@ -141,14 +138,14 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                       SizedBox(height: 5),
-                      MaterialButton(
+                      TextButton(
                         child: Text('View on PlayStore',
                             style: TextStyle(color: Colors.blue)),
                         onPressed: () {
                           //open playstore link
                         },
                       ),
-                      MaterialButton(
+                      TextButton(
                         child: Text('Rate Us',
                             style: TextStyle(color: Colors.blue)),
                         onPressed: () {

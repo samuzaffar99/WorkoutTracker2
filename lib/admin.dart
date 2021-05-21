@@ -53,14 +53,9 @@ class AdminPageState extends State<AdminPage> {
                   SizedBox(height: 5),
                   TextFormField(controller: targetController),
                   SizedBox(height: 10),
-                  MaterialButton(
+                  ElevatedButton(
                     child: Text('Add to Firestore'),
                     onPressed: () async {
-                      // Map exercise = new Map();
-                      // exercise["Description"]=descController.text;
-                      // exercise["Name"]=nameController.text;
-                      // exercise["Difficulty"]=double.parse(diffController.text);
-                      // exercise["Target"]=targetController.text.split(",");
                       Map<String, dynamic> exercise = {
                         "Description": descController.text,
                         "Name": nameController.text,
@@ -80,7 +75,7 @@ class AdminPageState extends State<AdminPage> {
                   SizedBox(height: 5),
                   TextFormField(controller: jsonController),
                   SizedBox(height: 10),
-                  MaterialButton(
+                  ElevatedButton(
                     child: Text('Parse Json and Add to Firestore'),
                     onPressed: () async {
                       Map<String, dynamic> exercise =
@@ -100,7 +95,7 @@ class AdminPageState extends State<AdminPage> {
         });
   }
 
-  void addToFirestore(String collection) {
+  void addToFirestore(String collectionName) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -114,28 +109,28 @@ class AdminPageState extends State<AdminPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Add JSON Data to $collection'),
+                  Text('Add JSON Data to $collectionName'),
                   SizedBox(height: 5),
                   TextFormField(controller: jsonController),
                   SizedBox(height: 10),
-                  MaterialButton(
+                  ElevatedButton(
                     child: Text('Parse Json and Add to Firestore'),
                     onPressed: () async {
                       Map<String, dynamic> jsonData =
                           json.decode(jsonController.text);
                       print(jsonData);
                       var response;
-                      if (collection == "Workout") {
+                      if (collectionName == "Workout") {
                         response = await currState.api.postWorkout(jsonData);
-                      } else if (collection == "Diet") {
+                      } else if (collectionName == "Diet") {
                         response = await currState.api.postDiet(jsonData);
                       }
                       // else if(collection=="User") {
                       //   response = await currState.api.postUser(jsonData);
                       // }
-                      else if (collection == "Food") {
+                      else if (collectionName == "Food") {
                         response = await currState.api.postFood(jsonData);
-                      } else if (collection == "Exercise") {
+                      } else if (collectionName == "Exercise") {
                         response = await currState.api.postExercise(jsonData);
                       } else {
                         print("Invalid Collection!");
@@ -146,11 +141,11 @@ class AdminPageState extends State<AdminPage> {
                       Navigator.of(context).pop();
                     },
                   ),
-                  Text('Add JSON Data to $collection'),
+                  Text('Add JSON Data to $collectionName'),
                   SizedBox(height: 5),
                   TextFormField(controller: jsonListController),
                   SizedBox(height: 10),
-                  MaterialButton(
+                  ElevatedButton(
                     child: Text('Add Json Array to Firestore'),
                     onPressed: () async {
                       List jsonArray = json.decode(jsonListController.text);
@@ -160,17 +155,17 @@ class AdminPageState extends State<AdminPage> {
                       jsonArray.forEach((map) async {
                         map.remove("_id");
                         print(map);
-                        if (collection == "Workout") {
+                        if (collectionName == "Workout") {
                           response = await currState.api.postWorkout(map);
-                        } else if (collection == "Diet") {
+                        } else if (collectionName == "Diet") {
                           response = await currState.api.postDiet(map);
                         }
                         // else if(collection=="User") {
                         //   response = await currState.api.postUser(map);
                         // }
-                        else if (collection == "Food") {
+                        else if (collectionName == "Food") {
                           response = await currState.api.postFood(map);
-                        } else if (collection == "Exercise") {
+                        } else if (collectionName == "Exercise") {
                           response = await currState.api.postExercise(map);
                           print(response);
                         } else {
@@ -201,9 +196,10 @@ class AdminPageState extends State<AdminPage> {
           ),
           centerTitle: true,
         ),
-        body: Center(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               OutlinedButton(

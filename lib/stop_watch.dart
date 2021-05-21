@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class FlutterStopWatch extends StatefulWidget {
@@ -8,13 +7,18 @@ class FlutterStopWatch extends StatefulWidget {
 }
 
 class _FlutterStopWatchState extends State<FlutterStopWatch> {
-  bool flag = true;
+  bool isActive = true;
   Stream<int> timerStream;
   StreamSubscription<int> timerSubscription;
   String hoursStr = '00';
   String minutesStr = '00';
   String secondsStr = '00';
 
+  @override
+  void dispose(){
+    timerSubscription.cancel();
+    super.dispose();
+  }
   Stream<int> stopWatchStream() {
     StreamController<int> streamController;
     Timer timer;
@@ -31,11 +35,13 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
     }
 
     void tick(_) {
-      counter++;
-      streamController.add(counter);
-      if (!flag) {
-        stopTimer();
+      if (isActive) {
+        counter++;
       }
+      streamController.add(counter);
+      // if (!isActive) {
+      //   stopTimer();
+      // }
     }
 
     void startTimer() {
@@ -72,26 +78,32 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
 
   @override
   void initState() {
-    // TODO: implement initState
     clockStart();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "\n$hoursStr:$minutesStr:$secondsStr",
-              style: TextStyle(
-                fontSize: 30.0,
-              ),
-            ),
-            SizedBox(height: 20.0),
-          ],
+    return Column(
+      children: [
+        Text(
+          "\n$hoursStr:$minutesStr:$secondsStr",
+          style: TextStyle(
+            fontSize: 30.0,
+            color: Colors.white,
+          ),
         ),
-      );
+        IconButton(
+            color: Colors.white,
+            alignment: Alignment.center,
+            icon: isActive?Icon(Icons.pause):Icon(Icons.play_arrow),
+            onPressed: () {
+              setState(() {
+                isActive = !isActive;
+                // isActive?timerSubscription.resume():timerSubscription.pause();
+              });
+            }),
+      ],
+    );
   }
 }

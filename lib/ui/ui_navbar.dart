@@ -26,9 +26,10 @@ class _NavigationBarState extends State<NavigationBar> {
           },
         );
       },
-      fixedColor: Colors.black,
+      // backgroundColor: Colors.red,
+      selectedItemColor: Colors.black,
       showUnselectedLabels: false,
-      unselectedItemColor: Colors.black,
+      unselectedItemColor: Colors.black54,
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),

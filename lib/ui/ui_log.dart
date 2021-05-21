@@ -15,9 +15,9 @@ class _LogPageState extends State<LogPage> {
     // int index = 3;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: theme.background,
+        // backgroundColor: theme.background,
         appBar: AppBar(
-          backgroundColor: theme.appBar,
+          // backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Log"),
         ),
@@ -31,7 +31,7 @@ class _LogPageState extends State<LogPage> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
-                  color: Colors.white,
+                  // color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -41,7 +41,7 @@ class _LogPageState extends State<LogPage> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.white,
+                  // color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -63,34 +63,25 @@ class _LogPageState extends State<LogPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ButtonTheme(
-                    height: 45.0,
-                    minWidth: 150.0,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        // widget.user.log=null;
-                        // _api.putUser(widget.user);
-                        // Navigator.pop(context);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) {
-                        //       return;
-                        //     },
-                        //   ),
-                        // );
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Clear Log",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white.withAlpha(230),
-                            ),
-                          ),
-                        ],
+                  OutlinedButton(
+                    onPressed: () {
+                      // widget.user.log=null;
+                      // _api.putUser(widget.user);
+                      // Navigator.pop(context);
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) {
+                      //       return;
+                      //     },
+                      //   ),
+                      // );
+                    },
+                    child: Text(
+                      "Clear Log",
+                      style: TextStyle(
+                        fontSize: 20,
+                        // color: Colors.white.withAlpha(230),
                       ),
                     ),
                   ),

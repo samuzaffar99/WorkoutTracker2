@@ -9,9 +9,9 @@ class WorkoutSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: theme.background,
+      // backgroundColor: theme.background,
       appBar: AppBar(
-        backgroundColor: theme.appBar,
+        // backgroundColor: theme.appBar,
         elevation: 5,
         title: Text("Summary"),
       ),
@@ -19,55 +19,25 @@ class WorkoutSummary extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 50,
-            ),
-            Expanded(
-              child: getWorkoutView(),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 50,
+            SizedBox(height: 50),
+            Expanded(child: getWorkoutView()),
+            SizedBox(height: 50),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0))),
+                onPressed: () {
+                  // Navigator.pop(context);
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil("Home", (Route<dynamic> route) => false);
+                },
+                child: Text(
+                  "Finish",
+                  style: TextStyle(fontSize: 20),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ButtonTheme(
-                        height: 45.0,
-                        minWidth: 160.0,
-                        child: OutlinedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pushNamed(context, 'Home');
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Next",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white.withAlpha(230),
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                        offset: Offset(1.5, 1.5),
-                                        blurRadius: 5.0,
-                                        color: Color.fromARGB(255, 0, 0, 0))
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             )
           ],
         ),

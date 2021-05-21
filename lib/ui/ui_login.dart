@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workout_tracker2/globals.dart';
@@ -14,7 +12,6 @@ class LoginPage extends StatefulWidget {
 class LoginPageState extends State<LoginPage> {
   bool isLoading = false;
   bool isLoggedIn = false;
-  User currentUser;
 
   @override
   void initState() {
