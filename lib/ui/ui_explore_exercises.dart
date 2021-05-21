@@ -33,10 +33,10 @@ class _ExploreExercisesState extends State<ExploreExercises> {
       child: Scaffold(
         // backgroundColor: theme.background,
         appBar: AppBar(
-          // automaticallyImplyLeading: true,
           // backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Explore"),
+          centerTitle: true,
         ),
         body: Container(
           child: Card(

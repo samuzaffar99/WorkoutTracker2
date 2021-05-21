@@ -153,6 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
           // backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Profile"),
+          centerTitle: true,
           actions: [
             Padding(
                 padding: EdgeInsets.only(right: 20.0),

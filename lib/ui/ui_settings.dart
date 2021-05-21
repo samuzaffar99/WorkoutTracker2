@@ -27,6 +27,7 @@ class _SettingsPageState extends State<SettingsPage> {
           // backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Settings"),
+          centerTitle: true,
         ),
         body: Container(
           height: double.maxFinite,

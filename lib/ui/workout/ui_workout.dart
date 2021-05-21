@@ -177,6 +177,7 @@ class WorkoutPageState extends State<WorkoutPage> {
           // backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Workout"),
+          centerTitle: true,
           actions: [
             Padding(
                 padding: EdgeInsets.only(right: 20.0),

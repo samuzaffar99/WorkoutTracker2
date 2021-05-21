@@ -178,7 +178,8 @@ class _DietPageState extends State<DietPage> {
         appBar: AppBar(
           // backgroundColor: theme.appBar,
           elevation: 5,
-          title: Text('Diet', style: TextStyle(color: theme.appBarText)),
+          title: Text('Diet'),
+          centerTitle: true,
         ),
         bottomNavigationBar: NavigationBar(1),
         endDrawer: Drawer(

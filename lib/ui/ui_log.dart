@@ -20,6 +20,7 @@ class _LogPageState extends State<LogPage> {
           // backgroundColor: theme.appBar,
           elevation: 5,
           title: Text("Log"),
+          centerTitle: true,
         ),
         bottomNavigationBar: NavigationBar(3),
         body: Container(
