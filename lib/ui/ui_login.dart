@@ -26,8 +26,13 @@ class LoginPageState extends State<LoginPage> {
 
     isLoggedIn = await currState.googleSignIn.isSignedIn();
     if (isLoggedIn) {
-      await currState.initializeUser();
-      Navigator.pushReplacementNamed(context, "Home");
+      bool existsUser = await currState.initializeUser();
+      if (existsUser) {
+        // Navigator.pushNamed(context, "Setup");
+        Navigator.pushReplacementNamed(context, "Home");
+      } else {
+        Navigator.pushNamed(context, "Setup");
+      }
     }
 
     this.setState(() {
@@ -45,9 +50,11 @@ class LoginPageState extends State<LoginPage> {
       isLoading = false;
     });
     if (existsUser) {
+      print("unga bunga");
       // Navigator.pushNamed(context, "Setup");
       Navigator.pushReplacementNamed(context, "Home");
     } else {
+      print("not unga bunga");
       Navigator.pushNamed(context, "Setup");
     }
   }
@@ -57,26 +64,23 @@ class LoginPageState extends State<LoginPage> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            title: Text(
-              "Login",
-              // style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-            ),
+            // backgroundColor: theme.appBar,
+            elevation: 5,
+            title: Text("Login"),
             centerTitle: true,
-            backgroundColor: theme.appBar,
           ),
           body: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                OutlinedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                      ),
+                OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                      elevation: 1,
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
                     ),
                     onPressed: () => handleSignIn().catchError((err) {
                           print(err);
@@ -85,33 +89,26 @@ class LoginPageState extends State<LoginPage> {
                             isLoading = false;
                           });
                         }),
-                    child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                        child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image(
-                                image: AssetImage("assets/g-logo.png"),
-                                height: 35.0,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  'Sign in with Google',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ]))),
+                    label: Text(
+                      'Sign in with Google',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    icon: Image(
+                      image: AssetImage("assets/g-logo.png"),
+                      height: 35.0,
+                    )
+                    ),
                 SizedBox(height: 10),
                 // Loading
                 Container(
-                  child:
-                      isLoading ? const CircularProgressIndicator() : Container(),
+                  child: isLoading
+                      ? const CircularProgressIndicator()
+                      : Container(),
                 ),
               ],
             ),

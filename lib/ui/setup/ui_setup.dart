@@ -42,7 +42,7 @@ class _SetupPageState extends State<SetupPage> {
   ];
   final List<String> genders = ["Male", "Female"];
   final List<String> plans = ["Lose Fat", "Gain Muscle", "Maintain Weight"];
-  final List<bool> workoutSelected = [true,false,false];
+  final List<bool> workoutSelected = [true, false, false];
   // var _formKey = GlobalKey<FormState>();
   final _currentPageNotifier = ValueNotifier<int>(0);
   final PageController pageController = PageController();
@@ -126,425 +126,409 @@ class _SetupPageState extends State<SetupPage> {
 
   Widget infoPage() {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
       children: [
-        SizedBox(height: 12),
-        Text("Basic Info", textScaleFactor: 3),
-        Container(
-          width: 320,
-          height: 320,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              TextFormField(
+        Expanded(
+          child: Container(
+            width: 320,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+            child: ListView(
+              children: [
+                Text("Basic Info",
+                    textScaleFactor: 2, textAlign: TextAlign.center),
+                SizedBox(height: 24),
+                TextFormField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "What should we call you?",
+                      prefixIcon: Icon(Icons.person),
+                    ),
+                    controller: nameController,
+                    inputFormatters: [LengthLimitingTextInputFormatter(24)]),
+                SizedBox(height: 24),
+                DropdownButtonFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "What should we call you?",
-                    prefixIcon: Icon(Icons.person),
-                  ),
-                  controller: nameController,
-                  inputFormatters: [LengthLimitingTextInputFormatter(24)]),
-              DropdownButtonFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(), labelText: "Gender"),
-                value: genders[0],
-                items: generateDropdownItems(genders),
-                onChanged: (val) {
-                  setState(
-                    () {
-                      gender = val;
-                    },
-                  );
-                },
-              ),
-              OutlinedButton(
-                child: TextField(
-                  decoration: InputDecoration(labelText: "Date of Birth"),
-                  textAlign: TextAlign.center,
-                  controller: dateController,
-                  enabled: false,
+                      border: OutlineInputBorder(), labelText: "Gender"),
+                  value: genders[0],
+                  items: generateDropdownItems(genders),
+                  onChanged: (val) {
+                    setState(
+                      () {
+                        gender = val;
+                      },
+                    );
+                  },
                 ),
-                onPressed: () {
-                  _selectDate();
-                },
-              ),
-            ],
+                SizedBox(height: 24),
+                OutlinedButton(
+                  child: TextField(
+                    decoration: InputDecoration(labelText: "Date of Birth"),
+                    textAlign: TextAlign.center,
+                    controller: dateController,
+                    enabled: false,
+                  ),
+                  onPressed: () => _selectDate(),
+                ),
+              ],
+            ),
           ),
         ),
-        Spacer(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [nextButton()],
-        ),
+        Row(children: [nextButton()]),
       ],
     );
   }
 
   Widget statsPage() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: 12),
-        Text("Current Stats", textScaleFactor: 3),
-        Container(
-          width: 400,
-          padding: EdgeInsets.fromLTRB(0, 24, 0, 24),
-          child: Column(children: [
-            TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Weight (kg)",
-                  suffixText: "kg"),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
-                LengthLimitingTextInputFormatter(5)
+        Expanded(
+          child: Container(
+            width: 320,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+            child: ListView(
+              children: [
+                Text("Current Stats", textScaleFactor: 2),
+                SizedBox(height: 24),
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Weight (kg)",
+                      suffixText: "kg"),
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
+                    LengthLimitingTextInputFormatter(5)
+                  ],
+                  onChanged: (value) => weight = double.parse(value),
+                ),
+                SizedBox(height: 24),
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Height (cm)",
+                      suffixText: "cm"),
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(
+                        RegExp('([0-9]+(\.[0-9]+)?)')),
+                    LengthLimitingTextInputFormatter(5)
+                  ],
+                  onChanged: (value) => height = double.parse(value),
+                ),
+                SizedBox(height: 24),
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Body Fat (%)",
+                      suffixText: "%"),
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(
+                        RegExp('([0-9]+(\.[0-9]+)?)')),
+                    LengthLimitingTextInputFormatter(5)
+                  ],
+                  onChanged: (value) => bodyFat = double.parse(value),
+                ),
+                SizedBox(height: 24),
+                Text(
+                  "Select your Goals",
+                  textScaleFactor: 2,
+                ),
+                SizedBox(height: 24),
+                DropdownButtonFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), labelText: "Goals"),
+                  value: plans[0],
+                  items: generateDropdownItems(plans),
+                  onChanged: (val) {
+                    setState(
+                      () {
+                        goal = val;
+                      },
+                    );
+                  },
+                ),
+                SizedBox(height: 24),
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Target Weight (kg)",
+                      suffixText: "kg"),
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
+                    LengthLimitingTextInputFormatter(5)
+                  ],
+                  onChanged: (value) => targetWeight = double.parse(value),
+                ),
+                SizedBox(height: 24),
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Target Body Fat (%)",
+                      suffixText: "%"),
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(
+                        RegExp('([0-9]+(\.[0-9]+)?)')),
+                    LengthLimitingTextInputFormatter(5)
+                  ],
+                  onChanged: (value) => targetBodyFat = double.parse(value),
+                ),
               ],
-              onChanged: (value) => weight = double.parse(value),
             ),
-            SizedBox(height: 24),
-            TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Height (cm)",
-                  suffixText: "cm"),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(
-                    RegExp('([0-9]+(\.[0-9]+)?)')),
-                LengthLimitingTextInputFormatter(5)
-              ],
-              onChanged: (value) => height = double.parse(value),
-            ),
-            SizedBox(height: 24),
-            TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Body Fat (%)",
-                  suffixText: "%"),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(
-                    RegExp('([0-9]+(\.[0-9]+)?)')),
-                LengthLimitingTextInputFormatter(5)
-              ],
-              onChanged: (value) => bodyFat = double.parse(value),
-            ),
-          ]),
+          ),
         ),
-        Text(
-          "Select your Goals",
-          textScaleFactor: 3,
-        ),
-        Container(
-            width: 400,
-            padding: EdgeInsets.fromLTRB(0, 24, 0, 0),
-            child: Column(children: [
-              DropdownButtonFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(), labelText: "Goals"),
-                value: plans[0],
-                items: generateDropdownItems(plans),
-                onChanged: (val) {
-                  setState(
-                    () {
-                      goal = val;
-                    },
-                  );
-                },
-              ),
-              SizedBox(height: 24),
-              TextFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Target Weight (kg)",
-                    suffixText: "kg"),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp('[0-9.,]+')),
-                  LengthLimitingTextInputFormatter(5)
-                ],
-                onChanged: (value) => targetWeight = double.parse(value),
-              ),
-              SizedBox(height: 24),
-              TextFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Target Body Fat (%)",
-                    suffixText: "%"),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(
-                      RegExp('([0-9]+(\.[0-9]+)?)')),
-                  LengthLimitingTextInputFormatter(5)
-                ],
-                onChanged: (value) => targetBodyFat = double.parse(value),
-              ),
-            ])),
-        Spacer(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [prevButton(), SizedBox(width: 24), nextButton()],
-        ),
+        Row(children: [prevButton(), nextButton()]),
       ],
     );
   }
 
   Widget workoutPage() {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: 12),
-          Text('Select a Training Plan', textScaleFactor: 3),
-          Container(
-              width: 320,
-              height: 640,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // SizedBox(height: 24),
-                  Container(
-                    height: 160,
-                    child: ListView.separated(
-                        separatorBuilder: (BuildContext context, int index) {
-                          return SizedBox(height: 12);
-                        },
-                        itemCount: workoutPlans.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return new MaterialButton(
-                            color: workoutSelected[index]
-                                ? Colors.orange
-                                : Colors.white,
-                            elevation: 5,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                workoutSelected.fillRange(
-                                    0, workoutSelected.length, false);
-                                workoutSelected[index] = true;
-                                    // !workoutSelected[index];
-                              });
-                            },
-                            child: new Text(workoutPlans[index]),
-                          );
-                        }),
+    return Column(children: [
+      Expanded(
+        child: Container(
+            width: 320,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+            child: ListView(
+              children: [
+                SizedBox(height: 12),
+                Text('Select a Training Plan',
+                    textScaleFactor: 2, textAlign: TextAlign.center),
+                SizedBox(height: 24),
+                Expanded(
+                  child: ListView.separated(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return SizedBox(height: 12);
+                      },
+                      itemCount: workoutPlans.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return new MaterialButton(
+                          color: workoutSelected[index]
+                              ? Colors.orange
+                              : Colors.white,
+                          elevation: 5,
+                          height: 48,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              workoutSelected.fillRange(
+                                  0, workoutSelected.length, false);
+                              workoutSelected[index] = true;
+                              // !workoutSelected[index];
+                            });
+                          },
+                          child: new Text(workoutPlans[index]),
+                        );
+                      }),
+                ),
+                SizedBox(height: 36),
+                Text('Select Workout Days',
+                    textScaleFactor: 2, textAlign: TextAlign.center),
+                SizedBox(height: 12),
+                WeekdaySelector(
+                  onChanged: (int day) {
+                    setState(() {
+                      final index = day % 7;
+                      weekdays[index] = !weekdays[index];
+                    });
+                  },
+                  values: weekdays,
+                ),
+                SizedBox(height: 24),
+                OutlinedButton(
+                  child: TextField(
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.alarm),
+                        labelText: "Select Workout Start Time"),
+                    textAlign: TextAlign.center,
+                    controller: timeController,
+                    enabled: false,
                   ),
-                  Text('Select Workout Days', textScaleFactor: 2),
-                  WeekdaySelector(
-                    onChanged: (int day) {
-                      setState(() {
-                        final index = day % 7;
-                        weekdays[index] = !weekdays[index];
-                      });
-                    },
-                    values: weekdays,
-                  ),
-                  OutlinedButton(
-                    child: TextField(
-                      decoration: InputDecoration(
-                          icon: Icon(Icons.alarm),
-                          labelText: "Select Workout Start Time"),
-                      textAlign: TextAlign.center,
-                      controller: timeController,
-                      enabled: false,
-                    ),
-                    onPressed: () {
-                      _selectTime();
-                    },
-                  ),
-                ],
-              )),
-          Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [prevButton(), SizedBox(width: 24), nextButton()],
-          ),
-        ]);
+                  onPressed: () {
+                    _selectTime();
+                  },
+                ),
+              ],
+            )),
+      ),
+      Row(children: [prevButton(), nextButton()]),
+    ]);
   }
 
   Widget dietPage() {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text("Select Macros", textScaleFactor: 2),
-          SizedBox(height: 24),
-          Container(
-              width: 360, height: 320, child: PieChart(dataMap: macroPct)),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            Text("Fat", style: TextStyle(fontSize: 16)),
-            VerticalDivider(),
-            Text("Protein", style: TextStyle(fontSize: 16)),
-            VerticalDivider(),
-            Text("Carbs", style: TextStyle(fontSize: 16)),
-          ]),
-          SliderTheme(
-            data: SliderThemeData(
-              trackHeight: 24,
-              rangeThumbShape: RoundRangeSliderThumbShape(
-                  enabledThumbRadius: 18, pressedElevation: 20, elevation: 30),
-              showValueIndicator: ShowValueIndicator.never,
-            ),
-            child: RangeSlider(
-              activeColor: Colors.blueAccent,
-              inactiveColor: Colors.blue,
-              divisions: 20,
-              values: _values,
-              min: 0,
-              max: 100,
-              onChanged: (RangeValues values) {
-                setState(() {
-                  _values =
-                      RangeValues(max(20, values.start), min(80, values.end));
-                  macroPct["Fat"] = _values.start;
-                  macroPct["Protein"] = _values.end - _values.start;
-                  macroPct["Carbs"] = 100 - _values.end;
-                });
-              },
-            ),
-          ),
-          SizedBox(height: 10),
-          Container(
-            width: 360,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Lactose Free", style: TextStyle(fontSize: 18)),
-                    Switch(
-                      value: toggleLactose,
-                      onChanged: (value) {
-                        setState(() {
-                          toggleLactose = value;
-                        });
-                      },
-                    ),
-                  ],
+    return Column(children: [
+      Expanded(
+        child: Container(
+          width: 320,
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+          child: ListView(
+            children: [
+              Text("Select Macros",
+                  textScaleFactor: 2, textAlign: TextAlign.center),
+              SizedBox(height: 24),
+              Container(
+                  width: 240, height: 240, child: PieChart(dataMap: macroPct)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("Fat", style: TextStyle(fontSize: 16)),
+                  VerticalDivider(),
+                  Text("Protein", style: TextStyle(fontSize: 16)),
+                  VerticalDivider(),
+                  Text("Carbs", style: TextStyle(fontSize: 16)),
+                ],
+              ),
+              SliderTheme(
+                data: SliderThemeData(
+                  trackHeight: 24,
+                  rangeThumbShape: RoundRangeSliderThumbShape(
+                      enabledThumbRadius: 18,
+                      pressedElevation: 20,
+                      elevation: 30),
+                  showValueIndicator: ShowValueIndicator.never,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Sugar Free", style: TextStyle(fontSize: 18)),
-                    Switch(
-                      value: toggleSugar,
-                      onChanged: (value) {
-                        setState(() {
-                          toggleSugar = value;
-                        });
-                      },
-                    ),
-                  ],
+                child: RangeSlider(
+                  activeColor: Colors.blueAccent,
+                  inactiveColor: Colors.blue,
+                  divisions: 20,
+                  values: _values,
+                  min: 0,
+                  max: 100,
+                  onChanged: (RangeValues values) {
+                    setState(() {
+                      _values = RangeValues(
+                          max(20, values.start), min(80, values.end));
+                      macroPct["Fat"] = _values.start;
+                      macroPct["Protein"] = _values.end - _values.start;
+                      macroPct["Carbs"] = 100 - _values.end;
+                    });
+                  },
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Lactose Free", style: TextStyle(fontSize: 18)),
+                  Switch(
+                    value: toggleLactose,
+                    onChanged: (value) {
+                      setState(() {
+                        toggleLactose = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Sugar Free", style: TextStyle(fontSize: 18)),
+                  Switch(
+                    value: toggleSugar,
+                    onChanged: (value) {
+                      setState(() {
+                        toggleSugar = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ],
           ),
-          Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[prevButton(), SizedBox(width: 24), nextButton()],
-          ),
-        ]);
+        ),
+      ),
+      Row(children: <Widget>[prevButton(), nextButton()]),
+    ]);
   }
 
   Widget finishPage() {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Spacer(),
-          Container(
-            width: 480,
-            height: 640,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text("You're all done now!", textScaleFactor: 3),
-                Text(
+    return Column(children: [
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView(
+            shrinkWrap: true,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text("You're all done now!",
+                  textScaleFactor: 3, textAlign: TextAlign.center),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
                   "Press Finish to complete your registration or go back to modify your details",
                   textScaleFactor: 1.5,
-                  style: TextStyle(fontWeight: FontWeight.w300),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
-              ],
-            ),
-          ),
-          Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              prevButton(),
-              SizedBox(width: 24),
-              finishButton()
+              ),
             ],
           ),
-        ]);
+        ),
+      ),
+      Row(children: [prevButton(), finishButton()]),
+    ]);
   }
 
   Widget prevButton() {
-    return Container(
-      // height: 36,
-      width: 280,
-      child: ElevatedButton.icon(
-          onPressed: prevPage,
-          style: ElevatedButton.styleFrom(
-              primary: Colors.deepOrange,
-              elevation: 5,
-              textStyle: TextStyle(fontSize: 24, color: Colors.black),
-              padding: EdgeInsets.fromLTRB(8, 16, 8, 16)
-              ),
-          icon: Icon(Icons.arrow_back),
-          label: const Text('Previous')),
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+        child: ElevatedButton.icon(
+            onPressed: prevPage,
+            style: ElevatedButton.styleFrom(
+                primary: Colors.deepOrange,
+                textStyle: TextStyle(fontSize: 24),
+                padding: EdgeInsets.fromLTRB(8, 16, 8, 16)),
+            icon: Icon(Icons.arrow_back),
+            label: const Text('Previous')),
+      ),
     );
   }
 
   Widget nextButton() {
-    return Container(
-      // height: 36,
-      width: 280,
-      child: ElevatedButton.icon(
-          onPressed: nextPage,
-          style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue,
-              elevation: 5,
-              textStyle: TextStyle(
-                fontSize: 24,
-              ),
-              padding: EdgeInsets.fromLTRB(8, 16, 8, 16)),
-          icon: Icon(Icons.arrow_forward),
-          label: const Text('Next')),
+    return Expanded(
+      // width: 280,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+        child: ElevatedButton.icon(
+            onPressed: nextPage,
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blueAccent,
+              textStyle: TextStyle(fontSize: 24),
+              padding: EdgeInsets.fromLTRB(8, 16, 8, 16),
+            ),
+            icon: Icon(Icons.arrow_forward),
+            label: const Text('Next')),
+      ),
     );
   }
 
   Widget finishButton() {
-    return Container(
-      // height: 36,
-      width: 280,
-      child: ElevatedButton.icon(
-          onPressed: () async {
-            await _registerUser();
-            Navigator.pushReplacementNamed(context, "Home");
-          },
-          style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              elevation: 5,
-              textStyle: TextStyle(
-                fontSize: 24,
-              ),
-              padding: EdgeInsets.fromLTRB(8, 16, 8, 16)),
-          icon: Icon(Icons.thumb_up),
-          label: const Text('Finish')),
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+        child: ElevatedButton.icon(
+            onPressed: () async {
+              await _registerUser();
+              Navigator.pushReplacementNamed(context, "Home");
+            },
+            style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                elevation: 5,
+                textStyle: TextStyle(
+                  fontSize: 24,
+                ),
+                padding: EdgeInsets.fromLTRB(8, 16, 8, 16)),
+            icon: Icon(Icons.thumb_up),
+            label: const Text('Finish')),
+      ),
     );
   }
 
@@ -562,11 +546,12 @@ class _SetupPageState extends State<SetupPage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Colors.white,
+            // backgroundColor: Colors.white,
             appBar: AppBar(
-              backgroundColor: theme.appBar,
+              // backgroundColor: theme.appBar,
               elevation: 5,
               title: Text("User Setup"),
+              centerTitle: true,
             ),
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -574,7 +559,8 @@ class _SetupPageState extends State<SetupPage> {
                 _buildStepIndicator(),
                 Expanded(
                   child: PageView(
-                    scrollDirection: Axis.horizontal,
+                    physics: NeverScrollableScrollPhysics(),
+                    // scrollDirection: Axis.horizontal,
                     controller: pageController,
                     onPageChanged: (int index) {
                       _currentPageNotifier.value = index;

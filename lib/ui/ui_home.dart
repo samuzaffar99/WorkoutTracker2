@@ -19,7 +19,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           // backgroundColor: theme.appBar,
           elevation: 5,
-          title: Text('Home', style: TextStyle(color: theme.appBarText)),
+          title: Text('Home'),
+          centerTitle: true,
         ),
         body: Container(
           child: Column(
@@ -86,12 +87,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       },
-                      child:
-                          Text(
-                            "Choose New Workout Plan",
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
+                      child: Text(
+                        "Choose New Workout Plan",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ),
@@ -111,8 +111,11 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       Text("Today's Exercises",
-                          style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.white)),
-                      SizedBox(height:12),
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white)),
+                      SizedBox(height: 12),
                       DefaultTextStyle(
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20),
@@ -120,12 +123,6 @@ class _HomePageState extends State<HomePage> {
                           height: 240,
                           width: double.maxFinite,
                           child: getWorkoutView(),
-                          // child: ListView(children: [
-                          //   Text("Deadlift 10-8-6"),
-                          //   Text("Deadlift 10-8-6"),
-                          //   Text("Squats   12-8"),
-                          //   Text("Curls   25-20"),
-                          // ]),
                         ),
                       ),
                     ],
