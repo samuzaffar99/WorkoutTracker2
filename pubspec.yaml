@@ -18,19 +18,13 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  # Add the dependency for the Firebase Core Flutter SDK
   firebase_core: ^1.0.4
-
-  # Add the dependency for the FlutterFire plugin for Google Analytics
 #  firebase_analytics: ^8.0.1
-
-  # Add the dependencies for any other Firebase products you want to use in your app
-  # For example, to use Firebase Authentication and Cloud Firestore
   firebase_auth: ^3.1.1
   cloud_firestore: ^2.1.0
 #  firebase_dynamic_links: ^2.0.1
@@ -41,6 +35,8 @@ dependencies:
   weekday_selector: ^1.0.0
   page_view_indicators: ^2.0.0
   pie_chart: ^5.0.0
+  flutter_lints: ^1.0.4
+  get: ^4.3.8
 
 dev_dependencies:
   flutter_test:

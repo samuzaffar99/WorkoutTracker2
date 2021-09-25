@@ -21,15 +21,15 @@ import 'package:workout_tracker2/theme.dart';
 class StateData {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
-  User firebaseUser = FirebaseAuth.instance.currentUser;
+  User firebaseUser = FirebaseAuth.instance.currentUser!;
   // SharedPreferences prefs = SharedPreferences.getInstance();
   bool isLoggedIn = false;
   var db = FirebaseFirestore.instance;
-  DocumentReference userRef;
-  DocumentSnapshot userData;
-  DocumentReference currWorkoutRef;
-  DocumentSnapshot workoutData;
-  DocumentSnapshot dietData;
+  late DocumentReference userRef;
+  late DocumentSnapshot userData;
+  // DocumentReference currWorkoutRef;
+  // DocumentSnapshot workoutData;
+  // DocumentSnapshot dietData;
   StateData._privateConstructor();
 
   Api api = Api();
@@ -40,11 +40,12 @@ class StateData {
     return _instance;
   }
 
-  Future<void> fetchUser() async{
+  Future<void> fetchUser() async {
     print("fetchUser");
     userRef = db.collection("users").doc(firebaseUser.uid);
     userData = await api.getUser(firebaseUser.uid);
   }
+
   Future<bool> initializeUser() async {
     print("initializeUser");
     await signIn();
@@ -72,15 +73,16 @@ class StateData {
 
   Future<void> signIn() async {
     print("signIn");
-    GoogleSignInAccount googleUser = await googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
 
     final AuthCredential _credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
     print("GoogleAuth Credentials done");
-    firebaseUser = (await FirebaseAuth.instance.signInWithCredential(_credential)).user;
+    firebaseUser =
+        (await FirebaseAuth.instance.signInWithCredential(_credential)).user!;
   }
 
   Future<void> signOut() async {
@@ -95,34 +97,34 @@ class StateData {
     return;
   }
 
-  Future<void> getCurrWorkout() async {
-    String id = userData.get("currWorkout");
-    print(id);
-    workoutData = await api.getWorkout(id);
-    return workoutData;
-  }
-
-  Future<void> getCurrDiet() async {
-    String id = userData.get("currDiet");
-    print(id);
-    dietData = await api.getDiet(id);
-    return dietData;
-  }
+  // Future<void> getCurrWorkout() async {
+  //   String id = userData.get("currWorkout");
+  //   print(id);
+  //   workoutData = await api.getWorkout(id);
+  //   return workoutData;
+  // }
+  //
+  // Future<void> getCurrDiet() async {
+  //   String id = userData.get("currDiet");
+  //   print(id);
+  //   dietData = await api.getDiet(id);
+  //   return dietData;
+  // }
 }
 
 final StateData currState = StateData();
 
-var theme = darkTheme();
+var theme = CustomTheme.darkTheme();
 
 List<DropdownMenuItem<String>> generateDropdownItems(List<String> ddl) {
   return ddl
       .map((value) => DropdownMenuItem(
-    value: value,
-    child: Text(value),
-  ))
+            value: value,
+            child: Text(value),
+          ))
       .toList();
 }
 
-double calcBMI(double weight,double height) {
-  return (weight*10000)/(height*height);
+double calcBMI(double weight, double height) {
+  return (weight * 10000) / (height * height);
 }

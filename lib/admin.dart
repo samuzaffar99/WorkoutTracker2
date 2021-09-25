@@ -15,7 +15,7 @@ class AdminPage extends StatefulWidget {
 class AdminPageState extends State<AdminPage> {
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  SharedPreferences prefs;
+  // SharedPreferences prefs;
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final diffController = TextEditingController();

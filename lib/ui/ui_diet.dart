@@ -14,9 +14,9 @@ class DietPage extends StatefulWidget {
 Widget getDietCard(foodData) {
   return FutureBuilder(
       future: currState.api.getFood(foodData),
-      builder: (buildContext, AsyncSnapshot snapshot) {
-        if (snapshot.hasError) {
-          throw snapshot.error;
+      builder: (buildContext, AsyncSnapshot? snapshot) {
+        if (snapshot!.hasError) {
+          throw snapshot.error!;
         } else if (!snapshot.hasData) {
           return Container(
             child: Center(
@@ -121,9 +121,9 @@ Widget getDietCard(foodData) {
 Widget getDietView() {
   return FutureBuilder(
       future: currState.api.getDiet("14OUlOXyAv9JBpGGPuRl"),
-      builder: (buildContext, AsyncSnapshot snapshot) {
-        if (snapshot.hasError)
-          throw snapshot.error;
+      builder: (buildContext, AsyncSnapshot? snapshot) {
+        if (snapshot!.hasError)
+          throw snapshot.error!;
         else if (!snapshot.hasData) {
           return Container(
             child: Center(
@@ -150,7 +150,10 @@ Widget getDietView() {
           return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             Text(
               DateFormat('EEEE').format(DateTime.now()),
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
             SizedBox(height: 12),
             Expanded(

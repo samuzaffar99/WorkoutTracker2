@@ -3,11 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Api {
   var db = FirebaseFirestore.instance;
-  CollectionReference usersCol;
-  CollectionReference workoutsCol;
-  CollectionReference exercisesCol;
-  CollectionReference dietsCol;
-  CollectionReference foodsCol;
+  late CollectionReference usersCol;
+  late CollectionReference workoutsCol;
+  late CollectionReference exercisesCol;
+  late CollectionReference dietsCol;
+  late CollectionReference foodsCol;
 
   Api() {
     this.usersCol = db.collection("users");
@@ -20,38 +20,38 @@ class Api {
   // Get List of documents(collection)
   Future<List<DocumentSnapshot>> getCollection(
       CollectionReference collectionRef) async {
-    final QuerySnapshot<Object> response = await collectionRef.get();
+    final QuerySnapshot<Object?> response = await collectionRef.get();
     return response.docs;
   }
 
   Future<List> getUsers() async {
-    final QuerySnapshot<Object> response = await usersCol.get();
+    final QuerySnapshot<Object?> response = await usersCol.get();
     return response.docs;
   }
 
   Future<List> getWorkouts() async {
-    final QuerySnapshot<Object> response = await workoutsCol.get();
+    final QuerySnapshot<Object?> response = await workoutsCol.get();
     return response.docs;
   }
 
   Future<List> getExercises() async {
-    final QuerySnapshot<Object> response = await exercisesCol.get();
+    final QuerySnapshot<Object?> response = await exercisesCol.get();
     return response.docs;
   }
 
   Future<List> getDiets() async {
-    final QuerySnapshot<Object> response = await dietsCol.get();
+    final QuerySnapshot<Object?> response = await dietsCol.get();
     return response.docs;
   }
 
   Future<List> getFoods() async {
-    final QuerySnapshot<Object> response = await foodsCol.get();
+    final QuerySnapshot<Object?> response = await foodsCol.get();
     return response.docs;
   }
 
   // Get single document by id
   Future<DocumentSnapshot> getDocument(DocumentReference docRef) async {
-    final DocumentSnapshot<Object> response = await docRef.get();
+    final DocumentSnapshot<Object?> response = await docRef.get();
     return response;
   }
 

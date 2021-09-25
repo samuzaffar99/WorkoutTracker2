@@ -22,14 +22,14 @@ class _SetupPageState extends State<SetupPage> {
     "bodyFat": "",
     "birthDate": ""
   };
-  Future<TimeOfDay> workoutTime;
+  Future<TimeOfDay>? workoutTime;
   String gender = "Male";
-  double height;
-  double weight;
-  double bodyFat;
-  double targetWeight;
-  double targetBodyFat;
-  String goal;
+  double? height;
+  double? weight;
+  double? bodyFat;
+  double? targetWeight;
+  double? targetBodyFat;
+  String? goal;
   bool toggleLactose = false;
   bool toggleSugar = false;
   Map<String, double> macroPct = {"Fat": 30, "Protein": 30, "Carbs": 40};
@@ -75,30 +75,30 @@ class _SetupPageState extends State<SetupPage> {
     return await currState.initializeUser();
   }
 
-  void createWorkout() async {
-    Map workout;
-    Map workoutID = {
-      "3DayPL": "2325423523",
-      "4DayPL": "2325423523",
-      "5DayPL": "2325423523",
-    };
-    user["currWorkout"] = await currState.api.postWorkout(workout);
-    return;
-  }
-
-  void createDiet() async {
-    Map diet;
-    Map dietID = {
-      "3DayPL": "2325423523",
-      "4DayPL": "2325423523",
-      "5DayPL": "2325423523",
-    };
-    user["currDiet"] = await currState.api.postDiet(diet);
-    return;
-  }
+  // void createWorkout() async {
+  //   Map workout;
+  //   Map workoutID = {
+  //     "3DayPL": "2325423523",
+  //     "4DayPL": "2325423523",
+  //     "5DayPL": "2325423523",
+  //   };
+  //   user["currWorkout"] = await currState.api.postWorkout(workout);
+  //   return;
+  // }
+  //
+  // void createDiet() async {
+  //   Map diet;
+  //   Map dietID = {
+  //     "3DayPL": "2325423523",
+  //     "4DayPL": "2325423523",
+  //     "5DayPL": "2325423523",
+  //   };
+  //   user["currDiet"] = await currState.api.postDiet(diet);
+  //   return;
+  // }
 
   _selectDate() async {
-    final DateTime date = await showDatePicker(
+    final DateTime? date = await showDatePicker(
       context: context,
       initialDate: DateTime(2000),
       firstDate: DateTime(1930),
@@ -113,7 +113,7 @@ class _SetupPageState extends State<SetupPage> {
   }
 
   _selectTime() async {
-    final TimeOfDay time = await showTimePicker(
+    final TimeOfDay? time = await showTimePicker(
       initialTime: TimeOfDay.now(),
       context: context,
     );
@@ -153,7 +153,7 @@ class _SetupPageState extends State<SetupPage> {
                   onChanged: (val) {
                     setState(
                       () {
-                        gender = val;
+                        gender = val.toString();
                       },
                     );
                   },
@@ -242,7 +242,7 @@ class _SetupPageState extends State<SetupPage> {
                   onChanged: (val) {
                     setState(
                       () {
-                        goal = val;
+                        goal = val.toString();
                       },
                     );
                   },

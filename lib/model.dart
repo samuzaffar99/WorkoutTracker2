@@ -1,17 +1,17 @@
 
 //User
 class User {
-  String id;
-  String username;
-  String email;
-  String name;
-  String gender;
-  String birthdate;
-  Stats stats;
-  Goals goals;
-  List<Log> log;
-  String currWorkout;
-  String currDiet;
+  String? id;
+  String? username;
+  String? email;
+  String? name;
+  String? gender;
+  String? birthdate;
+  Stats? stats;
+  Goals? goals;
+  List<Log>? log;
+  String? currWorkout;
+  String? currDiet;
 
   User(
       {this.id,
@@ -62,13 +62,13 @@ class User {
     data['gender'] = this.gender;
     data['birthdate'] = this.birthdate;
     if (this.stats != null) {
-      data['stats'] = this.stats.toJson();
+      data['stats'] = this.stats!.toJson();
     }
     if (this.goals != null) {
-      data['goals'] = this.goals.toJson();
+      data['goals'] = this.goals!.toJson();
     }
     if (this.log != null) {
-      data['log'] = this.log.map((v) => v.toJson()).toList();
+      data['log'] = this.log!.map((v) => v.toJson()).toList();
     }
     if (this.currWorkout != null) {
       data['curr_workout'] = this.currWorkout;
@@ -81,9 +81,9 @@ class User {
 }
 
 class Stats {
-  double height;
-  double weight;
-  double bodyfat;
+  double? height;
+  double? weight;
+  double? bodyfat;
 
   Stats({this.height, this.weight, this.bodyfat});
 
@@ -103,9 +103,9 @@ class Stats {
 }
 
 class Goals {
-  String targetdate;
-  double weight;
-  double bodyfat;
+  String? targetdate;
+  double? weight;
+  double? bodyfat;
 
   Goals({this.targetdate, this.weight, this.bodyfat});
 
@@ -125,8 +125,8 @@ class Goals {
 }
 
 class Log {
-  String date;
-  WorkoutLog workout;
+  String? date;
+  WorkoutLog? workout;
 
   Log({this.date, this.workout});
 
@@ -141,15 +141,15 @@ class Log {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['date'] = this.date;
     if (this.workout != null) {
-      data['workout'] = this.workout.toJson();
+      data['workout'] = this.workout!.toJson();
     }
     return data;
   }
 }
 
 class WorkoutLog {
-  String wid;
-  List<Ex> ex;
+  String? wid;
+  List<Ex>? ex;
 
   WorkoutLog({this.wid, this.ex});
 
@@ -169,17 +169,17 @@ class WorkoutLog {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['wid'] = this.wid;
     if (this.ex != null) {
-      data['ex'] = this.ex.map((v) => v.toJson()).toList();
+      data['ex'] = this.ex!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Ex {
-  String id;
-  List<int> reps;
-  List<double> weight;
-  List<double> dur;
+  String? id;
+  List<int>? reps;
+  List<double>? weight;
+  List<double>? dur;
 
   Ex({this.id, this.reps, this.weight, this.dur});
 
@@ -203,10 +203,10 @@ class Ex {
 
 //Workout
 class Workout {
-  String id;
-  String name;
-  String author;
-  List<WDays> days;
+  String? id;
+  String? name;
+  String? author;
+  List<WDays>? days;
 
   Workout({this.id, this.name, this.author, this.days});
 
@@ -234,16 +234,16 @@ class Workout {
       data['author'] = this.author;
     }
     if (this.days != null) {
-      data['days'] = this.days.map((v) => v.toJson()).toList();
+      data['days'] = this.days!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class WDays {
-  String day;
-  String time;
-  List<Routine> routine;
+  String? day;
+  String? time;
+  List<Routine>? routine;
 
   WDays({this.day, this.time, this.routine});
 
@@ -263,16 +263,16 @@ class WDays {
     data['day'] = this.day;
     data['time'] = this.time;
     if (this.routine != null) {
-      data['routine'] = this.routine.map((v) => v.toJson()).toList();
+      data['routine'] = this.routine!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Routine {
-  String exid;
-  List<int> reps;
-  List<double> dur;
+  String? exid;
+  List<int>? reps;
+  List<double>? dur;
 
   Routine({this.exid, this.reps, this.dur});
 
@@ -294,12 +294,12 @@ class Routine {
 
 //Exercise
 class Exercise {
-  String id;
-  String name;
-  String category;
-  String info;
-  double difficulty;
-  List<String> target;
+  String? id;
+  String? name;
+  String? category;
+  String? info;
+  double? difficulty;
+  List<String>? target;
 
   Exercise(
       {this.id,
@@ -335,13 +335,13 @@ class Exercise {
 
 //Diet
 class Diet {
-  String id;
-  String name;
-  String author;
-  double calories;
-  Dist dist;
-  List<Days> days;
-  List<String> tags;
+  String? id;
+  String? name;
+  String? author;
+  double? calories;
+  Dist? dist;
+  List<Days>? days;
+  List<String>? tags;
 
   Diet({this.id, this.name, this.author, this.calories, this.dist, this.days});
 
@@ -373,20 +373,20 @@ class Diet {
     }
     data['calories'] = this.calories;
     if (this.dist != null) {
-      data['dist'] = this.dist.toJson();
+      data['dist'] = this.dist!.toJson();
     }
 
     if (this.days != null) {
-      data['days'] = this.days.map((v) => v.toJson()).toList();
+      data['days'] = this.days!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Dist {
-  double carbs;
-  double protein;
-  double fat;
+  double? carbs;
+  double? protein;
+  double? fat;
 
   Dist({this.carbs, this.protein, this.fat});
 
@@ -406,8 +406,8 @@ class Dist {
 }
 
 class Days {
-  String day;
-  List<String> meals;
+  String? day;
+  List<String>? meals;
 
   Days({this.day, this.meals});
 
@@ -426,7 +426,7 @@ class Days {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['day'] = this.day;
     if (this.meals != null) {
-      data['meals'] = this.meals.map((v) => v).toList();
+      data['meals'] = this.meals!.map((v) => v).toList();
     }
     return data;
   }
@@ -434,13 +434,13 @@ class Days {
 
 //Food
 class Food {
-  String id;
-  String name;
-  double calories;
-  double carbs;
-  double protein;
-  double fat;
-  List<String> tags;
+  String? id;
+  String? name;
+  double? calories;
+  double? carbs;
+  double? protein;
+  double? fat;
+  List<String>? tags;
 
   Food(
       {this.id,

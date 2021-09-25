@@ -16,7 +16,7 @@ Widget getWorkoutView() {
       future: currState.api.getWorkout("JQfNRY2Bk2eheXWXzsYP"),
       builder: (buildContext, AsyncSnapshot snapshot) {
         if (snapshot.hasError)
-          throw snapshot.error;
+          throw snapshot.error!;
         else if (!snapshot.hasData) {
           return Container(
             child: Center(
@@ -78,7 +78,7 @@ Widget exerciseCard(Map<String, dynamic> exerciseData) {
           future: currState.api.getExercise(exerciseData["exid"]),
           builder: (buildContext, AsyncSnapshot snapshot) {
             if (snapshot.hasError) {
-              throw snapshot.error;
+              throw snapshot.error!;
             } else if (!snapshot.hasData) {
               return Container(
                 child: Center(
@@ -87,8 +87,8 @@ Widget exerciseCard(Map<String, dynamic> exerciseData) {
               );
             } else {
               print(snapshot.data.data());
-              String fieldName;
-              String fieldTitle;
+              late String fieldName;
+              late String fieldTitle;
               if (snapshot.data["category"] == "strength") {
                 fieldName = "reps";
                 fieldTitle = "Reps";

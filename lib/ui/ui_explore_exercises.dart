@@ -13,7 +13,7 @@ class ExploreExercises extends StatefulWidget {
 class _ExploreExercisesState extends State<ExploreExercises> {
   bool toggleEndurance = false;
   bool toggleStrength = false;
-  String searchString;
+  String searchString = "";
   List<String> category = [
     "Biceps",
     "Triceps",
@@ -171,7 +171,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                             onChanged: (val) {
                               setState(
                                 () {
-                                  currParam = val;
+                                  currParam = val.toString();
                                 },
                               );
                             },

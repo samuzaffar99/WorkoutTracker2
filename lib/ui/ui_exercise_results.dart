@@ -12,9 +12,9 @@ class _ExerciseResultsState extends State<ExerciseResults> {
   Widget getExerciseResults() {
     return FutureBuilder(
         future: currState.api.getExercises(),
-        builder: (buildContext, AsyncSnapshot snapshot) {
-          if (snapshot.hasError)
-            throw snapshot.error;
+        builder: (BuildContext buildContext, AsyncSnapshot? snapshot) {
+          if (snapshot!.hasError)
+            throw snapshot.error!;
           else if (!snapshot.hasData) {
             return Container(
               child: Center(
@@ -24,7 +24,7 @@ class _ExerciseResultsState extends State<ExerciseResults> {
           } else {
             print(snapshot.data);
             return ListView.builder(
-              physics: ClampingScrollPhysics(),
+                physics: ClampingScrollPhysics(),
                 padding: EdgeInsets.all(5),
                 itemCount: snapshot.data.length,
                 shrinkWrap: true,

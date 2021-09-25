@@ -8,29 +8,29 @@ class FlutterStopWatch extends StatefulWidget {
 
 class _FlutterStopWatchState extends State<FlutterStopWatch> {
   bool isActive = true;
-  Stream<int> timerStream;
-  StreamSubscription<int> timerSubscription;
+  Stream<int>? timerStream;
+  StreamSubscription<int>? timerSubscription;
   String hoursStr = '00';
   String minutesStr = '00';
   String secondsStr = '00';
 
   @override
   void dispose(){
-    timerSubscription.cancel();
+    timerSubscription?.cancel();
     super.dispose();
   }
   Stream<int> stopWatchStream() {
-    StreamController<int> streamController;
-    Timer timer;
+    StreamController<int>? streamController;
+    Timer? timer;
     Duration timerInterval = Duration(seconds: 1);
     int counter = 0;
 
     void stopTimer() {
       if (timer != null) {
-        timer.cancel();
+        timer?.cancel();
         timer = null;
         counter = 0;
-        streamController.close();
+        streamController?.close();
       }
     }
 
@@ -38,7 +38,7 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
       if (isActive) {
         counter++;
       }
-      streamController.add(counter);
+      streamController?.add(counter);
       // if (!isActive) {
       //   stopTimer();
       // }
@@ -60,7 +60,7 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
 
   clockStart(){
     timerStream = stopWatchStream();
-    timerSubscription = timerStream.listen((int newTick) {
+    timerSubscription = timerStream?.listen((int newTick) {
       setState(() {
         hoursStr = ((newTick / (60 * 60)) % 60)
             .floor()
