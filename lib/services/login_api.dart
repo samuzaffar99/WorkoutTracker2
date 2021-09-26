@@ -1,43 +1,56 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workout_tracker2/services/api.dart';
-import 'dart:async';
 
-import 'package:workout_tracker2/theme.dart';
+import 'api.dart';
 
-// GoogleSignIn _googleSignIn = GoogleSignIn(
-//   // Optional clientId
-//   clientId:
-//       '363391434933-4asstkqhcb75napiu2jekoqcr0bd8nkq.apps.googleusercontent.com',
-//   scopes: <String>[
-//     'email',
-//     'https://www.googleapis.com/auth/contacts.readonly',
-//   ],
-// );
-
-class StateData {
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+class Session extends GetxService {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   User firebaseUser = FirebaseAuth.instance.currentUser!;
   // SharedPreferences prefs = SharedPreferences.getInstance();
-  bool isLoggedIn = false;
-  var db = FirebaseFirestore.instance;
+  RxBool isLoggedIn = false.obs;
+  FirebaseFirestore db = FirebaseFirestore.instance;
   late DocumentReference userRef;
-  DocumentSnapshot? userData;
+  late DocumentSnapshot userData;
   // DocumentReference currWorkoutRef;
   // DocumentSnapshot workoutData;
   // DocumentSnapshot dietData;
-  StateData._privateConstructor();
+  Api api = Get.find<Api>();
+  RxBool isLoading = false.obs;
+  void initState() {
+    isSignedIn();
+  }
 
-  Api api = Api();
+  void isSignedIn() async {
+    isLoading.value = true;
+    isLoggedIn.value = await _googleSignIn.isSignedIn();
+    if (isLoggedIn.value) {
+      bool existsUser = await initializeUser();
+      if (existsUser) {
+        Get.offAllNamed('/home');
+      } else {
+        Get.toNamed('/setup');
+      }
+    }
 
-  static final StateData _instance = StateData._privateConstructor();
+    isLoading.value = false;
+  }
 
-  factory StateData() {
-    return _instance;
+  Future<Null> handleSignIn() async {
+    isLoading.value = true;
+    bool existsUser = await initializeUser();
+    Get.snackbar("Success", "Sign in success");
+    isLoading.value = false;
+    if (existsUser) {
+      print("unga bunga");
+      // Navigator.pushNamed(context, "Setup");
+      Get.offAllNamed('/home');
+    } else {
+      print("not unga bunga");
+      Get.toNamed('/setup');
+    }
   }
 
   Future<void> fetchUser() async {
@@ -50,7 +63,7 @@ class StateData {
     print("initializeUser");
     await signIn();
     await fetchUser();
-    if (userData!.exists) {
+    if (userData.exists) {
       print("UserData present on firestore");
       return true;
     } else {
@@ -73,7 +86,7 @@ class StateData {
 
   Future<void> signIn() async {
     print("signIn");
-    GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
     GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
 
     final AuthCredential _credential = GoogleAuthProvider.credential(
@@ -86,9 +99,9 @@ class StateData {
   }
 
   Future<void> signOut() async {
-    // await googleSignIn.signOut();
-    await googleSignIn.disconnect();
-    await firebaseAuth.signOut();
+    // await _googleSignIn.signOut();
+    await _googleSignIn.disconnect();
+    await _firebaseAuth.signOut();
   }
 
   //Create new user data using firebase uid
@@ -96,21 +109,30 @@ class StateData {
     await api.putUser(firebaseUser.uid, userData);
     return;
   }
+
+// Future<void> getCurrWorkout() async {
+//   String id = userData.get("currWorkout");
+//   print(id);
+//   workoutData = await api.getWorkout(id);
+//   return workoutData;
+// }
+//
+// Future<void> getCurrDiet() async {
+//   String id = userData.get("currDiet");
+//   print(id);
+//   dietData = await api.getDiet(id);
+//   return dietData;
+// }
 }
 
-final StateData currState = StateData();
+class StateData {
+  StateData._privateConstructor();
 
-final CustomTheme theme = CustomTheme.darkTheme();
+  Api api = Api();
 
-List<DropdownMenuItem<String>> generateDropdownItems(List<String> ddl) {
-  return ddl
-      .map((value) => DropdownMenuItem(
-            value: value,
-            child: Text(value),
-          ))
-      .toList();
-}
+  static final StateData _instance = StateData._privateConstructor();
 
-double calcBMI(double weight, double height) {
-  return (weight * 10000) / (height * height);
+  factory StateData() {
+    return _instance;
+  }
 }

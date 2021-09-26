@@ -85,36 +85,36 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                 Text("Target Muscles"),
                 SingleChildScrollView(
                     child: Column(
-                      children: [
-                        Wrap(
-                          children: List<Widget>.generate(
-                            category.length,
-                                (int index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: new FilterChip(
-                                    selected: categoryToggle[index],
-                                    selectedColor: Colors.deepOrange,
-                                    padding: EdgeInsets.fromLTRB(4, 12, 4, 12),
-                                    label: Text(category[index]),
-                                    labelStyle: TextStyle(
-                                        fontSize: 16, fontWeight: FontWeight.w500),
-                                    elevation: 5,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    onSelected: (bool selected) {
-                                      setState(() {
-                                        categoryToggle[index] =
+                  children: [
+                    Wrap(
+                      children: List<Widget>.generate(
+                        category.length,
+                        (int index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: new FilterChip(
+                                selected: categoryToggle[index],
+                                selectedColor: Colors.deepOrange,
+                                padding: EdgeInsets.fromLTRB(4, 12, 4, 12),
+                                label: Text(category[index]),
+                                labelStyle: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                                elevation: 5,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                onSelected: (bool selected) {
+                                  setState(() {
+                                    categoryToggle[index] =
                                         !categoryToggle[index];
-                                      });
-                                    }),
-                              );
-                            },
-                          ),
-                        )
-                      ],
-                    )),
+                                  });
+                                }),
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                )),
                 Container(
                   width: 240,
                   child: Column(

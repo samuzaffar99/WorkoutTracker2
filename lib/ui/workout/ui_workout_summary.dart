@@ -30,8 +30,8 @@ class WorkoutSummary extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0))),
                 onPressed: () {
                   // Navigator.pop(context);
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil("Home", (Route<dynamic> route) => false);
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      "Home", (Route<dynamic> route) => false);
                 },
                 child: Text(
                   "Finish",

@@ -38,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
           // height: double.maxFinite,
           width: 240,
           child: ListView(
-            shrinkWrap : true,
+            shrinkWrap: true,
             children: [
               Text('Current Stats'),
               SizedBox(height: 8),
@@ -181,13 +181,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: CircleAvatar(
                       radius: 50,
                       backgroundImage:
-                          NetworkImage(currState.userData["photoUrl"]),
+                          NetworkImage(currState.userData!["photoUrl"]),
                     ),
                   ),
                   SizedBox(width: 20),
                   Expanded(
                     child: Text(
-                      "${currState.userData["nickname"]}",
+                      "${currState.userData!["nickname"]}",
                       style: TextStyle(
                         fontSize: 24,
                         // color: Colors.white,
@@ -224,7 +224,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
-                                      Text(currState.userData
+                                      Text(currState.userData!
                                               .get("weight")
                                               .toString() +
                                           " kg"),
@@ -244,7 +244,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
-                                      Text(currState.userData
+                                      Text(currState.userData!
                                               .get("bodyFat")
                                               .toString() +
                                           " %"),

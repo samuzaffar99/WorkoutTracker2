@@ -97,7 +97,7 @@ class _EditWorkoutState extends State<EditWorkout> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text("Edit Workout"),
-        elevation:5,
+        elevation: 5,
       ),
       body: Container(
         decoration: BoxDecoration(

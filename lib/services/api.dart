@@ -1,7 +1,8 @@
 // import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 
-class Api {
+class Api extends GetxService {
   var db = FirebaseFirestore.instance;
   late CollectionReference usersCol;
   late CollectionReference workoutsCol;

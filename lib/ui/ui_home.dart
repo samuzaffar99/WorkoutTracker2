@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker2/globals.dart';
+import 'package:get/get.dart';
+// import 'package:workout_tracker2/globals.dart';
 import 'package:workout_tracker2/ui/ui_explore_exercises.dart';
 import 'package:workout_tracker2/ui/workout/ui_choose_new_workout_plan.dart';
 import 'package:workout_tracker2/ui/ui_navbar.dart';
 import 'package:workout_tracker2/ui/workout/ui_workout.dart';
+
+import '../services/login_api.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final Session currState = Get.find<Session>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(

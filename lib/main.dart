@@ -14,10 +14,19 @@ import 'package:workout_tracker2/ui/workout/ui_workout.dart';
 import 'package:workout_tracker2/ui/ui_log.dart';
 import 'package:workout_tracker2/ui/ui_profile.dart';
 
+import 'services/api.dart';
+import 'services/login_api.dart';
+
 Future<void> main() async {
+  await initializeApp();
+  runApp(const WorkoutApp());
+}
+
+Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const WorkoutApp());
+  Get.put(Api());
+  Get.put(Session());
 }
 
 class WorkoutApp extends StatelessWidget {
@@ -31,8 +40,23 @@ class WorkoutApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: LoginPage(),
-      initialRoute: 'Login',
+      initialRoute: '/login',
+      getPages: [
+        // GetPage(
+        //   name: '/main',
+        //   page: () => const DashboardPage(),
+        //   binding: NavBinding(),
+        // ),
+        GetPage(name: '/login', page: () => LoginPage()),
+        GetPage(name: '/home', page: () => HomePage()),
+        GetPage(name: '/diet', page: () => DietPage()),
+        GetPage(name: '/workout', page: () => WorkoutPage()),
+        GetPage(name: '/log', page: () => LogPage()),
+        GetPage(name: '/profile', page: () => ProfilePage()),
+        GetPage(name: '/admin', page: () => AdminPage()),
+        GetPage(name: '/settings', page: () => SettingsPage()),
+        GetPage(name: '/setup', page: () => SetupPage()),
+      ],
       routes: {
         'Login': (context) => LoginPage(),
         'Home': (context) => HomePage(),

@@ -15,10 +15,11 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
   String secondsStr = '00';
 
   @override
-  void dispose(){
+  void dispose() {
     timerSubscription?.cancel();
     super.dispose();
   }
+
   Stream<int> stopWatchStream() {
     StreamController<int>? streamController;
     Timer? timer;
@@ -58,20 +59,14 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
     return streamController.stream;
   }
 
-  clockStart(){
+  clockStart() {
     timerStream = stopWatchStream();
     timerSubscription = timerStream?.listen((int newTick) {
       setState(() {
-        hoursStr = ((newTick / (60 * 60)) % 60)
-            .floor()
-            .toString()
-            .padLeft(2, '0');
-        minutesStr = ((newTick / 60) % 60)
-            .floor()
-            .toString()
-            .padLeft(2, '0');
-        secondsStr =
-            (newTick % 60).floor().toString().padLeft(2, '0');
+        hoursStr =
+            ((newTick / (60 * 60)) % 60).floor().toString().padLeft(2, '0');
+        minutesStr = ((newTick / 60) % 60).floor().toString().padLeft(2, '0');
+        secondsStr = (newTick % 60).floor().toString().padLeft(2, '0');
       });
     });
   }
@@ -96,7 +91,7 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
         IconButton(
             color: Colors.white,
             alignment: Alignment.center,
-            icon: isActive?Icon(Icons.pause):Icon(Icons.play_arrow),
+            icon: isActive ? Icon(Icons.pause) : Icon(Icons.play_arrow),
             onPressed: () {
               setState(() {
                 isActive = !isActive;
