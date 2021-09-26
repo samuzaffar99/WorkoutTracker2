@@ -1,11 +1,7 @@
-// import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'package:workout_tracker2/globals.dart';
+import 'package:get/get.dart';
+import 'services/login_api.dart';
 
 class AdminPage extends StatefulWidget {
   @override
@@ -13,9 +9,8 @@ class AdminPage extends StatefulWidget {
 }
 
 class AdminPageState extends State<AdminPage> {
-  final GoogleSignIn googleSignIn = GoogleSignIn();
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  // SharedPreferences prefs;
+  final currState = Get.find<Session>();
+
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final diffController = TextEditingController();

@@ -168,7 +168,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Icon(Icons.edit))),
           ],
         ),
-        bottomNavigationBar: NavigationBar(index),
+        // bottomNavigationBar: NavigationBar(index),
         body: Container(
           child: Column(
             children: [

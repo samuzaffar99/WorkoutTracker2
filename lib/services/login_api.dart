@@ -29,7 +29,7 @@ class Session extends GetxService {
     if (isLoggedIn.value) {
       bool existsUser = await initializeUser();
       if (existsUser) {
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/root');
       } else {
         Get.toNamed('/setup');
       }
@@ -40,16 +40,23 @@ class Session extends GetxService {
 
   Future<Null> handleSignIn() async {
     isLoading.value = true;
-    bool existsUser = await initializeUser();
-    Get.snackbar("Success", "Sign in success");
-    isLoading.value = false;
-    if (existsUser) {
-      print("unga bunga");
-      // Navigator.pushNamed(context, "Setup");
-      Get.offAllNamed('/home');
-    } else {
-      print("not unga bunga");
-      Get.toNamed('/setup');
+    try {
+      bool existsUser = await initializeUser();
+      Get.snackbar("Success", "Sign in success");
+      isLoading.value = false;
+      if (existsUser) {
+        print("unga bunga");
+        // Navigator.pushNamed(context, "Setup");
+        Get.offAllNamed('/root');
+      } else {
+        print("not unga bunga");
+        Get.toNamed('/setup');
+      }
+    } catch (err) {
+      print(err);
+      Get.snackbar("Error!", "Sign in fail");
+      // Fluttertoast.showToast(msg: "Sign in fail");
+      isLoading.value = false;
     }
   }
 

@@ -16,6 +16,7 @@ import 'package:workout_tracker2/ui/ui_profile.dart';
 
 import 'services/api.dart';
 import 'services/login_api.dart';
+import 'ui/ui_navbar.dart';
 
 Future<void> main() async {
   await initializeApp();
@@ -42,20 +43,20 @@ class WorkoutApp extends StatelessWidget {
       ),
       initialRoute: '/login',
       getPages: [
-        // GetPage(
-        //   name: '/main',
-        //   page: () => const DashboardPage(),
-        //   binding: NavBinding(),
-        // ),
+        GetPage(
+          name: '/root',
+          page: () => const RootPage(),
+          binding: NavBinding(),
+        ),
         GetPage(name: '/login', page: () => LoginPage()),
-        GetPage(name: '/home', page: () => HomePage()),
-        GetPage(name: '/diet', page: () => DietPage()),
-        GetPage(name: '/workout', page: () => WorkoutPage()),
-        GetPage(name: '/log', page: () => LogPage()),
-        GetPage(name: '/profile', page: () => ProfilePage()),
-        GetPage(name: '/admin', page: () => AdminPage()),
-        GetPage(name: '/settings', page: () => SettingsPage()),
         GetPage(name: '/setup', page: () => SetupPage()),
+        // GetPage(name: '/home', page: () => HomePage()),
+        // GetPage(name: '/diet', page: () => DietPage()),
+        // GetPage(name: '/workout', page: () => WorkoutPage()),
+        // GetPage(name: '/log', page: () => LogPage()),
+        // GetPage(name: '/profile', page: () => ProfilePage()),
+        // GetPage(name: '/admin', page: () => AdminPage()),
+        // GetPage(name: '/settings', page: () => SettingsPage()),
       ],
       routes: {
         'Login': (context) => LoginPage(),

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_tracker2/globals.dart';
-import 'package:workout_tracker2/ui/ui_navbar.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage();
@@ -158,7 +157,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 )),
           ),
         ),
-        bottomNavigationBar: NavigationBar(index),
+        // bottomNavigationBar: NavigationBar(index),
       ),
     );
   }

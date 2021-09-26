@@ -184,7 +184,7 @@ class _DietPageState extends State<DietPage> {
           title: Text('Diet'),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavigationBar(1),
+        // bottomNavigationBar: NavigationBar(1),
         endDrawer: Drawer(
           child: Container(
             // color: Color(0xFF5F3E40),

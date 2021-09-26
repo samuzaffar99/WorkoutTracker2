@@ -75,9 +75,10 @@ class NavController extends GetxController {
   int currIndex = 0;
   final List routeList = [
     '/home',
-    '/workout',
     '/diet',
-    '/settings',
+    '/workout',
+    '/log',
+    // '/settings',
     '/profile'
   ];
 
@@ -104,7 +105,7 @@ class NavController extends GetxController {
   };
 
   Route? onGenerateRoute(RouteSettings settings) {
-    print("route name:" + settings.name!);
+    print("route name: " + settings.name!);
     if (settings.name != '/') {
       return GetPageRoute(
         settings: settings,
@@ -114,15 +115,6 @@ class NavController extends GetxController {
     } else {
       return null;
     }
-    // GetPage(name: '/home', page: () => HomePage()),
-    // GetPage(name: '/patients', page: () => PatientPage()),
-    // GetPage(name: '/doctors', page: () => DoctorPage()),
-    // GetPage(name: '/settings', page: () => SettingsPage()),
-    // GetPage(name: '/profile', page: () => ProfilePage()),
-    // GetPage(name: '/patient', page: () => PatientInfoPage()),
-    // GetPage(name: '/admin', page: () => AdminPage()),
-    // GetPage(name: '/doctorinfo', page: () => DoctorInfoPage()),
-    // GetPage(name: '/appointments', page: () => AppointmentsPage()),
   }
 }
 

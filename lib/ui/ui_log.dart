@@ -22,7 +22,7 @@ class _LogPageState extends State<LogPage> {
           title: Text("Log"),
           centerTitle: true,
         ),
-        bottomNavigationBar: NavigationBar(3),
+        // bottomNavigationBar: NavigationBar(3),
         body: Container(
           child: ListView(
             children: [

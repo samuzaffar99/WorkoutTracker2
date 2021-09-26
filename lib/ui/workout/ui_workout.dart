@@ -191,7 +191,7 @@ class WorkoutPageState extends State<WorkoutPage> {
                     child: Icon(Icons.edit))),
           ],
         ),
-        bottomNavigationBar: NavigationBar(2),
+        // bottomNavigationBar: NavigationBar(2),
         body: Container(
           height: double.infinity,
           width: double.infinity,

@@ -72,10 +72,12 @@ class LoginPage extends StatelessWidget {
                 SizedBox(height: 10),
                 // Loading
                 LoginButton(),
-                Container(
-                  child: session.isLoading.value
-                      ? const CircularProgressIndicator()
-                      : Container(),
+                Obx(
+                  () => Container(
+                    child: session.isLoading.value
+                        ? const CircularProgressIndicator()
+                        : Container(),
+                  ),
                 ),
               ],
             ),
@@ -96,12 +98,7 @@ class LoginButton extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
         ),
-        onPressed: () => session.handleSignIn().catchError((err) {
-              print(err);
-              Get.snackbar("Error!", "Sign in fail");
-              // Fluttertoast.showToast(msg: "Sign in fail");
-              session.isLoading.value = false;
-            }),
+        onPressed: () => session.handleSignIn(),
         label: Text(
           'Sign in with Google',
           textAlign: TextAlign.end,
