@@ -169,7 +169,6 @@ class WorkoutPage extends StatefulWidget {
 class WorkoutPageState extends State<WorkoutPage> {
   @override
   Widget build(BuildContext context) {
-    // int index = 2;
     return SafeArea(
       child: Scaffold(
         // backgroundColor: theme.background,
@@ -191,7 +190,6 @@ class WorkoutPageState extends State<WorkoutPage> {
                     child: Icon(Icons.edit))),
           ],
         ),
-        // bottomNavigationBar: NavigationBar(2),
         body: Container(
           height: double.infinity,
           width: double.infinity,

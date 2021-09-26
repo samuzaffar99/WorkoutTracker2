@@ -12,7 +12,6 @@ class LogPage extends StatefulWidget {
 class _LogPageState extends State<LogPage> {
   @override
   Widget build(BuildContext context) {
-    // int index = 3;
     return SafeArea(
       child: Scaffold(
         // backgroundColor: theme.background,
@@ -22,7 +21,6 @@ class _LogPageState extends State<LogPage> {
           title: Text("Log"),
           centerTitle: true,
         ),
-        // bottomNavigationBar: NavigationBar(3),
         body: Container(
           child: ListView(
             children: [

@@ -174,7 +174,6 @@ Widget getDietView() {
 class _DietPageState extends State<DietPage> {
   @override
   Widget build(BuildContext context) {
-    // int index = 1;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.blueAccent,
@@ -184,7 +183,6 @@ class _DietPageState extends State<DietPage> {
           title: Text('Diet'),
           centerTitle: true,
         ),
-        // bottomNavigationBar: NavigationBar(1),
         endDrawer: Drawer(
           child: Container(
             // color: Color(0xFF5F3E40),

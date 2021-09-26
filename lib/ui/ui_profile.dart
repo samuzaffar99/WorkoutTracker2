@@ -145,7 +145,6 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     // var _formKey = GlobalKey<FormState>();
-    int index = 4;
     return SafeArea(
       child: Scaffold(
         // backgroundColor: theme.background,
@@ -168,7 +167,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Icon(Icons.edit))),
           ],
         ),
-        // bottomNavigationBar: NavigationBar(index),
         body: Container(
           child: Column(
             children: [

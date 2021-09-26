@@ -8,62 +8,6 @@ import 'ui_profile.dart';
 import 'ui_settings.dart';
 import 'workout/ui_workout.dart';
 
-class NavigationBar extends StatefulWidget {
-  final int index;
-  NavigationBar(this.index);
-  @override
-  _NavigationBarState createState() => _NavigationBarState();
-}
-
-class _NavigationBarState extends State<NavigationBar> {
-  List routes = ["Home", "Diet", "Workout", "Log", "Profile"];
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: widget.index,
-      onTap: (int i) {
-        setState(
-          () {
-            if (widget.index == i) {
-              Navigator.popUntil(context, ModalRoute.withName(routes[i]));
-              return;
-            } else {
-              // widget.index = i;
-              Navigator.pushReplacementNamed(context, routes[i]);
-            }
-          },
-        );
-      },
-      // backgroundColor: Colors.red,
-      selectedItemColor: Colors.black,
-      showUnselectedLabels: false,
-      unselectedItemColor: Colors.black54,
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.local_dining),
-          label: 'Diet',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.fitness_center),
-          label: 'Workout',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.article_outlined),
-          label: 'Log',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle),
-          label: 'Profile',
-        )
-      ],
-    );
-  }
-}
-
 class NavBinding extends Bindings {
   @override
   void dependencies() {
@@ -149,27 +93,6 @@ class RootPage extends StatelessWidget {
     );
   }
 }
-
-// class ConvexNavBar extends StatelessWidget {
-//   const ConvexNavBar({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return GetBuilder<NavController>(builder: (navController) {
-//       return ConvexAppBar(
-//           items: const [
-//             TabItem(icon: Icons.home, title: 'Home'),
-//             TabItem(icon: Icons.search, title: 'Search'),
-//             TabItem(icon: Icons.people, title: 'Profile'),
-//             TabItem(icon: Icons.settings, title: 'Settings'),
-//           ],
-//           initialActiveIndex: navController.currIndex,
-//           onTap: (int i) {
-//             navController.changeTabIndex(i);
-//           });
-//     });
-//   }
-// }
 
 class NavBar extends StatelessWidget {
   final NavController controller = Get.find<NavController>();

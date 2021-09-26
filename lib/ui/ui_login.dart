@@ -4,55 +4,7 @@ import 'package:get/get.dart';
 import '../services/login_api.dart';
 
 class LoginPage extends StatelessWidget {
-  // bool isLoading = false;
-  // bool isLoggedIn = false;
   final Session session = Get.find<Session>();
-
-  @override
-  // void initState() {
-  //   super.initState();
-  //   isSignedIn();
-  // }
-  //
-  // void isSignedIn() async {
-  //   this.setState(() {
-  //     isLoading = true;
-  //   });
-  //
-  //   isLoggedIn = await currState.googleSignIn.isSignedIn();
-  //   if (isLoggedIn) {
-  //     bool existsUser = await currState.initializeUser();
-  //     if (existsUser) {
-  //       // Navigator.pushNamed(context, "Setup");
-  //       Navigator.pushReplacementNamed(context, "Home");
-  //     } else {
-  //       Navigator.pushNamed(context, "Setup");
-  //     }
-  //   }
-  //
-  //   this.setState(() {
-  //     isLoading = false;
-  //   });
-  // }
-  //
-  // Future<Null> handleSignIn() async {
-  //   this.setState(() {
-  //     isLoading = true;
-  //   });
-  //   bool existsUser = await currState.initializeUser();
-  //   Fluttertoast.showToast(msg: "Sign in success");
-  //   this.setState(() {
-  //     isLoading = false;
-  //   });
-  //   if (existsUser) {
-  //     print("unga bunga");
-  //     // Navigator.pushNamed(context, "Setup");
-  //     Navigator.pushReplacementNamed(context, "Home");
-  //   } else {
-  //     print("not unga bunga");
-  //     Navigator.pushNamed(context, "Setup");
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {

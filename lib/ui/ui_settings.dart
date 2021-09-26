@@ -18,7 +18,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    int index = 4;
     return SafeArea(
       child: Scaffold(
         // backgroundColor: theme.background,
@@ -157,7 +156,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 )),
           ),
         ),
-        // bottomNavigationBar: NavigationBar(index),
       ),
     );
   }
