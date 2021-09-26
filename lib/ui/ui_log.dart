@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'ui_navbar.dart';
-import 'package:workout_tracker2/globals.dart';
-// import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class LogPage extends StatefulWidget {
   LogPage();
+
   @override
   _LogPageState createState() => _LogPageState();
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class EditWorkout extends StatefulWidget {
   EditWorkout();
+
   @override
   _EditWorkoutState createState() => _EditWorkoutState();
 }

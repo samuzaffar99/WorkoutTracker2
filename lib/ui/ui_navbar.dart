@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../admin.dart';
 import 'ui_diet.dart';
 import 'ui_home.dart';
+import 'ui_log.dart';
 import 'ui_profile.dart';
 import 'ui_settings.dart';
 import 'workout/ui_workout.dart';
@@ -43,6 +44,7 @@ class NavController extends GetxController {
     '/home': {'page': () => HomePage()},
     '/workout': {'page': () => WorkoutPage()},
     '/diet': {'page': () => DietPage()},
+    '/log': {'page': () => LogPage()},
     '/settings': {'page': () => SettingsPage()},
     '/profile': {'page': () => ProfilePage()},
     '/admin': {'page': () => AdminPage()},
@@ -96,6 +98,7 @@ class RootPage extends StatelessWidget {
 
 class NavBar extends StatelessWidget {
   final NavController controller = Get.find<NavController>();
+
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(

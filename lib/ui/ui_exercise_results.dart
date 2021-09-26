@@ -1,6 +1,8 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:workout_tracker2/globals.dart';
+import 'package:workout_tracker2/services/login_api.dart';
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class ExerciseResults extends StatefulWidget {
@@ -9,6 +11,8 @@ class ExerciseResults extends StatefulWidget {
 }
 
 class _ExerciseResultsState extends State<ExerciseResults> {
+  final currState = Get.find<Session>();
+
   Widget getExerciseResults() {
     return FutureBuilder(
         future: currState.api.getExercises(),

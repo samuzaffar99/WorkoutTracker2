@@ -1,12 +1,14 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:workout_tracker2/globals.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
-import 'package:weekday_selector/weekday_selector.dart';
 import 'package:page_view_indicators/step_page_indicator.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:weekday_selector/weekday_selector.dart';
+import 'package:workout_tracker2/globals.dart';
+import 'package:workout_tracker2/services/login_api.dart';
 
 class SetupPage extends StatefulWidget {
   @override
@@ -14,6 +16,7 @@ class SetupPage extends StatefulWidget {
 }
 
 class _SetupPageState extends State<SetupPage> {
+  final currState = Get.find<Session>();
   final Map<String, dynamic> user = {
     "nickname": "",
     "gender": "",
@@ -43,11 +46,11 @@ class _SetupPageState extends State<SetupPage> {
   final List<String> genders = ["Male", "Female"];
   final List<String> plans = ["Lose Fat", "Gain Muscle", "Maintain Weight"];
   final List<bool> workoutSelected = [true, false, false];
+
   // var _formKey = GlobalKey<FormState>();
   final _currentPageNotifier = ValueNotifier<int>(0);
   final PageController pageController = PageController();
-  final TextEditingController nameController =
-      TextEditingController(text: currState.firebaseUser.displayName);
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController timeController = TextEditingController();
 

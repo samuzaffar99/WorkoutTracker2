@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker2/ui/ui_navbar.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:workout_tracker2/globals.dart';
+import 'package:workout_tracker2/services/login_api.dart';
 
 // String objdiet="5febf179775c8a5c445e0745";
 
 class DietPage extends StatefulWidget {
   DietPage();
+
   @override
   _DietPageState createState() => _DietPageState();
 }
 
 Widget getDietCard(foodData) {
+  final currState = Get.find<Session>();
   return FutureBuilder(
       future: currState.api.getFood(foodData),
       builder: (buildContext, AsyncSnapshot? snapshot) {
@@ -119,6 +121,7 @@ Widget getDietCard(foodData) {
 }
 
 Widget getDietView() {
+  final currState = Get.find<Session>();
   return FutureBuilder(
       future: currState.api.getDiet("14OUlOXyAv9JBpGGPuRl"),
       builder: (buildContext, AsyncSnapshot? snapshot) {

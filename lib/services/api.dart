@@ -17,6 +17,7 @@ class Api extends GetxService {
     this.dietsCol = db.collection("diets");
     this.foodsCol = db.collection("foods");
   }
+
   // get
   // Get List of documents(collection)
   Future<List<DocumentSnapshot>> getCollection(

@@ -27,6 +27,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
   List<String> sortParams = ["Name", "Difficulty"];
   bool toggleAsc = true;
   String currParam = "Name";
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

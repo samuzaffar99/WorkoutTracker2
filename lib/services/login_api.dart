@@ -5,20 +5,32 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'api.dart';
 
+// GoogleSignIn _googleSignIn = GoogleSignIn(
+//   // Optional clientId
+//   clientId:
+//       '363391434933-4asstkqhcb75napiu2jekoqcr0bd8nkq.apps.googleusercontent.com',
+//   scopes: <String>[
+//     'email',
+//     'https://www.googleapis.com/auth/contacts.readonly',
+//   ],
+// );
 class Session extends GetxService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   User firebaseUser = FirebaseAuth.instance.currentUser!;
+
   // SharedPreferences prefs = SharedPreferences.getInstance();
   RxBool isLoggedIn = false.obs;
   FirebaseFirestore db = FirebaseFirestore.instance;
   late DocumentReference userRef;
   late DocumentSnapshot userData;
+
   // DocumentReference currWorkoutRef;
   // DocumentSnapshot workoutData;
   // DocumentSnapshot dietData;
   Api api = Get.find<Api>();
   RxBool isLoading = false.obs;
+
   void initState() {
     isSignedIn();
   }

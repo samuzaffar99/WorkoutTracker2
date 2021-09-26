@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker2/globals.dart';
+
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'ui_workout.dart';
 
 class WorkoutSummary extends StatelessWidget {
   WorkoutSummary();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

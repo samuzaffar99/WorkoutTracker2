@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:workout_tracker2/globals.dart';
+import 'package:get/get.dart';
+import 'package:workout_tracker2/services/login_api.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage();
+
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
@@ -11,10 +12,13 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool toggleDark = false;
   bool toggleAlarm = false;
+
   @override
   void dispose() {
     super.dispose();
   }
+
+  final currState = Get.find<Session>();
 
   @override
   Widget build(BuildContext context) {

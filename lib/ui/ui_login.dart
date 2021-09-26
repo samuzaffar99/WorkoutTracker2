@@ -21,9 +21,9 @@ class LoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                LoginButton(),
                 SizedBox(height: 10),
                 // Loading
-                LoginButton(),
                 Obx(
                   () => Container(
                     child: session.isLoading.value
@@ -40,6 +40,7 @@ class LoginPage extends StatelessWidget {
 
 class LoginButton extends StatelessWidget {
   final Session session = Get.find<Session>();
+
   @override
   Widget build(BuildContext context) {
     return OutlinedButton.icon(

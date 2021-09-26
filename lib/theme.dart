@@ -4,6 +4,7 @@ class CustomTheme {
   Color primary;
   Color secondary;
   Color nav;
+
   // Color highlight;
   Color text;
   Color background;
@@ -28,9 +29,11 @@ class CustomTheme {
 
 class StyledElevatedButton extends StatelessWidget {
   StyledElevatedButton(this.color, this.text, this.onPressed);
+
   final Color color;
   final String text;
   final Function onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Flex(
@@ -50,9 +53,11 @@ class StyledElevatedButton extends StatelessWidget {
 
 class StyledOutlinedButton extends StatelessWidget {
   StyledOutlinedButton(this.color, this.text, this.onPressed);
+
   final Color color;
   final String text;
   final Function onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Flex(
@@ -71,6 +76,7 @@ class StyledOutlinedButton extends StatelessWidget {
 
 class StyledAppBar extends StatelessWidget {
   StyledAppBar(this.color, this.text);
+
   final Color color;
   final String text;
 

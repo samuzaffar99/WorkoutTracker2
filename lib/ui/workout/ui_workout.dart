@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:workout_tracker2/ui/ui_navbar.dart';
+import 'package:get/get.dart';
+import 'package:workout_tracker2/services/login_api.dart';
 import 'package:workout_tracker2/ui/workout/ui_edit_workout.dart';
 import 'package:workout_tracker2/ui/workout/ui_in_workout.dart';
-import 'package:workout_tracker2/globals.dart';
 
 // import 'package:intl/intl.dart';
 
 //@override
 Widget getWorkoutView() {
+  final currState = Get.find<Session>();
   // if (currState.currWorkout == null) {
   //   return Text('User is not following a workout plan!');
   // }
@@ -65,6 +66,7 @@ Widget getWorkoutView() {
 }
 
 Widget exerciseCard(Map<String, dynamic> exerciseData) {
+  final currState = Get.find<Session>();
   return Container(
     padding: EdgeInsets.all(8),
     // width: 320,
@@ -162,6 +164,7 @@ Widget exerciseCard(Map<String, dynamic> exerciseData) {
 
 class WorkoutPage extends StatefulWidget {
   WorkoutPage();
+
   @override
   WorkoutPageState createState() => WorkoutPageState();
 }

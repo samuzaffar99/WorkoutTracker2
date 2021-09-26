@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:workout_tracker2/globals.dart';
-import 'ui_navbar.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:workout_tracker2/services/login_api.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
   ProfilePage();
+
   _ProfilePageState createState() => _ProfilePageState();
 }
 
@@ -16,6 +17,7 @@ class _ProfilePageState extends State<ProfilePage> {
   final bodyFatController = TextEditingController();
   final targetWeightController = TextEditingController();
   final targetBodyFatController = TextEditingController();
+  final currState = Get.find<Session>();
 
   @override
   void dispose() {
@@ -179,13 +181,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: CircleAvatar(
                       radius: 50,
                       backgroundImage:
-                          NetworkImage(currState.userData!["photoUrl"]),
+                          NetworkImage(currState.userData["photoUrl"]),
                     ),
                   ),
                   SizedBox(width: 20),
                   Expanded(
                     child: Text(
-                      "${currState.userData!["nickname"]}",
+                      "${currState.userData["nickname"]}",
                       style: TextStyle(
                         fontSize: 24,
                         // color: Colors.white,
@@ -222,7 +224,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
-                                      Text(currState.userData!
+                                      Text(currState.userData
                                               .get("weight")
                                               .toString() +
                                           " kg"),
@@ -242,7 +244,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold)),
-                                      Text(currState.userData!
+                                      Text(currState.userData
                                               .get("bodyFat")
                                               .toString() +
                                           " %"),
