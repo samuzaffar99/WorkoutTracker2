@@ -23,7 +23,6 @@ class NavController extends GetxController {
     '/diet',
     '/workout',
     '/log',
-    // '/settings',
     '/profile'
   ];
 

@@ -520,7 +520,7 @@ class _SetupPageState extends State<SetupPage> {
         child: ElevatedButton.icon(
             onPressed: () async {
               await _registerUser();
-              Navigator.pushReplacementNamed(context, "Home");
+              Get.offNamedUntil('/home', (route) => false);
             },
             style: ElevatedButton.styleFrom(
                 primary: Colors.green,

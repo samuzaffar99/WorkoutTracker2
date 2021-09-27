@@ -1,6 +1,7 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:workout_tracker2/globals.dart';
 import 'package:workout_tracker2/ui/ui_exercise_results.dart';
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
@@ -73,11 +74,7 @@ class _ExploreExercisesState extends State<ExploreExercises> {
                           icon: Icon(Icons.search),
                           // style: OutlinedButton.styleFrom(primary: Colors.deepOrange),
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context) {
-                                return ExerciseResults();
-                              },
-                            ));
+                            Get.to(() => ExerciseResults(),id:1);
                           }),
                     ],
                   ),

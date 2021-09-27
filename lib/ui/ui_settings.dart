@@ -99,8 +99,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             // color: Colors.blue,
                             child: Text('Admin'),
                             onPressed: () {
-                              // Navigator.pop(context);
-                              Navigator.pushNamed(context, 'Admin');
+                              Get.toNamed('/admin',id:1);
                             },
                           ),
                           OutlinedButton(
@@ -110,8 +109,9 @@ class _SettingsPageState extends State<SettingsPage> {
                             onPressed: () {
                               currState.api.delUser(currState.firebaseUser.uid);
                               currState.signOut();
-                              Navigator.of(context).pushNamedAndRemoveUntil(
-                                  "Login", (Route<dynamic> route) => false);
+                              Get.offAll('/login');
+                              // Navigator.of(context).pushNamedAndRemoveUntil(
+                              //     "Login", (Route<dynamic> route) => false);
                               // Navigator.pushReplacementNamed(context, "Login");
                             },
                           ),
@@ -123,9 +123,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             ),
                             onPressed: () {
                               currState.signOut();
-                              Navigator.of(context).pushNamedAndRemoveUntil(
-                                  "Login", (Route<dynamic> route) => false);
-                              // Navigator.pushReplacementNamed(context, "Login");
+                              Get.offAllNamed('/login');
                             },
                           ),
                         ],

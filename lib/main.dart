@@ -3,15 +3,8 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:workout_tracker2/admin.dart';
 import 'package:workout_tracker2/ui/setup/ui_setup.dart';
-import 'package:workout_tracker2/ui/ui_diet.dart';
-import 'package:workout_tracker2/ui/ui_home.dart';
-import 'package:workout_tracker2/ui/ui_log.dart';
 import 'package:workout_tracker2/ui/ui_login.dart';
-import 'package:workout_tracker2/ui/ui_profile.dart';
-import 'package:workout_tracker2/ui/ui_settings.dart';
-import 'package:workout_tracker2/ui/workout/ui_workout.dart';
 
 import 'services/api.dart';
 import 'services/login_api.dart';
@@ -57,17 +50,17 @@ class WorkoutApp extends StatelessWidget {
         // GetPage(name: '/admin', page: () => AdminPage()),
         // GetPage(name: '/settings', page: () => SettingsPage()),
       ],
-      routes: {
-        'Login': (context) => LoginPage(),
-        'Home': (context) => HomePage(),
-        'Diet': (context) => DietPage(),
-        'Workout': (context) => WorkoutPage(),
-        'Log': (context) => LogPage(),
-        'Profile': (context) => ProfilePage(),
-        'Admin': (context) => AdminPage(),
-        'Settings': (context) => SettingsPage(),
-        'Setup': (context) => SetupPage(),
-      },
+      // routes: {
+      //   'Login': (context) => LoginPage(),
+      //   'Home': (context) => HomePage(),
+      //   'Diet': (context) => DietPage(),
+      //   'Workout': (context) => WorkoutPage(),
+      //   'Log': (context) => LogPage(),
+      //   'Profile': (context) => ProfilePage(),
+      //   'Admin': (context) => AdminPage(),
+      //   'Settings': (context) => SettingsPage(),
+      //   'Setup': (context) => SetupPage(),
+      // },
     );
   }
 }

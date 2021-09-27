@@ -66,7 +66,7 @@ class AdminPageState extends State<AdminPage> {
                       print(response);
                       var data = await currState.api.getDocument(response);
                       print(data.data());
-                      Navigator.of(context).pop();
+                      Get.back();
                     },
                   ),
                   Text('JSON'),
@@ -83,7 +83,7 @@ class AdminPageState extends State<AdminPage> {
                       print(response);
                       var data = await currState.api.getDocument(response);
                       print(data.data());
-                      Navigator.of(context).pop();
+                      Get.back();
                     },
                   ),
                 ],
@@ -136,7 +136,7 @@ class AdminPageState extends State<AdminPage> {
                       print(response);
                       var data = await currState.api.getDocument(response);
                       print(data.data());
-                      Navigator.of(context).pop();
+                      Get.back();
                     },
                   ),
                   Text('Add JSON Data to $collectionName'),
@@ -174,7 +174,7 @@ class AdminPageState extends State<AdminPage> {
                         data = await currState.api.getDocument(response);
                         print(data.data());
                       });
-                      Navigator.of(context).pop();
+                      Get.back();
                     },
                   ),
                 ],

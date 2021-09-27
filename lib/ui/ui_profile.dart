@@ -129,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         .putUser(currState.firebaseUser.uid, user);
                     await currState.fetchUser();
                     setState(() {});
-                    Navigator.of(context).pop();
+                    Get.back();
                   },
                 ),
               ),
@@ -361,7 +361,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         InkWell(
                           onTap: () {
-                            //Navigator.pop(context);
+                            //Get.to(()=>HomePage());
                             //Insert new navigation page here
                           },
                           child: Center(
@@ -378,8 +378,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           label: Text("Settings"),
                           icon: Icon(Icons.settings),
                           onPressed: () {
-                            // Navigator.pop(context);
-                            Navigator.pushNamed(context, "Settings");
+                            Get.toNamed('/settings',id:1);
                           },
                         )
                       ],

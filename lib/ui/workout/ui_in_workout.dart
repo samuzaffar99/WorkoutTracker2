@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:workout_tracker2/stop_watch.dart';
 import 'package:workout_tracker2/ui/workout/ui_workout.dart';
 import 'package:workout_tracker2/ui/workout/ui_workout_summary.dart';
@@ -49,17 +50,7 @@ class _InWorkoutState extends State<InWorkout> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0))),
                       onPressed: () {
-                        // Navigator.popUntil(context,
-                        //     ModalRoute.withName('/ui_workout_summary'));
-                        // return WorkoutSummary();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return WorkoutSummary();
-                            },
-                          ),
-                        );
+                        Get.to(() => WorkoutSummary(), id: 1);
                       },
                       // textColor: Colors.white,
                       // borderSide: BorderSide(

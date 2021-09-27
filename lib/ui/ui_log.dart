@@ -44,8 +44,7 @@ class _LogPageState extends State<LogPage> {
               ),
               InkWell(
                 onTap: () {
-                  //Navigator.pop(context);
-                  //Insert new navigation page here
+                  //Get.to(context,id:1);
                 },
                 child: Center(
                   child: RichText(
@@ -64,15 +63,6 @@ class _LogPageState extends State<LogPage> {
                     onPressed: () {
                       // widget.user.log=null;
                       // _api.putUser(widget.user);
-                      // Navigator.pop(context);
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return;
-                      //     },
-                      //   ),
-                      // );
                     },
                     child: Text(
                       "Clear Log",

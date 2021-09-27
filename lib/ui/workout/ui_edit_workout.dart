@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class EditWorkout extends StatefulWidget {
   EditWorkout();
@@ -143,7 +144,7 @@ class _EditWorkoutState extends State<EditWorkout> {
                   minWidth: 160.0,
                   child: OutlinedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Get.back();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -170,7 +171,7 @@ class _EditWorkoutState extends State<EditWorkout> {
                   minWidth: 160.0,
                   child: OutlinedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Get.back();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

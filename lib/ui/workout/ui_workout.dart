@@ -185,10 +185,7 @@ class WorkoutPageState extends State<WorkoutPage> {
                 padding: EdgeInsets.only(right: 20.0),
                 child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return EditWorkout();
-                      }));
+                      Get.to(() => EditWorkout(), id: 1);
                     },
                     child: Icon(Icons.edit))),
           ],
@@ -206,14 +203,7 @@ class WorkoutPageState extends State<WorkoutPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0))),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return InWorkout();
-                        },
-                      ),
-                    );
+                    Get.to(() => InWorkout(), id: 1);
                   },
                   child: Text(
                     "Start Workout",

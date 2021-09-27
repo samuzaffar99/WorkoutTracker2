@@ -48,14 +48,7 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 275.0,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return ExploreExercises();
-                            },
-                          ),
-                        );
+                        Get.to(() => ExploreExercises(),id:1);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -81,14 +74,7 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 275.0,
                     child: OutlinedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return ChooseNewWorkoutPlan();
-                            },
-                          ),
-                        );
+                        Get.to(() => ChooseNewWorkoutPlan(),id:1);
                       },
                       child: Text(
                         "Choose New Workout Plan",

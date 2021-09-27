@@ -35,17 +35,7 @@ class _ChooseNewWorkoutPlanState extends State<ChooseNewWorkoutPlan> {
                     height: 45.0,
                     minWidth: 275.0,
                     child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) {
-                        //       return;
-                        //     },
-                        //   ),
-                        // );
-                      },
+                      onPressed: () {},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -78,17 +68,7 @@ class _ChooseNewWorkoutPlanState extends State<ChooseNewWorkoutPlan> {
                     height: 45.0,
                     minWidth: 275.0,
                     child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) {
-                        //       return;
-                        //     },
-                        //   ),
-                        // );
-                      },
+                      onPressed: () {},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -121,17 +101,7 @@ class _ChooseNewWorkoutPlanState extends State<ChooseNewWorkoutPlan> {
                     height: 45.0,
                     minWidth: 275.0,
                     child: OutlinedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) {
-                        //       return;
-                        //     },
-                        //   ),
-                        // );
-                      },
+                      onPressed: () {},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'ui_workout.dart';
@@ -30,9 +31,7 @@ class WorkoutSummary extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0))),
                 onPressed: () {
-                  // Navigator.pop(context);
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      "Home", (Route<dynamic> route) => false);
+                  Get.offNamedUntil('/home', (route) => false);
                 },
                 child: Text(
                   "Finish",

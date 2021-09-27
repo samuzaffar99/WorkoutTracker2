@@ -58,7 +58,7 @@ class Session extends GetxService {
       isLoading.value = false;
       if (existsUser) {
         print("unga bunga");
-        // Navigator.pushNamed(context, "Setup");
+        // Get.toNamed("/setup");
         Get.offAllNamed('/root');
       } else {
         print("not unga bunga");
@@ -67,7 +67,6 @@ class Session extends GetxService {
     } catch (err) {
       print(err);
       Get.snackbar("Error!", "Sign in fail");
-      // Fluttertoast.showToast(msg: "Sign in fail");
       isLoading.value = false;
     }
   }
