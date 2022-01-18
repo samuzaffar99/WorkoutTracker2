@@ -28,7 +28,7 @@ class CustomTheme {
 }
 
 class StyledElevatedButton extends StatelessWidget {
-  StyledElevatedButton(this.color, this.text, this.onPressed);
+  const StyledElevatedButton(this.color, this.text, this.onPressed);
 
   final Color color;
   final String text;
@@ -52,7 +52,7 @@ class StyledElevatedButton extends StatelessWidget {
 }
 
 class StyledOutlinedButton extends StatelessWidget {
-  StyledOutlinedButton(this.color, this.text, this.onPressed);
+  const StyledOutlinedButton(this.color, this.text, this.onPressed);
 
   final Color color;
   final String text;
